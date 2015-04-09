@@ -1,0 +1,5 @@
+extension/app/code/community/Aplazame/Aplazame          app/code/community/Aplazame/Aplazame
+extension/lib/Aplazame          lib/Aplazame
+extension/app/etc/modules/Aplazame_Aplazame.xml          app/etc/modules/Aplazame_Aplazame.xml
+extension/app/design/frontend/base/default/layout/aplazame.xml          app/design/frontend/base/default/layout/aplazame.xml 
+extension/app/design/frontend/base/default/template/aplazame          app/design/frontend/base/default/template/aplazame

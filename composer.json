@@ -1,0 +1,29 @@
+{
+  "name": "aplazame/aplazame-magento",
+  "description": "Aplazame Magento module",
+  "keywords": [
+    "aplazame",
+    "api rest",
+    "ecommerce",
+    "payment method",
+    "checkout",
+    "credit"
+  ],
+  "homepage": "https://aplazame.com/",
+  "authors": [
+    {
+      "name": "Aplazame Developers",
+      "homepage": "https://aplazame.com/"
+    }
+  ],
+  "require": {
+    "php": ">=5.2"
+  },
+  "require-dev": {
+    "zendframework/zendframework1": "1.12.6",
+    "simpletest/simpletest": "1.1.*"
+  },
+  "autoload": {
+    "classmap": ["extension/lib/Aplazame/"]
+  }
+}

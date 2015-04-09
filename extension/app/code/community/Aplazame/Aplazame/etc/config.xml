@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Aplazame_Aplazame>
+            <version>0.0.1</version>
+        </Aplazame_Aplazame>
+    </modules>
+    <global>
+        <models>
+            <aplazame>
+                <class>Aplazame_Aplazame_Model</class>
+            </aplazame>
+        </models>
+        <blocks>
+            <aplazame>
+                <class>Aplazame_Aplazame_Block</class>
+            </aplazame>
+        </blocks>
+        <helpers>
+            <aplazame>
+                <class>Aplazame_Aplazame_Helper</class>
+            </aplazame>
+        </helpers>
+    </global>
+
+    <adminhtml>
+        <events>
+            <sales_order_place_after>
+                <observers>
+                    <Aplazame>
+                        <type>singleton</type>
+                        <class>aplazame/observer</class>
+                        <method>salesOrderPlaceAfter</method>
+                    </Aplazame>
+                </observers>
+            </sales_order_place_after>
+            <sales_order_load_after>
+                <observers>
+                    <Aplazame>
+                        <type>singleton</type>
+                        <class>aplazame/observer</class>
+                        <method>salesOrderLoadAfter</method>
+                    </Aplazame>
+                </observers>
+            </sales_order_load_after>
+            <order_cancel_after>
+                <observers>
+                    <Aplazame>
+                        <type>singleton</type>
+                        <class>aplazame/observer</class>
+                        <method>salesOrderPaymentCancel</method>
+                    </Aplazame>
+                </observers>
+            </order_cancel_after>
+        </events>
+    </adminhtml>
+
+    <frontend>
+        <routers>
+            <aplazame>
+                <use>standard</use>
+                <args>
+                    <module>Aplazame_Aplazame</module>
+                    <frontName>aplazame</frontName>
+                </args>
+            </aplazame>
+        </routers>
+
+        <layout>
+            <updates>
+                <aplazame>
+                    <file>aplazame.xml</file>
+                </aplazame>                
+            </updates>
+        </layout>
+        
+    </frontend>
+    <default>
+        <payment>
+            <aplazame>
+                <active>0</active>
+                <sandbox>1</sandbox>
+                <model>aplazame/payment</model>
+                <title>Aplazame</title>
+                <api_url>https://api.aplazame.com</api_url>
+                <version>v1</version>
+                <button>button1</button>
+                <secret_api_key backend_model="adminhtml/system_config_backend_encrypted"/>
+            </aplazame>
+        </payment>
+    </default>
+
+</config>
