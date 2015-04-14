@@ -38,7 +38,7 @@ Configure
 4. Select sandbox or production mode.
 5. Provide your 2 api tokens, public and secret key.
  
-	![](docs/admin.png)
+	![config](docs/config.png)
 
 
 Help
