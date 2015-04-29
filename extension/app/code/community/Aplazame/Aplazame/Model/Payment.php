@@ -12,12 +12,12 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
     /**
      * options
      */
-    protected $_code  = self::METHOD_CODE;
+    protected $_code = self::METHOD_CODE;
     protected $_formBlockType = 'aplazame/payment_form';
     protected $_infoBlockType = 'aplazame/payment_info';
-    protected $_isInitializeNeeded      = true;
-    protected $_canUseInternal          = false;
-    protected $_canUseForMultishipping  = false;
+    protected $_isInitializeNeeded     = true;
+    protected $_canUseInternal         = false;
+    protected $_canUseForMultishipping = false;
 
 
     public function initialize($paymentAction, $stateObject)
@@ -149,7 +149,7 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
         $order = Mage::getModel('sales/order')->loadByIncrementId($orderIncrementId);
         $serializer = Mage::getModel('aplazame/api_serializers');
 
-        $serializer->setOrderId($orderIncrementId)->setOrder($order);
+        $serializer->setOrder($order);
         return $serializer->getCheckout();
     }
 }

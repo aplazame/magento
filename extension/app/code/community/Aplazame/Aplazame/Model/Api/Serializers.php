@@ -101,7 +101,7 @@ class Aplazame_Aplazame_Model_Api_Serializers extends Varien_Object
 
     private function getProductTaxRate($product)
     {
-        $store = Mage::app()->getStore('default');
+        $store = Mage::app()->getStore();
         $request = Mage::getSingleton('tax/calculation')->getRateRequest(null, null, null, $store);
         $taxclassid = $product->getData('tax_class_id');
         return Mage::getSingleton('tax/calculation')->getRate($request->setProductClassId($taxclassid));
