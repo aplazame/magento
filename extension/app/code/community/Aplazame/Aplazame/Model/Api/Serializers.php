@@ -147,8 +147,8 @@ class Aplazame_Aplazame_Model_Api_Serializers extends Varien_Object
             "articles"=>$this->getArticles(),
             "currency"=>$order->getOrderCurrencyCode(),
             "tax_amount"=>static::formatDecimals($order->getTaxAmount()),
-            "total_amount"=>static::formatDecimals($this->_orderTotal() + $discounts),
-            "discount"=>static::formatDecimals($discounts));
+            "total_amount"=>static::formatDecimals($this->_orderTotal()),
+            "discount"=>-static::formatDecimals($discounts));
     }
 
     public function getHistory()
