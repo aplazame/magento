@@ -70,11 +70,14 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
     public function cancelAction()
     {
         $session = $this->_getCheckoutSession();
-        $order = $session->getLastRealOrder();
+        $orderId = $session->getLastRealOrderId();
 
-        if ($order->getId()) {
-
-            Mage::helper('aplazame/cart')->resuscitateCartFromOrder($order);
+        if($orderId)
+        {
+            $order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
+            if ($order->getId()) {
+                Mage::helper('aplazame/cart')->resuscitateCartFromOrder($order);
+            }
         }
 
         $this->_redirect('checkout/onepage');
