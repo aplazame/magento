@@ -67,6 +67,22 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
         // $this->_redirect('checkout/onepage');
     }
 
+    public function cancelAction()
+    {
+        $session = $this->_getCheckoutSession();
+        $orderId = $session->getLastRealOrderId();
+
+        if($orderId)
+        {
+            $order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
+            if ($order->getId()) {
+                Mage::helper('aplazame/cart')->resuscitateCartFromOrder($order);
+            }
+        }
+
+        $this->_redirect('checkout/onepage');
+    }
+
     public function historyAction()
     {
         $checkout_token = $this->getRequest()->getParam("checkout_token");

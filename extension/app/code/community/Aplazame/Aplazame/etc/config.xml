@@ -15,6 +15,12 @@
             <aplazame>
                 <class>Aplazame_Aplazame_Block</class>
             </aplazame>
+            <checkout>
+                <rewrite>
+                    <onepage_billing>Aplazame_Aplazame_Block_Checkout_Onepage_Billing</onepage_billing>
+                    <onepage_shipping>Aplazame_Aplazame_Block_Checkout_Onepage_Shipping</onepage_shipping>
+                </rewrite>
+            </checkout>
         </blocks>
         <helpers>
             <aplazame>
@@ -22,7 +28,6 @@
             </aplazame>
         </helpers>
     </global>
-
     <adminhtml>
         <events>
             <sales_order_place_after>

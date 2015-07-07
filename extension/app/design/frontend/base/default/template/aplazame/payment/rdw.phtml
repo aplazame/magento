@@ -1,4 +1,4 @@
-<?php if (!Mage::helper('core/cookie')->isUserNotAllowSaveCookie()): ?>
+<?php if ((!mageFindClassFile('Mage_Core_Helper_Cookie')) || (!Mage::helper('core/cookie')->isUserNotAllowSaveCookie())): ?>
 
 <script type="text/javascript">
 
