@@ -2,7 +2,7 @@
 
 class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
 {
-    const USER_AGENT = 'Aplazame/0.0.2';
+    const USER_AGENT = 'Aplazame/0.0.3';
     const API_CHECKOUT_PATH = '/orders';
 
     public function __construct()
@@ -32,7 +32,7 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
         $client->setHeaders('User-Agent: '. self::USER_AGENT); 
 
         $client->setHeaders('Accept: '. 'application/vnd.aplazame'.
-            (Mage::getStoreConfig('payment/aplazame/sandbox')?'.sandbox-': '-') .
+            (Mage::getStoreConfig('payment/aplazame/sandbox')?'.sandbox.': '.') .
             Mage::getStoreConfig('payment/aplazame/version') . '+json');
 
 

@@ -13,10 +13,10 @@ class Aplazame_Aplazame_Model_Api_Serializers extends Varien_Object
     private static function _getMetadata()
     {
         return array(
-            "magento" => array(
+            "module" => array(
+                "name" => "aplazame:magento",
                 "version" => Mage::getVersion()
             ),
-            "client" => "aplazame:magento",
             "version" => Mage::getConfig()->getModuleConfig('Aplazame_Aplazame')->version
         );
     }
