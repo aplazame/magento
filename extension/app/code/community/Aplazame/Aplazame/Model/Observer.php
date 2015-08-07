@@ -66,12 +66,20 @@ class Aplazame_Aplazame_Model_Observer extends Mage_Core_Model_Abstract
             return $this;
         }
 
-        if (!$this->is_aplazame_payment($order)) {          
+        if (!$this->is_aplazame_payment($order)) {
             return $this;
         }
 
         $client = Mage::getModel('aplazame/api_client');
-        $result = $client->setOrder($order)->cancelOrder();
+
+        //@oreales: capturamos el error pero no detenemos el script.
+        try {
+            $result = $client->setOrder($order)->cancelOrder();
+        } catch (Exception $e) {
+            Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+            return $this;
+        }
+
 
         return $this;
     }
