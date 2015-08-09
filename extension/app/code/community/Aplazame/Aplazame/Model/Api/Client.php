@@ -56,9 +56,18 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
 
         if ($status_code >= 400)
         {
-            Mage::throwException(Mage::helper('aplazame')->__(
-                'Aplazame error code ' . $status_code . ': '. 
-                    $ret_json['error']['message']));
+            $errorMsg = Mage::helper('aplazame')->__('Aplazame error code ' . $status_code . ': '
+                . $ret_json['error']['message']);
+
+            if($status_code == 403)
+            {
+                //no tiramos exception, pero informamos de error
+                Mage::getSingleton('adminhtml/session')->addError($errorMsg);
+            }
+
+            //para los demás errores mayores de 400 menos el 403
+            //tiramos exception.
+            Mage::throwException($errorMsg);
         }
 
         return $ret_json;
