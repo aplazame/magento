@@ -11,7 +11,7 @@ Install
 
 ```
 modgit init
-modgit -i extension/:. add Magento_Aplazame https://github.com/calvinpy/aplazame-magento
+modgit -i extension/:. add Magento_Aplazame https://github.com/aplazame/magento
 ```
 to update:
 ```
@@ -21,7 +21,7 @@ modgit update Magento_Aplazame
 **To install using [modman](https://github.com/colinmollenhour/modman)**
 
 ```
-modman clone https://github.com/calvinpy/aplazame-magento
+modman clone https://github.com/aplazame/magento
 ```
 to update:
 ```
