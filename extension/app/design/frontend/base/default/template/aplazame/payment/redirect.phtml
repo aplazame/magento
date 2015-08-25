@@ -1,6 +1,5 @@
 <html>
     <body style="margin: 0;">
-        <script type="text/javascript" src="<?php echo trim(Mage::getStoreConfig('payment/aplazame/api_url'), "/") . '/static/v1/js/aplazame.js' . (Mage::getStoreConfig('payment/aplazame/sandbox')?'?sandbox=1':'?') ?>&v=2"></script>
         <script>
             aplazame.checkout(<?php echo json_encode($payment->getCheckoutSerializer(), 128) ?>);
         </script>

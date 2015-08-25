@@ -193,7 +193,6 @@ class Aplazame_Aplazame_Model_Api_Serializers extends Varien_Object
         $info = $this->getInfoInstance();
 
         $merchant = array(
-            "public_api_key"=>Mage::getStoreConfig('payment/aplazame/public_api_key'),
             "confirmation_url"=>Mage::getUrl("aplazame/payment/confirm"),
             "cancel_url"=>Mage::getUrl('aplazame/payment/cancel'),
             "checkout_url"=>Mage::helper('checkout/url')->getCheckoutUrl(),

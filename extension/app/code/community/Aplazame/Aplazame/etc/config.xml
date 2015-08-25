@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Aplazame_Aplazame>
-            <version>0.0.3</version>
+            <version>0.0.4</version>
         </Aplazame_Aplazame>
     </modules>
     <global>
@@ -87,8 +87,8 @@
                 <sandbox>1</sandbox>
                 <model>aplazame/payment</model>
                 <title>Aplazame</title>
-                <api_url>https://api.aplazame.com</api_url>
-                <version>v1</version>
+                <host>https://aplazame.com</host>
+                <version>v1.2</version>
                 <button>button1</button>
                 <secret_api_key backend_model="adminhtml/system_config_backend_encrypted"/>
             </aplazame>
