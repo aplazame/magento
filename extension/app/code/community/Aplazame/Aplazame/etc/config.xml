@@ -89,8 +89,8 @@
                 <title>Aplazame</title>
                 <host>https://aplazame.com</host>
                 <version>v1.2</version>
-                <button_id>p_method_aplazame</button>
-                <button_img>button1</button>
+                <button_id>p_method_aplazame</button_id>
+                <button_img>button1</button_img>
                 <secret_api_key backend_model="adminhtml/system_config_backend_encrypted"/>
             </aplazame>
         </payment>
