@@ -1,0 +1,7 @@
+<script
+  type="text/javascript"
+  src="<?php echo trim(Mage::getStoreConfig('payment/aplazame/host'), "/") . '/static/aplazame.min.js' ?>"
+  data-aplazame="publicKey: <?php echo Mage::getStoreConfig('payment/aplazame/public_api_key') ?>"
+  data-version="<?php echo Mage::getStoreConfig('payment/aplazame/version') ?>"
+  data-sandbox="<?php echo Mage::getStoreConfig('payment/aplazame/sandbox')?'true':'false' ?>"
+  data-analytics="<?php echo ((!mageFindClassFile('Mage_Core_Helper_Cookie')) || (!Mage::helper('core/cookie')->isUserNotAllowSaveCookie()))?'true':'false' ?>"></script>
