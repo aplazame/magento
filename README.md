@@ -4,8 +4,7 @@
 
 Magento CE 1.4.0.1+
 
-Install
--------
+## Install
 
 **To install using [modgit](https://github.com/jreinke/modgit)**
 
@@ -28,9 +27,7 @@ to update:
 modman update Magento_Aplazame
 ```
 
-
-Configure
----------
+## Configure
 
 1. Log in to your Magento Admin panel.
 2. Visit System > Cache Management. Then, click "Flush Magento Cache".
@@ -38,11 +35,9 @@ Configure
 4. Select sandbox or production mode.
 5. Provide your 2 api tokens, public and secret key.
  
-	![config](docs/config.png)
+![config](docs/config.png)
 
-
-Help
-----
+## Help
 
 **Have a question about Aplazame?**
 

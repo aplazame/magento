@@ -11,7 +11,7 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
 
     public function getBaseApiUrl()
     {
-        return 'api.' . Mage::getStoreConfig('payment/aplazame/host');
+        return str_replace('://', '://api.', Mage::getStoreConfig('payment/aplazame/host'));
     }
 
     protected function _api_request($method, $path, $data=null)
@@ -29,13 +29,18 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
         $client->setHeaders('Authorization: Bearer '.
             Mage::getStoreConfig('payment/aplazame/secret_api_key'));
 
+        $version = Mage::getStoreConfig('payment/aplazame/version');
+
+        if ($version){
+            $version = explode(".", $version);
+            $version = $version[0];
+        }
+
         $client->setHeaders('User-Agent: '. self::USER_AGENT .
             Mage::getConfig()->getModuleConfig('Aplazame_Aplazame')->version); 
 
-        $client->setHeaders('Accept: '. 'application/vnd.aplazame'.
-            (Mage::getStoreConfig('payment/aplazame/sandbox')?'.sandbox.': '.') .
-            Mage::getStoreConfig('payment/aplazame/version') . '+json');
-
+        $client->setHeaders('Accept: '. 'application/vnd.aplazame.'.
+            (Mage::getStoreConfig('payment/aplazame/sandbox')?'sandbox.': '') . $version . '+json');
 
         $response = $client->request($method);
         $raw_result = $response->getBody();
