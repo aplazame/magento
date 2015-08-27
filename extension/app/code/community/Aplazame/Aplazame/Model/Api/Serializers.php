@@ -194,7 +194,7 @@ class Aplazame_Aplazame_Model_Api_Serializers extends Varien_Object
 
         $merchant = array(
             "confirmation_url"=>Mage::getUrl("aplazame/payment/confirm"),
-            "cancel_url"=>Mage::getUrl('aplazame/payment/cancel') . '?status=cancelled',
+            "cancel_url"=>Mage::getUrl('aplazame/payment/cancel') . '?status=error',
             "checkout_url"=>Mage::getUrl('aplazame/payment/cancel'),
             "success_url"=>Mage::getUrl('checkout/onepage/success'));
 
