@@ -55,14 +55,22 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>  
                         </version>
-                        <button>
-                            <label>Button</label>
+                       <button_id>
+                            <label>Button ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>55</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </button_id>
+                        <button_img>
+                            <label>Button Image</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>60</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                        </button>
+                        </button_img>
                         <secret_api_key translate="label">
                             <label>Secret api Key</label>
                             <frontend_type>obscure</frontend_type>
