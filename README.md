@@ -14,7 +14,7 @@ Magento CE 1.4.0.1+
 ![config](docs/config.png)
 
 
-#### Developers Install
+#### Developers
 
 **To install using [modgit](https://github.com/jreinke/modgit)**
 
