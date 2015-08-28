@@ -11,7 +11,7 @@ Magento CE 1.4.0.1+
 3. Visit System > Configuration > Payment Methods > Aplazame.
 4. Provide your 2 api tokens, public and secret key.
  
-![config](docs/config.png =600x)
+![config](docs/config.png)
 
 
 #### Developers Install
