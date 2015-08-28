@@ -2,7 +2,7 @@
 
 class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
 {
-    const USER_AGENT = 'Aplazame/0.0.3';
+    const USER_AGENT = 'AplazameMagento/';
     const API_CHECKOUT_PATH = '/orders';
 
     public function __construct()
@@ -11,7 +11,7 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
 
     public function getBaseApiUrl()
     {
-        return Mage::getStoreConfig('payment/aplazame/api_url');
+        return str_replace('://', '://api.', Mage::getStoreConfig('payment/aplazame/host'));
     }
 
     protected function _api_request($method, $path, $data=null)
@@ -29,12 +29,18 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
         $client->setHeaders('Authorization: Bearer '.
             Mage::getStoreConfig('payment/aplazame/secret_api_key'));
 
-        $client->setHeaders('User-Agent: '. self::USER_AGENT); 
+        $version = Mage::getStoreConfig('payment/aplazame/version');
 
-        $client->setHeaders('Accept: '. 'application/vnd.aplazame'.
-            (Mage::getStoreConfig('payment/aplazame/sandbox')?'.sandbox.': '.') .
-            Mage::getStoreConfig('payment/aplazame/version') . '+json');
+        if ($version){
+            $version = explode(".", $version);
+            $version = $version[0];
+        }
 
+        $client->setHeaders('User-Agent: '. self::USER_AGENT .
+            Mage::getConfig()->getModuleConfig('Aplazame_Aplazame')->version); 
+
+        $client->setHeaders('Accept: '. 'application/vnd.aplazame.'.
+            (Mage::getStoreConfig('payment/aplazame/sandbox')?'sandbox.': '') . $version . '+json');
 
         $response = $client->request($method);
         $raw_result = $response->getBody();
