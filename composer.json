@@ -3,7 +3,8 @@
   "description": "Aplazame Magento module",
   "keywords": [
     "aplazame",
-    "api rest",
+    "api",
+    "rest",
     "ecommerce",
     "payment method",
     "checkout",
@@ -20,7 +21,7 @@
     "php": ">=5.2"
   },
   "require-dev": {
-    "zendframework/zendframework1": "1.12.6",
+    "zendframework/zendframework1": "1.12.15",
     "simpletest/simpletest": "1.1.*"
   },
   "autoload": {

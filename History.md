@@ -9,3 +9,4 @@
 * Allow edit `processing` orders 
 * Button Id config field
 * Payment method in order config field
+* ci strategy
