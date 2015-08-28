@@ -22,7 +22,9 @@ Magento CE 1.4.0.1+
 modgit init
 modgit -i extension/:. add Magento_Aplazame https://github.com/aplazame/magento
 ```
+
 > to update:
+
 ```
 modgit update Magento_Aplazame
 ```
@@ -32,7 +34,9 @@ modgit update Magento_Aplazame
 ```
 modman clone https://github.com/aplazame/magento
 ```
+
 > to update:
+
 ```
 modman update Magento_Aplazame
 ```
