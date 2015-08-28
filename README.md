@@ -37,8 +37,20 @@ modman update Magento_Aplazame
  
 ![config](docs/config.png)
 
-## Help
+#### Live demo
+
+This is the online demo for uses to test Aplazame and its features. 
+
+[http://magento.aplazame.com](http://magento.aplazame.com)
+
+#### Install Magento
+
+It is easy to deploy Magento with [Ansible](http://www.ansible.com/home)!
+
+[https://github.com/aplazame/ansible-magento](https://github.com/aplazame/ansible-magento)
+
+#### Help
 
 **Have a question about Aplazame?**
 
-Aplazame support team can help you get the answers you need about this plugin by email soporte@aplazame.com.
+For any support request please drop us an email at email soporte@aplazame.com.
