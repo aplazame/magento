@@ -1,9 +1,7 @@
 COMPOSER = ./build/composer.phar
 
-.PHONY : test
 test:
-    @php ./test/Aplazame.php
+	@php ./test/Aplazame.php
 
-.PHONY : dependencies
 dependencies:
-    @$(COMPOSER) update --dev
+	@$(COMPOSER) update --dev

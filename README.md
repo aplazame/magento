@@ -9,7 +9,7 @@ Magento CE 1.4.0.1+
 1. Log in to your Magento Admin panel.
 2. Visit System > Cache Management. Then, click "Flush Magento Cache".
 3. Visit System > Configuration > Payment Methods > Aplazame.
-4. Provide your 2 api tokens, public and secret key.
+4. Provide your API tokens, public and secret key.
  
 ![config](docs/config.png)
 
@@ -58,7 +58,7 @@ It is easy to deploy Magento with [Ansible](http://www.ansible.com/home)!
 
 #### Release history
 
-For new features check [this](History.md).
+For new features check [this](HISTORY.md).
 
 
 #### Help
