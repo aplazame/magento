@@ -1,0 +1,28 @@
+image: python
+
+branches:
+  - master
+
+script:
+  - chmod +x ./.drone/*.sh
+  - ./.drone/build.sh
+
+deploy:
+  bash:
+    script:
+      - ./.drone/deploy.sh
+    when:
+      branch: master
+
+notify:
+  slack:
+    webhook_url: $$SLACK_WEBHOOK_URL
+    username: 'magento'
+    on_success: change
+    on_failure: true
+
+  email:
+    recipients:
+      - dev@aplazame.com
+    on_success: change
+    on_failure: true
