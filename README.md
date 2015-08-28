@@ -49,6 +49,10 @@ It is easy to deploy Magento with [Ansible](http://www.ansible.com/home)!
 
 [https://github.com/aplazame/ansible-magento](https://github.com/aplazame/ansible-magento)
 
+#### Release history
+
+For new features check [this](History.md).
+
 #### Help
 
 **Have a question about Aplazame?**
