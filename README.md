@@ -15,6 +15,7 @@ Magento CE 1.4.0.1+
  
 ![config](docs/config.png)
 
+> Be sure that on all fields you don't keep any whitespace. Otherwise the module can generate unexpected results.
 
 #### Developers
 
