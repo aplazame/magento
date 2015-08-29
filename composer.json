@@ -1,12 +1,13 @@
 {
-  "name": "aplazame/aplazame-magento",
+  "name": "aplazame/magento",
   "description": "Aplazame Magento module",
   "keywords": [
     "aplazame",
     "api",
     "rest",
+    "magento",
     "ecommerce",
-    "payment method",
+    "payment",
     "checkout",
     "credit"
   ],

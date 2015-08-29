@@ -1,6 +1,6 @@
 [ ![Image](https://aplazame.com/static/img/banners/banner-728-white-magento.png "Aplazame") ](https://aplazame.com "Aplazame")
 
-[![Build Status](http://drone.aplazame.com/api/badge/github.com/aplazame/magento/status.svg?branch=master)](http://drone.aplazame.com/github.com/aplazame/magento)
+[![Package version](https://img.shields.io/packagist/v/symfony/symfony.svg)](http://drone.aplazame.com/github.com/aplazame/magento) [![Build Status](http://drone.aplazame.com/api/badge/github.com/aplazame/magento/status.svg?branch=master)](http://drone.aplazame.com/github.com/aplazame/magento)
 
 **Compatible with**
 
