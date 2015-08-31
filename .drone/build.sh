@@ -1,9 +1,12 @@
 #!/bin/bash
 
-set -e 
+set -e
 
 # tests
+sudo apt-get install php5-cli
 # make test
+make syntax.checker
+
 
 case $DRONE_BRANCH in
     master)

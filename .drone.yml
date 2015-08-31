@@ -1,4 +1,4 @@
-image: php:5.5
+image: python
 
 branches:
   - master
