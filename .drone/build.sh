@@ -6,7 +6,6 @@ set -e
 # make test
 make syntax.checker
 
-
 case $DRONE_BRANCH in
     master)
         echo master, all checks have passed
