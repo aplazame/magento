@@ -7,7 +7,6 @@ class Aplazame_Aplazame_Block_Payment_Form extends Mage_Payment_Block_Form
 {
     protected function _construct()
     {
-        error = test
         parent::_construct();
         $this->setMethodLabel();
         $this->setTemplate('aplazame/payment/form.phtml');
