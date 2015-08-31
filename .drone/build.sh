@@ -3,6 +3,7 @@
 set -e
 
 # Dependencies
+sudo apt-get update
 sudo apt-get install php5-cli
 
 # Tests and syntax checker
