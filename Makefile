@@ -8,3 +8,11 @@ syntax.checker:
 
 dependencies:
 	@$(COMPOSER) update --dev
+
+push:
+	@git push origin HEAD
+
+branch:
+	@git checkout master
+	@git pull origin master
+	@git checkout -b $(branch)
