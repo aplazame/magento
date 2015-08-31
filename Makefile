@@ -5,7 +5,7 @@ test:
 	@php ./test/Aplazame.php
 
 syntax.checker:
-	if [ -z "$(errors)" ];then exit 2;fi
+	@if [ "$(errors)" ];then exit 2;fi
 
 dependencies:
 	@$(COMPOSER) update --dev
