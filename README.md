@@ -1,6 +1,6 @@
 [ ![Image](https://aplazame.com/static/img/banners/banner-728-white-magento.png "Aplazame") ](https://aplazame.com "Aplazame")
 
-[![Package version](https://img.shields.io/packagist/v/aplazame/magento.svg)](https://packagist.org/packages/aplazame/magento) [![Build Status](http://drone.aplazame.com/api/badge/github.com/aplazame/magento/status.svg?branch=master)](http://drone.aplazame.com/github.com/aplazame/magento) [![Dependencies](https://img.shields.io/versioneye/d/aplazame/prestashop.svg)](https://www.versioneye.com/php/aplazame:prestashop) 
+[![Package version](https://img.shields.io/packagist/v/aplazame/magento.svg)](https://packagist.org/packages/aplazame/magento) [![Build Status](http://drone.aplazame.com/api/badge/github.com/aplazame/magento/status.svg?branch=master)](http://drone.aplazame.com/github.com/aplazame/magento) [![Dependencies](https://www.versioneye.com/php/aplazame:prestashop/badge.svg)](https://www.versioneye.com/php/aplazame:prestashop) 
 
 **Compatible with**
 
