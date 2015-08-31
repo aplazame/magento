@@ -1,6 +1,4 @@
 image: bradrydzewski/php:5.5
-# -- image options
-# bradrydzewski/base
 
 branches:
   - master
