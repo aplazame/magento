@@ -2,8 +2,11 @@
 
 set -e
 
-# tests
+# Dependencies
+sudo apt-get update
 sudo apt-get install php5-cli
+
+# Tests and syntax checker
 # make test
 make syntax.checker
 
