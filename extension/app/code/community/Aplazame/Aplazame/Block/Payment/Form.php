@@ -22,10 +22,10 @@ class Aplazame_Aplazame_Block_Payment_Form extends Mage_Payment_Block_Form
 
         $this->setMethodLabelAfterHtml($html);
     }
-    
-    public function getTotal() {
-        return Aplazame_Util::formatDecimals(
-            $this->getMethod()->getCheckout()->getQuote()->getGrandTotal()); 
-    }
 
+    public function getTotal()
+    {
+        return Aplazame_Util::formatDecimals(
+            $this->getMethod()->getCheckout()->getQuote()->getGrandTotal());
+    }
 }

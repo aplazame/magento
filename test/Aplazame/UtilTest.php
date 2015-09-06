@@ -1,5 +1,5 @@
 <?php
 
-class Aplazame_UtilTest extends UnitTestCase {
-
+class Aplazame_UtilTest extends UnitTestCase
+{
 }

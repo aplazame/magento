@@ -41,8 +41,7 @@ class Aplazame_Aplazame_Helper_Cart extends Mage_Core_Helper_Abstract
      */
     protected function _resuscitateCartItems(Mage_Sales_Model_Order $order)
     {
-        foreach($order->getItemsCollection() as $orderItem)
-        {
+        foreach ($order->getItemsCollection() as $orderItem) {
             $this->getCart()->addOrderItem($orderItem);
         }
 
@@ -67,8 +66,7 @@ class Aplazame_Aplazame_Helper_Cart extends Mage_Core_Helper_Abstract
 
         $quote->setCheckoutMethod($oldQuote->getCheckoutMethod());
 
-        if($oldQuote->getId())
-        {
+        if ($oldQuote->getId()) {
             $billingAddress = clone $oldQuote->getBillingAddress();
             $billingAddress->setQuote($quote);
 
@@ -102,7 +100,4 @@ class Aplazame_Aplazame_Helper_Cart extends Mage_Core_Helper_Abstract
     {
         return Mage::getSingleton('checkout/session');
     }
-
-
-
 }

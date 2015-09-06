@@ -20,9 +20,8 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
         $client = new Zend_Http_Client($url);
 
         if (in_array($method, array(
-                Zend_Http_Client::POST, Zend_Http_Client::PUT, 'PATCH')) && $data)
-        {
-            $client->setHeaders('Content-type: application/json'); 
+                Zend_Http_Client::POST, Zend_Http_Client::PUT, 'PATCH')) && $data) {
+            $client->setHeaders('Content-type: application/json');
             $client->setRawData(json_encode($data), 'application/json');
         }
 
@@ -31,13 +30,13 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
 
         $version = Mage::getStoreConfig('payment/aplazame/version');
 
-        if ($version){
+        if ($version) {
             $version = explode(".", $version);
             $version = $version[0];
         }
 
         $client->setHeaders('User-Agent: '. self::USER_AGENT .
-            Mage::getConfig()->getModuleConfig('Aplazame_Aplazame')->version); 
+            Mage::getConfig()->getModuleConfig('Aplazame_Aplazame')->version);
 
         $client->setHeaders('Accept: '. 'application/vnd.aplazame.'.
             (Mage::getStoreConfig('payment/aplazame/sandbox')?'sandbox.': '') . $version . '+json');
@@ -46,27 +45,23 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
         $raw_result = $response->getBody();
         $status_code = $response->getStatus();
 
-        if ($status_code >= 500)
-        {
+        if ($status_code >= 500) {
             Mage::throwException(Mage::helper('aplazame')->__(
                 'Aplazame error code: ' . $status_code));
         }
 
-        try{
+        try {
             $ret_json = Zend_Json::decode($raw_result, Zend_Json::TYPE_ARRAY);
-        } catch(Zend_Json_Exception $e)
-        {
+        } catch (Zend_Json_Exception $e) {
             Mage::throwException(Mage::helper('aplazame')->__(
                 'Invalid api response: '. $raw_result));
         }
 
-        if ($status_code >= 400)
-        {
+        if ($status_code >= 400) {
             $errorMsg = Mage::helper('aplazame')->__('Aplazame error code ' . $status_code . ': '
                 . $ret_json['error']['message']);
 
-            if($status_code == 403)
-            {
+            if ($status_code == 403) {
                 //no tiramos exception, pero informamos de error
                 Mage::getSingleton('adminhtml/session')->addError($errorMsg);
             }

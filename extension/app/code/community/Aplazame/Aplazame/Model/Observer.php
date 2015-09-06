@@ -3,7 +3,6 @@
 
 class Aplazame_Aplazame_Model_Observer extends Mage_Core_Model_Abstract
 {
-
     protected function is_aplazame_payment($order)
     {
         $code = Aplazame_Aplazame_Model_Payment::METHOD_CODE;
@@ -31,7 +30,7 @@ class Aplazame_Aplazame_Model_Observer extends Mage_Core_Model_Abstract
             return $this;
         }
 
-        if (!$this->is_aplazame_payment($order)) {          
+        if (!$this->is_aplazame_payment($order)) {
             return $this;
         }
 
@@ -66,7 +65,7 @@ class Aplazame_Aplazame_Model_Observer extends Mage_Core_Model_Abstract
             return $this;
         }
 
-        if (!$this->is_aplazame_payment($order)) {          
+        if (!$this->is_aplazame_payment($order)) {
             return $this;
         }
 
@@ -75,5 +74,4 @@ class Aplazame_Aplazame_Model_Observer extends Mage_Core_Model_Abstract
 
         return $this;
     }
-
 }

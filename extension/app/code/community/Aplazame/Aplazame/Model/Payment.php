@@ -76,7 +76,7 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
 
     public function getOrderPlaceRedirectUrl()
     {
-          return Mage::getUrl('aplazame/payment/redirect', array('_secure' => true));
+        return Mage::getUrl('aplazame/payment/redirect', array('_secure' => true));
     }
 
     public function getChargeId()
@@ -86,10 +86,9 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
 
     protected function _validate_amount_result($amount, $result)
     {
-        if ($result["amount"] != $amount)
-        {
+        if ($result["amount"] != $amount) {
             Mage::throwException(Mage::helper('aplazame')->__(
-                'Aplazame authorized amount of ' . $result["amount"] . 
+                'Aplazame authorized amount of ' . $result["amount"] .
                 ' does not match requested amount of: ' . $amount));
         }
     }
@@ -105,12 +104,9 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
         $api = Mage::getModel('aplazame/api_client');
         $result = $api->setOrderId($token)->authorize();
 
-        if (isset($result["id"]))
-        {
+        if (isset($result["id"])) {
             $this->getInfoInstance()->setAdditionalInformation("charge_id", $result["id"]);
-        }
-        else
-        {
+        } else {
             Mage::throwException(Mage::helper('aplazame')->__('Aplazame charge id not returned from call.'));
         }
 
@@ -153,4 +149,3 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
         return $serializer->getCheckout();
     }
 }
-

@@ -1,8 +1,9 @@
 <?php
 
-class Aplazame_Util {
-
-    public static function formatDecimals($amount = 0) {
+class Aplazame_Util
+{
+    public static function formatDecimals($amount = 0)
+    {
         $negative = false;
         $str = sprintf("%.2f", $amount);
 
@@ -28,8 +29,7 @@ class Aplazame_Util {
         if ($negative) {
             $retVal .= "-";
         }
-        $retVal .= ltrim( $parts[0] . substr($parts[1], 0, 2), "0");
+        $retVal .= ltrim($parts[0] . substr($parts[1], 0, 2), "0");
         return intval($retVal);
     }
-
 }

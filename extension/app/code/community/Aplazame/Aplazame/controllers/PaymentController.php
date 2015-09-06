@@ -2,7 +2,6 @@
 
 class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Action
 {
-
     private function _getCheckoutSession()
     {
         return Mage::getSingleton('checkout/session');
@@ -28,8 +27,7 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
     {
         $session = $this->_getCheckoutSession();
 
-        if (!$session->getLastRealOrderId())
-        {
+        if (!$session->getLastRealOrderId()) {
             $session->addError($this->__('Your order has expired.'));
             $this->_redirect('checkout/cart');
             return;
@@ -45,12 +43,10 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
 
     public function confirmAction()
     {
-        
         $session = $this->_getCheckoutSession();
         $checkout_token = $this->getRequest()->getParam("order_id");
 
-        if (!$checkout_token)
-        {
+        if (!$checkout_token) {
             Mage::throwException($this->__('Confirm has no checkout token.'));
         }
 
@@ -72,8 +68,7 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
         $session = $this->_getCheckoutSession();
         $orderId = $session->getLastRealOrderId();
 
-        if($orderId)
-        {
+        if ($orderId) {
             $order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
             if ($order->getId()) {
                 Mage::helper('aplazame/cart')->resuscitateCartFromOrder($order);
@@ -87,8 +82,7 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
     {
         $checkout_token = $this->getRequest()->getParam("checkout_token");
 
-        if (!$checkout_token)
-        {
+        if (!$checkout_token) {
             Mage::throwException($this->__('History has no checkout token.'));
         }
 

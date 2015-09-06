@@ -54,7 +54,7 @@ class Aplazame_Aplazame_Model_Api_Serializers extends Varien_Object
     protected function getCustomer()
     {
         $customer = Mage::getSingleton('customer/session')->getCustomer();
-        $logCustomer = Mage::getModel('log/customer')->loadByCustomer($customer); 
+        $logCustomer = Mage::getModel('log/customer')->loadByCustomer($customer);
         $customer_serializer = array("gender"=>0);
 
         if ($customer->getId()) {
@@ -85,8 +85,7 @@ class Aplazame_Aplazame_Model_Api_Serializers extends Varien_Object
         $shipping = null;
         $shipping_address = $order->getShippingAddress();
 
-        if ($shipping_address)
-        {
+        if ($shipping_address) {
             $shipping = array_merge($this->_getAddr($shipping_address), array(
                 "price"=> static::formatDecimals($order->getShippingAmount()),
                 "tax_rate"=>static::formatDecimals(100 * $order->getShippingTaxAmount() / $order->getShippingAmount()),
@@ -111,8 +110,7 @@ class Aplazame_Aplazame_Model_Api_Serializers extends Varien_Object
         $articles = array();
         $products = Mage::getModel('catalog/product');
 
-        foreach($order->getAllVisibleItems() as $order_item)
-        {
+        foreach ($order->getAllVisibleItems() as $order_item) {
             $productId = $order_item->getProductId();
             $product = $products->load($productId);
             $discounts = $product->getPrice() - $product->getFinalPrice();
@@ -159,8 +157,7 @@ class Aplazame_Aplazame_Model_Api_Serializers extends Varien_Object
             ->addAttributeToFilter('customer_id', array('like'=>$order->getCustomerId()));
 
         $history = array();
-        foreach($history_collection as $order_history){
-
+        foreach ($history_collection as $order_history) {
             $history[] = array(
                 "id"=>$order_history->getIncrementId(),
                 "amount"=>static::formatDecimals($order_history->getGrandTotal()),
@@ -199,14 +196,12 @@ class Aplazame_Aplazame_Model_Api_Serializers extends Varien_Object
             "success_url"=>Mage::getUrl('checkout/onepage/success'));
 
         return array(
-            "toc"=>True,
+            "toc"=>true,
             "merchant"=>$merchant,
             "customer"=>$this->getCustomer(),
             "order"=>$this->getRenderOrder(),
             "billing"=>$this->_getAddr($order->getBillingAddress()),
             "shipping"=>$this->getShipping($order),
             "meta"=>static::_getMetadata());
-
     }
 }
-
