@@ -10,3 +10,5 @@
 *.cer
 *.pem
 sftp-config.json
+
+.build
