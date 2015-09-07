@@ -46,14 +46,14 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </version>
-                       <button_id>
-                            <label>Button ID</label>
+                       <button>
+                            <label>Button CSS Selector</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>50</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                        </button_id>
+                        </button>
                         <button_img>
                             <label>Button Image</label>
                             <frontend_type>text</frontend_type>
@@ -72,7 +72,7 @@
                             <frontend_class>validate-number</frontend_class>
                         </sort_order>
                         <secret_api_key translate="label">
-                            <label>Secret Api Key</label>
+                            <label>Secret API Key</label>
                             <frontend_type>obscure</frontend_type>
                             <backend_model>adminhtml/system_config_backend_encrypted</backend_model>
                             <sort_order>80</sort_order>
@@ -81,7 +81,7 @@
                             <show_in_store>1</show_in_store>
                         </secret_api_key>
                         <public_api_key translate="label">
-                            <label>Public Api Key</label>
+                            <label>Public API Key</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>90</sort_order>
                             <show_in_default>1</show_in_default>

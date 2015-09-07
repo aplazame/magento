@@ -13,7 +13,7 @@ Magento CE 1.4.0.1+
 * **Sandbox**: Determines if the module is on Sandbox mode.
 * **Host**: Aplazame host `https://aplazame.com`
 * **API Version**: The latest version is `v1.2`
-* **Button ID**: The DOM ID for your payment method on the cart. The default ID is `aplazame_payment_button`
+* **Button**: The CSS Selector for Aplazame payment. The default selector is `#aplazame_payment_button`
 * **Button Image**: [Select the image](http://docs.aplazame.com/#buttons) that appear as payment method on you cart. The default image is `white-148x46`.
 * **Position**: The position in the payment method list, by default is `1`, on the top.
 * **Secret API Key**: The Secret Key provided by Aplazame. You cannot share this key with anyone!!

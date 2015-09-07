@@ -14,7 +14,7 @@
 
 <script>
 aplazame.button({
-  id: "<?php echo Mage::getStoreConfig('payment/aplazame/button_id') ?>",
+  button: "<?php echo Mage::getStoreConfig('payment/aplazame/button') ?>",
   amount: <?php echo $this->getTotal() ?>,
   currency: "EUR",
   parent: "*"
