@@ -1,8 +1,14 @@
 ## Change Log
 
-#### [0.1.0](https://github.com/aplazame/magento/tree/v0.1.0) (2015-08-28)
+#### [1.0.2](https://github.com/aplazame/magento/tree/v1.0.1) (2015-?-?)
 
-[Full Changelog v0.1.0](https://github.com/aplazame/magento/compare/v0.1.0...v0.1.0)
+[Full Changelog v1.0.2](https://github.com/aplazame/magento/compare/v1.0.1...v1.0.2)
+
+* Aplazame Widget
+* Button css selector
+* composer.json
+
+#### [0.1.0](https://github.com/aplazame/magento/tree/v0.1.0) (2015-08-28)
 
 * Back to checkout
 * aplazame-js
