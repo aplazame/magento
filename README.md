@@ -13,13 +13,20 @@ Magento CE 1.4.0.1+
 * **Sandbox**: Determines if the module is on Sandbox mode.
 * **Host**: Aplazame host `https://aplazame.com`
 * **API Version**: The latest version is `v1.2`
-* **Button**: The CSS Selector for Aplazame payment. The default selector is `#aplazame_payment_button`
+* **Button**: The CSS Selector for Aplazame payment. The default selector is `dt:has(input#p_method_aplazame)`
 * **Button Image**: [Select the image](http://docs.aplazame.com/#buttons) that appear as payment method on you cart. The default image is `white-148x46`.
 * **Position**: The position in the payment method list, by default is `1`, on the top.
 * **Secret API Key**: The Secret Key provided by Aplazame. You cannot share this key with anyone!!
-* **Public API Key**: The Public Key provided by Aplazame. 
+* **Public API Key**: The Public Key provided by Aplazame.
 
 > Be sure that on all fields you don't keep any whitespace. Otherwise the module can generate unexpected results.
+
+#### One Step Checkout
+
+* [GoMage LightCheckout](http://www.magentocommerce.com/magento-connect/gomage-lightcheckout-v-5-9.html): `#pm-aplazame`
+
+> It is important to use simple quotation marks for button CSS Selector.
+
 
 #### Developers
 

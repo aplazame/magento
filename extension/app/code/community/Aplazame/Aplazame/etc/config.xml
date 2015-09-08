@@ -89,7 +89,7 @@
                 <title>Aplazame</title>
                 <host>https://aplazame.com</host>
                 <version>v1.2</version>
-                <button>#p_method_aplazame</button>
+                <button>dt:has(input#p_method_aplazame)</button>
                 <button_img>white-148x46</button_img>
                 <sort_order>1</sort_order>
                 <secret_api_key backend_model="adminhtml/system_config_backend_encrypted"/>
