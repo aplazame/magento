@@ -1,6 +1,6 @@
 [ ![Image](https://aplazame.com/static/img/banners/banner-728-white-magento.png "Aplazame") ](https://aplazame.com "Aplazame")
 
-[![Package version](https://img.shields.io/packagist/v/aplazame/magento.svg)](https://packagist.org/packages/aplazame/magento) [![Build Status](http://drone.aplazame.com/api/badge/github.com/aplazame/magento/status.svg?branch=master)](http://drone.aplazame.com/github.com/aplazame/magento) [![Dependencies](https://www.versioneye.com/php/aplazame:magento/badge.svg)](https://www.versioneye.com/php/aplazame:magento) 
+[![Package version](https://img.shields.io/packagist/v/aplazame/magento.svg)](https://packagist.org/packages/aplazame/magento) [![Build Status](http://drone.aplazame.com/api/badge/github.com/aplazame/magento/status.svg?branch=master)](http://drone.aplazame.com/github.com/aplazame/magento) [![Dependencies](https://www.versioneye.com/php/aplazame:magento/badge.svg)](https://www.versioneye.com/php/aplazame:magento)
 
 **Compatible with**
 
@@ -13,7 +13,7 @@ Magento CE 1.4.0.1+
 * **Sandbox**: Determines if the module is on Sandbox mode.
 * **Host**: Aplazame host `https://aplazame.com`
 * **API Version**: The latest version is `v1.2`
-* **Button**: The CSS Selector for Aplazame payment method. The default selector is `dt:has(input#p_method_aplazame)`
+* **Button**: The CSS Selector for Aplazame payment method. The default selector is `dt:has(input#p_method_aplazame)`. [See bellow](#one-step-checkout-button) to configure button with One Step Checkout modules.
 * **Button Image**: [Select the image](http://docs.aplazame.com/#buttons) that appear as payment method on you cart. The default image is `white-148x46`.
 * **Position**: The position in the payment method list, by default is `1`, on the top.
 * **Secret API Key**: The Secret Key provided by Aplazame. You cannot share this key with anyone!!
@@ -21,7 +21,7 @@ Magento CE 1.4.0.1+
 
 > Be sure that on all fields you don't keep any whitespace. Otherwise the module can generate unexpected results.
 
-#### One Step Checkout
+#### One Step Checkout button
 
 * [GoMage LightCheckout](http://www.magentocommerce.com/magento-connect/gomage-lightcheckout-v-5-9.html): `#pm-aplazame`
 
@@ -58,7 +58,7 @@ modman update Magento_Aplazame
 
 #### Live demo
 
-This is the online demo for uses to test Aplazame and its features. 
+This is the online demo for uses to test Aplazame and its features.
 
 [http://magento.aplazame.com](http://magento.aplazame.com)
 
