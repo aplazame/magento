@@ -25,7 +25,7 @@ Magento CE 1.4.0.1+
 
 * [GoMage LightCheckout](http://www.magentocommerce.com/magento-connect/gomage-lightcheckout-v-5-9.html): `#pm-aplazame`
 
-> It'ss important to use simple quotation marks for button CSS Selector.
+> It's important to use simple quotation marks for button CSS Selector.
 
 
 #### Developers
