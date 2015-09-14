@@ -1,38 +1,46 @@
-{
-  "name": "aplazame/magento",
-  "description": "Aplazame Magento module",
-  "keywords": [
-    "aplazame",
-    "api",
-    "rest",
-    "magento",
-    "ecommerce",
-    "payment",
-    "checkout",
-    "credit",
-    "aplazar",
-    "financiar",
-    "financiera",
-    "financiación",
-    "pago aplazado",
-    "método de pago"
-  ],
-  "homepage": "https://aplazame.com/",
-  "authors": [
-    {
-      "name": "Aplazame Developers",
-      "homepage": "https://aplazame.com/"
-    }
-  ],
-  "require": {
-    "php": ">=5.2"
-  },
-  "require-dev": {
-    "zendframework/zendframework1": "1.12.15",
-    "simpletest/simpletest": "1.1.*",
-    "fabpot/php-cs-fixer": "^1.10"
-  },
-  "autoload": {
-    "classmap": ["extension/lib/Aplazame/"]
-  }
+{  
+    "name": "aplazame/magento",
+    "description": "Aplazame Magento module",
+    "keywords": [  
+        "aplazame",
+        "api",
+        "rest",
+        "magento",
+        "ecommerce",
+        "payment",
+        "checkout",
+        "credit",
+        "aplazar",
+        "financiar",
+        "financiera",
+        "financiación",
+        "pago aplazado",
+        "método de pago"
+    ],
+    "homepage": "https://aplazame.com/",
+    "license": "GPL-3.0",
+    "authors": [
+        {  
+            "name": "Dani M.",
+            "email": "dani@aplazame.com",
+            "homepage": "https://aplazame.com"
+        },
+        {  
+            "name": "Oscar Reales",
+            "email": "oreales@gmail.com"
+        }
+    ],
+    "require": {  
+        "php": ">=5.2"
+    },
+    "require-dev": {
+        "zendframework/zendframework1": "1.12.15", 
+        "simpletest/simpletest": "1.1.*",
+        "fabpot/php-cs-fixer": "^1.10",
+        "smarty-gettext/smarty-gettext": "1.2.0"
+    },
+    "autoload": {
+        "classmap": ["extension/lib/Aplazame/"]
+    },
+    "minimum-stability": "stable"
 }
