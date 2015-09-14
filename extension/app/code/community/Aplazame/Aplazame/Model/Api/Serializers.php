@@ -48,7 +48,7 @@ class Aplazame_Aplazame_Model_Api_Serializers extends Varien_Object
             "city" => $addr->getCity(),
             "state" => $addr->getRegion(),
             "country" => $addr->getCountryModel()->getIso2Code(),
-            "zip" => $addr->getPostcode());
+            "postcode" => $addr->getPostcode());
     }
 
     protected function getCustomer()
