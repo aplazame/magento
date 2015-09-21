@@ -16,7 +16,7 @@
 aplazame.button({
   selector: "<?php echo Mage::getStoreConfig('payment/aplazame/button') ?>",
   amount: <?php echo $this->getTotal() ?>,
-  currency: "EUR"
-  // country: "ES"
+  currency: "EUR",
+  country: "<?php echo $this->getCountry(); ?>"
 });
 </script>
