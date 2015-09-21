@@ -1,9 +1,12 @@
 <?xml version="1.0"?>
 <config>
   <modules>
-    <Aplazame_Aplazame>
-      <active>true</active>
-      <codePool>community</codePool>
-    </Aplazame_Aplazame>
+      <Aplazame_Aplazame>
+          <active>true</active>
+          <codePool>community</codePool>
+          <depends>
+              <Mage_Catalog/>
+          </depends>
+      </Aplazame_Aplazame>
   </modules>
 </config>
