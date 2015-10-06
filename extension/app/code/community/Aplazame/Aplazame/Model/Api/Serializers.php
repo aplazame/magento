@@ -87,8 +87,8 @@ class Aplazame_Aplazame_Model_Api_Serializers extends Varien_Object
 
         if ($shipping_address) {
             $shipping = array_merge($this->_getAddr($shipping_address), array(
-                "price"=> static::formatDecimals($order->getShippingAmount()),
-                "tax_rate"=>static::formatDecimals(100 * $order->getShippingTaxAmount() / $order->getShippingAmount()),
+                "price"=> self::formatDecimals($order->getShippingAmount()),
+                "tax_rate"=>self::formatDecimals(100 * $order->getShippingTaxAmount() / $order->getShippingAmount()),
                 "name"=>$order->getShippingMethod()
             ));
         }
@@ -123,9 +123,9 @@ class Aplazame_Aplazame_Model_Api_Serializers extends Varien_Object
                 "url" =>$product->getProductUrl(),
                 "image_url" => $product->getImageUrl(),
                 "quantity" => intval($order_item->getQtyOrdered()),
-                "price" => static::formatDecimals($order_item->getPrice() + $discounts),
-                "tax_rate" => static::formatDecimals($this->getProductTaxRate($product)),
-                "discount" => static::formatDecimals($discounts));
+                "price" => self::formatDecimals($order_item->getPrice() + $discounts),
+                "tax_rate" => self::formatDecimals($this->getProductTaxRate($product)),
+                "discount" => self::formatDecimals($discounts));
         }
 
         return $articles;
@@ -144,9 +144,9 @@ class Aplazame_Aplazame_Model_Api_Serializers extends Varien_Object
             "id"=>$order->getIncrementId(),
             "articles"=>$this->getArticles(),
             "currency"=>$order->getOrderCurrencyCode(),
-            "tax_amount"=>static::formatDecimals($order->getTaxAmount()),
-            "total_amount"=>static::formatDecimals($this->_orderTotal()),
-            "discount"=>-static::formatDecimals($discounts));
+            "tax_amount"=>self::formatDecimals($order->getTaxAmount()),
+            "total_amount"=>self::formatDecimals($this->_orderTotal()),
+            "discount"=>-self::formatDecimals($discounts));
     }
 
     public function getHistory()
@@ -160,8 +160,8 @@ class Aplazame_Aplazame_Model_Api_Serializers extends Varien_Object
         foreach ($history_collection as $order_history) {
             $history[] = array(
                 "id"=>$order_history->getIncrementId(),
-                "amount"=>static::formatDecimals($order_history->getGrandTotal()),
-                "due"=>static::formatDecimals($order_history->getTotalDue()),
+                "amount"=>self::formatDecimals($order_history->getGrandTotal()),
+                "due"=>self::formatDecimals($order_history->getTotalDue()),
                 "status"=>$order_history->getStatus(),
                 "type"=>$order_history->getPayment()->getMethodInstance()->getCode(),
                 "order_date"=>date(DATE_ISO8601, strtotime($order_history->getCreatedAt())),
@@ -181,7 +181,7 @@ class Aplazame_Aplazame_Model_Api_Serializers extends Varien_Object
             "order"=>$this->getRenderOrder(),
             "billing"=>$this->_getAddr($order->getBillingAddress()),
             "shipping"=>$this->getShipping($order),
-            "meta"=>static::_getMetadata());
+            "meta"=>self::_getMetadata());
     }
 
     public function getCheckout()
@@ -202,6 +202,6 @@ class Aplazame_Aplazame_Model_Api_Serializers extends Varien_Object
             "order"=>$this->getRenderOrder(),
             "billing"=>$this->_getAddr($order->getBillingAddress()),
             "shipping"=>$this->getShipping($order),
-            "meta"=>static::_getMetadata());
+            "meta"=>self::_getMetadata());
     }
 }

@@ -123,8 +123,8 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
         $action = $this->getConfigData('payment_action');
 
         //authorize the total amount.
-        $payment->authorize(true, static::_orderTotal($order));
-        $payment->setAmountAuthorized(static::_orderTotal($order));
+        $payment->authorize(true, self::_orderTotal($order));
+        $payment->setAmountAuthorized(self::_orderTotal($order));
         $order->save();
     }
 
