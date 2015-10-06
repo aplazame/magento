@@ -60,7 +60,7 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
             // $this->_redirect('checkout/onepage/success');
             return;
         }
-        // $this->_redirect(Mage::helper('checkout/url')->getCheckoutUrl());
+        // $this->_redirectUrl(Mage::helper('checkout/url')->getCheckoutUrl());
     }
 
     public function cancelAction()
@@ -75,7 +75,7 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
             }
         }
 
-        $this->_redirect(Mage::helper('checkout/url')->getCheckoutUrl());
+        $this->_redirectUrl(Mage::helper('checkout/url')->getCheckoutUrl());
     }
 
     public function historyAction()
