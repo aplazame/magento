@@ -88,9 +88,12 @@ class Aplazame_Aplazame_Model_Api_Serializers extends Varien_Object
         if ($shipping_address) {
             $shipping = array_merge($this->_getAddr($shipping_address), array(
                 "price"=> self::formatDecimals($order->getShippingAmount()),
-                "tax_rate"=>self::formatDecimals(100 * $order->getShippingTaxAmount() / $order->getShippingAmount()),
                 "name"=>$order->getShippingMethod()
             ));
+
+            if ($order->getShippingAmount()) {
+                $shipping["tax_rate"] = 100 * $order->getShippingTaxAmount() / $order->getShippingAmount();
+            }
         }
 
         return $shipping;
