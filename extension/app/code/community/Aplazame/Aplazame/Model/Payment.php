@@ -135,7 +135,7 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
         $result = $serializer->setOrder($order)
                              ->getHistory();
 
-        return json_encode($result, 128);
+        return json_encode($result);
     }
 
     public function getCheckoutSerializer()
