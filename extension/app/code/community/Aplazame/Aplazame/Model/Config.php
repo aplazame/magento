@@ -2,6 +2,9 @@
 
 class Aplazame_Aplazame_Model_Config
 {
+
+    const XML_PATH_DEFAULT_COUNTRY              = 'general/country/default';
+
     protected $_storeId = null;
 
     /**
@@ -11,10 +14,12 @@ class Aplazame_Aplazame_Model_Config
     {
         $countryCode = Mage::getStoreConfig("aplazame/general/merchant_country", $this->_storeId);
         if (!$countryCode) {
-            $countryCode = Mage::helper('core')->getDefaultCountry($this->_storeId);
+            $countryCode = Mage::getStoreConfig(self::XML_PATH_DEFAULT_COUNTRY, $this->_storeId);
         }
         return $countryCode;
     }
+
+
 
 
     /**

@@ -54,7 +54,7 @@ class Aplazame_Aplazame_Model_Api_Serializers extends Varien_Object
     protected function getCustomer()
     {
         $customer = Mage::getSingleton('customer/session')->getCustomer();
-        $logCustomer = Mage::getModel('log/customer')->loadByCustomer($customer);
+        $logCustomer = Mage::getModel('log/customer')->load($customer->getId());
         $customer_serializer = array("gender"=>0);
 
         if ($customer->getId()) {
