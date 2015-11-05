@@ -1,18 +1,16 @@
 ## Change Log
 
-#### [v0.x.x](https://github.com/aplazame/magento/tree/v0.x.x) (2015-?-?)
+#### [v0.2.0](https://github.com/aplazame/magento/tree/v0.x.x) (2015-?-?)
 
-[Full Changelog v0.x.x](https://github.com/aplazame/magento/compare/v0.1.0...v0.x.x)
+[Full Changelog v0.2.0](https://github.com/aplazame/magento/compare/v0.1.0...v0.2.0)
 
 * Aplazame Widget
 * Button css selector
 * composer.json
 * fix postcode
 * Php 5.2 compatibility
+* Magento 1.4 compatibility
 * Add license
-* build package (pending)
-* API exception handling (pending)
-* Sdk lib (pending)
 
 #### [v0.1.0](https://github.com/aplazame/magento/tree/v0.1.0) (2015-08-28)
 
