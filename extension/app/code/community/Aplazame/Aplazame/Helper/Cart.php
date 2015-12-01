@@ -7,11 +7,11 @@ class Aplazame_Aplazame_Helper_Cart extends Mage_Core_Helper_Abstract
      * de producirse algún fallo en el proceso de cobro de aplazame
      * o bien se ha rechazado la operación.
      */
-    public function resuscitateCartFromOrder(Mage_Sales_Model_Order $order)
+    public function resuscitateCartFromOrder(Mage_Sales_Model_Order $order, Mage_Core_Controller_Front_Action $action = null)
     {
         $this
             ->_cancelOrder($order)
-            ->_resuscitateCartItems($order)
+            ->_resuscitateCartItems($order, $action)
             ->_setCheckoutInfoFromOldOrder($order);
 
         return $this;
@@ -39,14 +39,32 @@ class Aplazame_Aplazame_Helper_Cart extends Mage_Core_Helper_Abstract
      * @param Mage_Sales_Model_Order $order
      * @return $this
      */
-    protected function _resuscitateCartItems(Mage_Sales_Model_Order $order)
+    protected function _resuscitateCartItems(Mage_Sales_Model_Order $order, Mage_Core_Controller_Front_Action $action=null)
     {
         foreach ($order->getItemsCollection() as $orderItem) {
-            $this->getCart()->addOrderItem($orderItem);
+            try {
+                $this->getCart()->addOrderItem($orderItem);
+            } catch (Mage_Core_Exception $e) {
+                if (Mage::getSingleton('checkout/session')->getUseNotice(true)) {
+                    Mage::getSingleton('checkout/session')->addNotice($e->getMessage());
+                } else {
+                    Mage::getSingleton('checkout/session')->addError($e->getMessage());
+                }
+                if($action)
+                {
+                    $action->setRedirectWithCookieCheck('checkout/cart');
+                }
+            } catch (Exception $e) {
+                Mage::getSingleton('checkout/session')->addNotice($e->getMessage());
+                Mage::getSingleton('checkout/session')->addException($e, Mage::helper('checkout')->__('Cannot add the item to shopping cart.'));
+                if($action)
+                {
+                    $action->setRedirectWithCookieCheck('checkout/cart');
+                }
+            }
         }
 
         $this->getCart()->save();
-
         return $this;
     }
 
