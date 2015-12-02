@@ -1,6 +1,13 @@
 ## Change Log
 
-#### [v0.2.0](https://github.com/aplazame/magento/tree/v0.x.x) (2015-?-?)
+#### [v0.2.1](https://github.com/aplazame/magento/tree/v0.2.1) (2015-12-2)
+
+[Full Changelog v0.2.1](https://github.com/aplazame/magento/compare/v0.2.0...v0.2.1)
+
+* Allow secure urls over ssl
+* Fix stock exception handling on cart recovered
+
+#### [v0.2.0](https://github.com/aplazame/magento/tree/v0.2.0) (2015-11-5)
 
 [Full Changelog v0.2.0](https://github.com/aplazame/magento/compare/v0.1.0...v0.2.0)
 
