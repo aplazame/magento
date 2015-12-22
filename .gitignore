@@ -9,6 +9,7 @@
 *.p12
 *.cer
 *.pem
-sftp-config.json
 
 .build
+secrets.yml
+sftp-config.json

@@ -1,28 +1,37 @@
-image: bradrydzewski/php:5.5
-
 branches:
   - master
 
-script:
-  - chmod +x ./.drone/*.sh
-  - ./.drone/build.sh
+build:
+  image: php
+  commands:
+    - 'make syntax.checker'
 
 deploy:
-  bash:
-    script:
-      - ./.drone/deploy.sh
-    when:
-      branch: master
+  ssh:
+    host: magento.aplazame.com
+    user: $$DEPLOY_USER
+    commands:
+      - 'cd $$RELEASE_PATH'
+      - 'modgit update Magento_Aplazame'
 
 notify:
   slack:
     webhook_url: $$SLACK_WEBHOOK_URL
-    username: 'magento'
-    on_success: change
-    on_failure: true
+    username: 'drone'
+    channel: 'developers'
+    when:
+      success: false
+      failure: true
+      change: true
 
   email:
+    from: $$EMAIL_FROM
+    host: $$EMAIL_HOST
+    username: $$EMAIL_USERNAME
+    password: $$EMAIL_PASS
     recipients:
       - dev@aplazame.com
-    on_success: change
-    on_failure: true
+    when:
+      success: false
+      failure: true
+      change: true
