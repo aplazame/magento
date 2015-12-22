@@ -13,6 +13,7 @@ deploy:
     commands:
       - 'cd $$RELEASE_PATH'
       - 'modgit update Magento_Aplazame'
+      - 'chown -R www-data:www-data .'
 
 notify:
   slack:
