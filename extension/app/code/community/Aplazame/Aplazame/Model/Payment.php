@@ -120,7 +120,6 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
         $payment = $order->getPayment();
 
         $payment->setAdditionalInformation(self::CHECKOUT_TOKEN, $checkout_token);
-        $action = $this->getConfigData('payment_action');
 
         //authorize the total amount.
         $payment->authorize(true, self::_orderTotal($order));
