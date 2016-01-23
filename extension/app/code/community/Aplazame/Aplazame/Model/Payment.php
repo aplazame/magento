@@ -124,7 +124,31 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
         //authorize the total amount.
         $payment->authorize(true, self::_orderTotal($order));
         $payment->setAmountAuthorized(self::_orderTotal($order));
+
+
+        if ((bool) $this->getConfigData('autoinvoice'))
+        {
+            //permitimos capturar en este caso, sino fallaria la generacion de factura
+            $this->_canCapture = true;
+
+            $invoice = $order->prepareInvoice();
+            if ($invoice->getGrandTotal() > 0) { // Evitamos captar un pago con total cero.
+                $invoice
+                    ->setRequestedCaptureCase(Mage_Sales_Model_Order_Invoice::CAPTURE_OFFLINE)
+                    ->register()
+                    ->capture();
+                $order->addRelatedObject($invoice);
+                $payment->setCreatedInvoice($invoice);
+                Mage::getModel('core/resource_transaction')
+                    ->addObject($invoice)
+                    ->addObject($invoice->getOrder())
+                    ->save();
+            }
+        }
+
         $order->save();
+
+        return $this;
     }
 
     public function processHistory($order, $checkout_token)
