@@ -84,7 +84,7 @@
         <payment>
             <aplazame>
                 <active>0</active>
-                <sandbox>1</sandbox>
+                <sandbox>0</sandbox>
                 <model>aplazame/payment</model>
                 <title>Aplazame</title>
                 <host>https://aplazame.com</host>
