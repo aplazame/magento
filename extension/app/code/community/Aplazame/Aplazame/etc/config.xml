@@ -86,7 +86,7 @@
                 <active>0</active>
                 <sandbox>0</sandbox>
                 <model>aplazame/payment</model>
-                <title>Aplazame</title>
+                <title></title>
                 <host>https://aplazame.com</host>
                 <version>v1.2</version>
                 <button>dt:has(input#p_method_aplazame)</button>
