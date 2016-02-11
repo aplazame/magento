@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Aplazame_Aplazame>
-            <version>0.2.2</version>
+            <version>0.2.1</version>
         </Aplazame_Aplazame>
     </modules>
     <global>
@@ -86,7 +86,7 @@
                 <active>0</active>
                 <sandbox>0</sandbox>
                 <model>aplazame/payment</model>
-                <title></title>
+                <title>Aplazame</title>
                 <host>https://aplazame.com</host>
                 <version>v1.2</version>
                 <button>dt:has(input#p_method_aplazame)</button>
