@@ -74,4 +74,42 @@ class Aplazame_Aplazame_Model_Observer extends Mage_Core_Model_Abstract
 
         return $this;
     }
+
+    /**
+     * Method to send a parcial (refund) or total (cancel) refund to aplazame when a creditmemo is created
+     *
+     * @param $observer
+     * @return $this
+     */
+    public function salesOrderPaymentRefund($observer)
+    {
+        /** @var Mage_Sales_Model_Order_Payment $payment */
+        $payment = $observer->getPayment();
+
+        /** @var Mage_Sales_Model_Order_Creditmemo $creditmemo */
+        $creditmemo = $observer->getCreditmemo();
+
+        /** @var Mage_Sales_Model_Order $order */
+        $order = $payment->getOrder();
+
+        if (!$this->is_aplazame_payment($order)) {
+            return $this;
+        }
+
+        $remainingAmountAfterRefund = $order->getBaseGrandTotal() - $order->getBaseTotalRefunded();
+        $refundedTotal = $creditmemo->getBaseGrandTotal();
+
+        if($remainingAmountAfterRefund == 0)
+        {
+            //total is refunded so we cancel order at aplazame side
+            $client = Mage::getModel('aplazame/api_client');
+            $result = $client->setOrder($order)->cancelOrder();
+        } else {
+            //partial refund so we refund at aplazame side
+            $client = Mage::getModel('aplazame/api_client');
+            $result = $client->setOrder($order)->refundAmount($refundedTotal);
+        }
+
+        return $this;
+    }
 }

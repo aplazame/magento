@@ -57,6 +57,15 @@
                     </Aplazame>
                 </observers>
             </order_cancel_after>
+            <sales_order_payment_refund>
+                <observers>
+                    <Aplazame>
+                        <type>singleton</type>
+                        <class>aplazame/observer</class>
+                        <method>salesOrderPaymentRefund</method>
+                    </Aplazame>
+                </observers>
+            </sales_order_payment_refund>
         </events>
     </adminhtml>
 
