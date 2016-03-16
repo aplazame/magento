@@ -1,5 +1,13 @@
 ## Change Log
 
+#### [v0.2.2-dev](https://github.com/aplazame/magento/tree/v0.2.2) (2016-??-??)
+
+[Full Changelog v0.2.2](https://github.com/aplazame/magento/compare/v0.2.1...v0.2.2)
+
+* Widget cart
+* Refund observer
+* Widget data view
+
 #### [v0.2.1](https://github.com/aplazame/magento/tree/v0.2.1) (2015-12-2)
 
 [Full Changelog v0.2.1](https://github.com/aplazame/magento/compare/v0.2.0...v0.2.1)
