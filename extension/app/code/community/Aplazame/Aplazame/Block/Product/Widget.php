@@ -40,17 +40,18 @@ class Aplazame_Aplazame_Block_Product_Widget Extends Mage_Core_Block_Template
 
     /**
      * Solo renderizamos si tenemos producto,
+     * y si el modulo esta activo en la tienda actual
      * si no hay producto no renderizamos nada (empty string).
      *
      * @return string
      */
     public function _toHtml()
     {
-        if($this->getProduct() instanceof Mage_Catalog_Model_Product)
+        if(Mage::helper('aplazame')->isEnabled() && $this->getProduct() instanceof Mage_Catalog_Model_Product)
         {
             return parent::_toHtml();
         }
 
-        return 'No Product';
+        return '';
     }
 }
