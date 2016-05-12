@@ -38,6 +38,19 @@ class Aplazame_Aplazame_Block_Checkout_Cart_Widget Extends Mage_Core_Block_Templ
         return Aplazame_Util::formatDecimals(0);
     }
 
+    /**
+     * Solo renderizamos si el modulo esta activo en la tienda actual
+     *
+     * @return string
+     */
+    public function _toHtml()
+    {
+        if(Mage::helper('aplazame')->isEnabled())
+        {
+            return parent::_toHtml();
+        }
 
+        return '';
+    }
 
 }
