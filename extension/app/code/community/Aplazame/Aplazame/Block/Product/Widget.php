@@ -51,6 +51,6 @@ class Aplazame_Aplazame_Block_Product_Widget Extends Mage_Core_Block_Template
             return parent::_toHtml();
         }
 
-        return 'No Product';
+        return '';
     }
 }
