@@ -5,6 +5,7 @@ class Aplazame_Aplazame_Block_Payment_Redirect extends Mage_Core_Block_Abstract
 {
     protected function _toHtml()
     {
+        /** @var Aplazame_Aplazame_Model_Payment $payment */
         $payment = Mage::getModel('aplazame/payment');
 
         $html = '

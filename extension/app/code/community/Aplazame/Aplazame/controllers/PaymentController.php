@@ -2,6 +2,9 @@
 
 class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Action
 {
+    /**
+     * @return Mage_Checkout_Model_Session
+     */
     private function _getCheckoutSession()
     {
         return Mage::getSingleton('checkout/session');
@@ -52,6 +55,7 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
 
 
         if ($session->getLastRealOrderId()) {
+            /** @var Mage_Sales_Model_Order $order */
             $order = Mage::getModel('sales/order')->loadByIncrementId($session->getLastRealOrderId());
             $order->getPayment()->getMethodInstance()->processConfirmOrder($order, $checkout_token);
 
@@ -69,6 +73,7 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
         $orderId = $session->getLastRealOrderId();
 
         if ($orderId) {
+            /** @var Mage_Sales_Model_Order $order */
             $order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
             if ($order->getId()) {
                 Mage::helper('aplazame/cart')->resuscitateCartFromOrder($order, $this);
@@ -86,6 +91,7 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
             Mage::throwException($this->__('History has no checkout token.'));
         }
 
+        /** @var Mage_Sales_Model_Order $order */
         $order = Mage::getModel('sales/order')->loadByIncrementId($checkout_token);
         $payment = $order->getPayment()->getMethodInstance();
         $code = Aplazame_Aplazame_Model_Payment::METHOD_CODE;

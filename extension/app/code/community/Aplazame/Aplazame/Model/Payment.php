@@ -67,6 +67,8 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
 
     /**
      * Get checkout session namespace
+     *
+     * @return Mage_Checkout_Model_Session
      */
     public function getCheckout()
     {
@@ -101,8 +103,9 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
 
         $token = $payment->getAdditionalInformation(self::CHECKOUT_TOKEN);
 
+        /** @var Aplazame_Aplazame_Model_Api_Client $api */
         $api = Mage::getModel('aplazame/api_client');
-        $result = $api->setOrderId($token)->authorize();
+        $result = $api->authorize($token);
 
         if (isset($result["id"])) {
             $this->getInfoInstance()->setAdditionalInformation("charge_id", $result["id"]);
@@ -115,6 +118,11 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
         return $this;
     }
 
+    /**
+     * @param Mage_Sales_Model_Order $order
+     * @param mixed $checkout_token
+     * @return $this
+     */
     public function processConfirmOrder($order, $checkout_token)
     {
         $payment = $order->getPayment();
@@ -153,10 +161,10 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
 
     public function processHistory($order, $checkout_token)
     {
+        /** @var Aplazame_Aplazame_Model_Api_Serializers $serializer */
         $serializer = Mage::getModel('aplazame/api_serializers');
 
-        $result = $serializer->setOrder($order)
-                             ->getHistory();
+        $result = $serializer->getHistory($order);
 
         return json_encode($result);
     }
@@ -165,10 +173,11 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
     {
         $orderIncrementId = $this->getCheckout()->getLastRealOrderId();
 
+        /** @var Mage_Sales_Model_Order $order */
         $order = Mage::getModel('sales/order')->loadByIncrementId($orderIncrementId);
+        /** @var Aplazame_Aplazame_Model_Api_Serializers $serializer */
         $serializer = Mage::getModel('aplazame/api_serializers');
 
-        $serializer->setOrder($order);
-        return $serializer->getCheckout();
+        return $serializer->getCheckout($order);
     }
 }

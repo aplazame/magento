@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @method $this setOrder(Mage_Sales_Model_Resource_Order $order)
+ * @method Mage_Sales_Model_Resource_Order getOrder()
+ */
 class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
 {
     const USER_AGENT = 'AplazameMagento/';
@@ -74,35 +78,46 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
         return $ret_json;
     }
 
-    public function authorize()
+    /**
+     * @param string $orderId
+     * @return array
+     */
+    public function authorize($orderId)
     {
-        return $this->_api_request(Varien_Http_Client::POST, "/" .
-            $this->getOrderId() . "/authorize");
+        return $this->_api_request(Varien_Http_Client::POST, "/" . $orderId . "/authorize");
     }
 
-    public function updateOrder()
+    /**
+     * @param Mage_Sales_Model_Order $order
+     * @return array
+     */
+    public function updateOrder($order)
     {
-        $order = $this->getOrder();
-
+        /** @var Aplazame_Aplazame_Model_Api_Serializers $serializer */
         $serializer = Mage::getModel('aplazame/api_serializers');
-        $data = $serializer->setOrder($order)->getOrderUpdate();
+        $data = $serializer->getOrderUpdate($order);
 
         return $this->_api_request(
             'PATCH', "/" . (int)$order->getIncrementId(), $data);
     }
 
-    public function cancelOrder()
+    /**
+     * @param Mage_Sales_Model_Order $order
+     * @return array
+     */
+    public function cancelOrder($order)
     {
-        $order = $this->getOrder();
-
         return $this->_api_request(
             Varien_Http_Client::POST, "/" . (int)$order->getIncrementId() . "/cancel");
     }
 
-    public function refundAmount($amount)
+    /**
+     * @param Mage_Sales_Model_Order $order
+     * @param float $amount
+     * @return array
+     */
+    public function refundAmount($order, $amount)
     {
-        $order = $this->getOrder();
-
         $data = array('amount'=>Aplazame_Util::formatDecimals($amount));
 
         return $this->_api_request(

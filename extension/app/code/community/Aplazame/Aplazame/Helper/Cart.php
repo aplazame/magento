@@ -45,18 +45,22 @@ class Aplazame_Aplazame_Helper_Cart extends Mage_Core_Helper_Abstract
             try {
                 $this->getCart()->addOrderItem($orderItem);
             } catch (Mage_Core_Exception $e) {
-                if (Mage::getSingleton('checkout/session')->getUseNotice(true)) {
-                    Mage::getSingleton('checkout/session')->addNotice($e->getMessage());
+                /** @var Mage_Checkout_Model_Session $session */
+                $session = Mage::getSingleton('checkout/session');
+                if ($session->getUseNotice(true)) {
+                    $session->addNotice($e->getMessage());
                 } else {
-                    Mage::getSingleton('checkout/session')->addError($e->getMessage());
+                    $session->addError($e->getMessage());
                 }
                 if($action)
                 {
                     $action->setRedirectWithCookieCheck('checkout/cart');
                 }
             } catch (Exception $e) {
-                Mage::getSingleton('checkout/session')->addNotice($e->getMessage());
-                Mage::getSingleton('checkout/session')->addException($e, Mage::helper('checkout')->__('Cannot add the item to shopping cart.'));
+                /** @var Mage_Checkout_Model_Session $session */
+                $session = Mage::getSingleton('checkout/session');
+                $session->addNotice($e->getMessage());
+                $session->addException($e, Mage::helper('checkout')->__('Cannot add the item to shopping cart.'));
                 if($action)
                 {
                     $action->setRedirectWithCookieCheck('checkout/cart');
@@ -80,6 +84,7 @@ class Aplazame_Aplazame_Helper_Cart extends Mage_Core_Helper_Abstract
     {
         $checkoutSession = $this->getCheckoutSession();
         $quote = $checkoutSession->getQuote();
+        /** @var Mage_Sales_Model_Quote $oldQuote */
         $oldQuote = Mage::getModel('sales/quote')->load($order->getQuoteId());
 
         $quote->setCheckoutMethod($oldQuote->getCheckoutMethod());

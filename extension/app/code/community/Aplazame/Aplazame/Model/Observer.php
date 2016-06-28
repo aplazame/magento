@@ -3,10 +3,15 @@
 
 class Aplazame_Aplazame_Model_Observer extends Mage_Core_Model_Abstract
 {
+    /**
+     * @param Mage_Sales_Model_Order $order
+     * @return bool
+     */
     protected function is_aplazame_payment($order)
     {
         $code = Aplazame_Aplazame_Model_Payment::METHOD_CODE;
 
+        /** @var Mage_Sales_Model_Order $parentOrder */
         $parentOrder = Mage::getModel('sales/order')->loadByIncrementId(
             (int)$order->getIncrementId());
 
@@ -18,6 +23,7 @@ class Aplazame_Aplazame_Model_Observer extends Mage_Core_Model_Abstract
      */
     public function salesOrderPlaceAfter($observer)
     {
+        /** @var Mage_Sales_Model_Order|null $order */
         $order = $observer->getOrder();
 
         if (!isset($order)) {
@@ -25,8 +31,7 @@ class Aplazame_Aplazame_Model_Observer extends Mage_Core_Model_Abstract
         }
 
         $payment = $order->getPayment();
-
-        if (!isset($payment)) {
+        if (!$payment) {
             return $this;
         }
 
@@ -34,8 +39,9 @@ class Aplazame_Aplazame_Model_Observer extends Mage_Core_Model_Abstract
             return $this;
         }
 
+        /** @var Aplazame_Aplazame_Model_Api_Client $client */
         $client = Mage::getModel('aplazame/api_client');
-        $result = $client->setOrder($order)->updateOrder();
+        $client->updateOrder($order);
 
         return $this;
     }
@@ -54,10 +60,13 @@ class Aplazame_Aplazame_Model_Observer extends Mage_Core_Model_Abstract
     public function salesOrderPaymentCancel($observer)
     {
         $code = Aplazame_Aplazame_Model_Payment::METHOD_CODE;
+
+        /** @var Mage_Sales_Model_Order|null $order */
         $order = $observer->getOrder();
 
         $orderId = explode("-", $order->getIncrementId());
 
+        /** @var Mage_Sales_Model_Order $nextOrder */
         $nextOrder = Mage::getModel('sales/order')->loadByIncrementId(
             $orderId[0] . '-' . ((int)$orderId[1] + 1));
 
@@ -69,8 +78,9 @@ class Aplazame_Aplazame_Model_Observer extends Mage_Core_Model_Abstract
             return $this;
         }
 
+        /** @var Aplazame_Aplazame_Model_Api_Client $client */
         $client = Mage::getModel('aplazame/api_client');
-        $result = $client->setOrder($order)->cancelOrder();
+        $client->cancelOrder($order);
 
         return $this;
     }
@@ -99,15 +109,15 @@ class Aplazame_Aplazame_Model_Observer extends Mage_Core_Model_Abstract
         $remainingAmountAfterRefund = $order->getBaseGrandTotal() - $order->getBaseTotalRefunded();
         $refundedTotal = $creditmemo->getBaseGrandTotal();
 
+        /** @var Aplazame_Aplazame_Model_Api_Client $client */
+        $client = Mage::getModel('aplazame/api_client');
         if($remainingAmountAfterRefund == 0)
         {
             //total is refunded so we cancel order at aplazame side
-            $client = Mage::getModel('aplazame/api_client');
-            $result = $client->setOrder($order)->cancelOrder();
+            $client->cancelOrder($order);
         } else {
             //partial refund so we refund at aplazame side
-            $client = Mage::getModel('aplazame/api_client');
-            $result = $client->setOrder($order)->refundAmount($refundedTotal);
+            $client->refundAmount($order, $refundedTotal);
         }
 
         return $this;
