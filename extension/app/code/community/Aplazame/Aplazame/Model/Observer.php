@@ -56,6 +56,8 @@ class Aplazame_Aplazame_Model_Observer extends Mage_Core_Model_Abstract
 
     /**
      * Method used for canceling a Aplazame invoice when a Magento order is canceled
+     *
+     * @param Varien_Event_Observer $observer
      */
     public function salesOrderPaymentCancel($observer)
     {
@@ -88,7 +90,7 @@ class Aplazame_Aplazame_Model_Observer extends Mage_Core_Model_Abstract
     /**
      * Method to send a parcial (refund) or total (cancel) refund to aplazame when a creditmemo is created
      *
-     * @param $observer
+     * @param Varien_Event_Observer $observer
      * @return $this
      */
     public function salesOrderPaymentRefund($observer)
