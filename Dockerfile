@@ -57,6 +57,8 @@ CMD ["apache2-foreground"]
 RUN ln -s /aplazame/app/code/community/Aplazame /var/www/html/app/code/community/Aplazame \
     && ln -s /aplazame/lib/Aplazame /var/www/html/lib/Aplazame \
     && ln -s /aplazame/app/etc/modules/Aplazame_Aplazame.xml /var/www/html/app/etc/modules/Aplazame_Aplazame.xml \
+    && ln -s /aplazame/app/design/adminhtml/default/default/layout/aplazame.xml /var/www/html/app/design/adminhtml/default/default/layout/aplazame.xml \
+    && ln -s /aplazame/app/design/adminhtml/default/default/template/aplazame /var/www/html/app/design/adminhtml/default/default/template/aplazame \
     && ln -s /aplazame/app/design/frontend/base/default/layout/aplazame.xml /var/www/html/app/design/frontend/base/default/layout/aplazame.xml \
     && ln -s /aplazame/app/design/frontend/base/default/template/aplazame /var/www/html/app/design/frontend/base/default/template/aplazame \
     && mkdir -p /var/www/html/app/locale/es_ES/ \
