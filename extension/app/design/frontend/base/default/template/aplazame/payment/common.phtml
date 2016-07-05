@@ -1,7 +1,8 @@
+<?php $aplazameJsUri = getenv('APLAZAME_JS_URI') ? getenv('APLAZAME_JS_URI') : 'https://aplazame.com/static/aplazame.js'; ?>
+
 <script
   type="text/javascript"
-  src="<?php echo trim(Mage::getStoreConfig('payment/aplazame/host'), "/") . '/static/aplazame.min.js' ?>"
+  src="<?php echo $aplazameJsUri; ?>"
   data-aplazame="publicKey: <?php echo Mage::getStoreConfig('payment/aplazame/public_api_key') ?>"
-  data-version="<?php echo Mage::getStoreConfig('payment/aplazame/version') ?>"
   data-sandbox="<?php echo Mage::getStoreConfig('payment/aplazame/sandbox')?'true':'false' ?>"
-  data-analytics="<?php echo ((!mageFindClassFile('Mage_Core_Helper_Cookie')) || (!Mage::helper('core/cookie')->isUserNotAllowSaveCookie()))?'true':'false' ?>"></script>
+></script>

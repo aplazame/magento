@@ -8,18 +8,19 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
 {
     const API_CHECKOUT_PATH = '/orders';
 
+    /**
+     * @var string
+     */
+    private $apiBaseUri;
+
     public function __construct()
     {
-    }
-
-    public function getBaseApiUrl()
-    {
-        return str_replace('://', '://api.', Mage::getStoreConfig('payment/aplazame/host'));
+        $this->apiBaseUri = getenv('APLAZAME_API_BASE_URI') ? getenv('APLAZAME_API_BASE_URI') : 'https://api.aplazame.com';
     }
 
     protected function _api_request($method, $path, $data=null)
     {
-        $url = trim($this->getBaseApiUrl(), "/") . self::API_CHECKOUT_PATH . $path;
+        $url = $this->apiBaseUri. self::API_CHECKOUT_PATH . $path;
         $client = new Zend_Http_Client($url);
 
         if (in_array($method, array(
@@ -31,13 +32,6 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
         $client->setHeaders('Authorization: Bearer '.
             Mage::getStoreConfig('payment/aplazame/secret_api_key'));
 
-        $version = Mage::getStoreConfig('payment/aplazame/version');
-
-        if ($version) {
-            $version = explode(".", $version);
-            $version = $version[0];
-        }
-
         $versions = array(
             'PHP/' . PHP_VERSION,
             'Magento/' . Mage::getVersion(),
@@ -47,7 +41,7 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
         $client->setHeaders('User-Agent: '. implode(', ', $versions));
 
         $client->setHeaders('Accept: '. 'application/vnd.aplazame.'.
-            (Mage::getStoreConfig('payment/aplazame/sandbox')?'sandbox.': '') . $version . '+json');
+            (Mage::getStoreConfig('payment/aplazame/sandbox')?'sandbox.': '') . 'v1+json');
 
         $response = $client->request($method);
         $raw_result = $response->getBody();

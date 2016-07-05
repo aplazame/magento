@@ -5,6 +5,8 @@ class Aplazame_Aplazame_Block_Payment_Redirect extends Mage_Core_Block_Abstract
 {
     protected function _toHtml()
     {
+        $aplazameJsUri = getenv('APLAZAME_JS_URI') ? getenv('APLAZAME_JS_URI') : 'https://aplazame.com/static/aplazame.js';
+
         /** @var Aplazame_Aplazame_Model_Payment $payment */
         $payment = Mage::getModel('aplazame/payment');
 
@@ -14,9 +16,8 @@ class Aplazame_Aplazame_Block_Payment_Redirect extends Mage_Core_Block_Abstract
 
         <script
             type="text/javascript"
-            src="'. trim(Mage::getStoreConfig('payment/aplazame/host'), "/") . '/static/aplazame.js' . '"
+            src="'. $aplazameJsUri . '"
             data-aplazame="publicKey: '. Mage::getStoreConfig('payment/aplazame/public_api_key') . '"
-            data-version="'. Mage::getStoreConfig('payment/aplazame/version') . '"
             data-sandbox="'. (Mage::getStoreConfig('payment/aplazame/sandbox')?'true':'false') . '">
         </script>
 
