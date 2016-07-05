@@ -16,7 +16,6 @@ class Aplazame_Aplazame_Block_Payment_Redirect extends Mage_Core_Block_Abstract
             type="text/javascript"
             src="'. trim(Mage::getStoreConfig('payment/aplazame/host'), "/") . '/static/aplazame.js' . '"
             data-aplazame="publicKey: '. Mage::getStoreConfig('payment/aplazame/public_api_key') . '"
-            data-version="'. Mage::getStoreConfig('payment/aplazame/version') . '"
             data-sandbox="'. (Mage::getStoreConfig('payment/aplazame/sandbox')?'true':'false') . '">
         </script>
 
