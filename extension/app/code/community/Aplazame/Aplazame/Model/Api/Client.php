@@ -16,7 +16,7 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
         $this->apiBaseUri = getenv('APLAZAME_API_BASE_URI') ? getenv('APLAZAME_API_BASE_URI') : 'https://api.aplazame.com';
     }
 
-    protected function _api_request($method, $path, $data=null)
+    public function request($method, $path, $data=null)
     {
         $url = $this->apiBaseUri. $path;
         $client = new Zend_Http_Client($url);
@@ -80,7 +80,7 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
      */
     public function authorize($orderId)
     {
-        return $this->_api_request(Varien_Http_Client::POST, "/" . $orderId . "/authorize");
+        return $this->request(Varien_Http_Client::POST, "/" . $orderId . "/authorize");
     }
 
     /**
@@ -93,7 +93,7 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
         $serializer = Mage::getModel('aplazame/api_serializers');
         $data = $serializer->getOrderUpdate($order);
 
-        return $this->_api_request(
+        return $this->request(
             'PATCH', $this->getEndpointForOrder($order), $data);
     }
 
@@ -103,7 +103,7 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
      */
     public function cancelOrder($order)
     {
-        return $this->_api_request(
+        return $this->request(
             Varien_Http_Client::POST, $this->getEndpointForOrder($order) . "/cancel");
     }
 
@@ -116,7 +116,7 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
     {
         $data = array('amount'=>Aplazame_Util::formatDecimals($amount));
 
-        return $this->_api_request(
+        return $this->request(
             Varien_Http_Client::POST, $this->getEndpointForOrder($order) . "/refund", $data);
     }
 
