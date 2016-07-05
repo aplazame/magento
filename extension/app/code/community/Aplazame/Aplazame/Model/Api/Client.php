@@ -6,8 +6,6 @@
  */
 class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
 {
-    const API_CHECKOUT_PATH = '/orders';
-
     /**
      * @var string
      */
@@ -20,7 +18,7 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
 
     protected function _api_request($method, $path, $data=null)
     {
-        $url = $this->apiBaseUri. self::API_CHECKOUT_PATH . $path;
+        $url = $this->apiBaseUri. $path;
         $client = new Zend_Http_Client($url);
 
         if (in_array($method, array(
@@ -96,7 +94,7 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
         $data = $serializer->getOrderUpdate($order);
 
         return $this->_api_request(
-            'PATCH', "/" . (int)$order->getIncrementId(), $data);
+            'PATCH', $this->getEndpointForOrder($order), $data);
     }
 
     /**
@@ -106,7 +104,7 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
     public function cancelOrder($order)
     {
         return $this->_api_request(
-            Varien_Http_Client::POST, "/" . (int)$order->getIncrementId() . "/cancel");
+            Varien_Http_Client::POST, $this->getEndpointForOrder($order) . "/cancel");
     }
 
     /**
@@ -119,6 +117,15 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
         $data = array('amount'=>Aplazame_Util::formatDecimals($amount));
 
         return $this->_api_request(
-            Varien_Http_Client::POST, "/" . (int)$order->getIncrementId() . "/refund", $data);
+            Varien_Http_Client::POST, $this->getEndpointForOrder($order) . "/refund", $data);
+    }
+
+    /**
+     * @param Mage_Sales_Model_Order $order
+     * @return string
+     */
+    protected function getEndpointForOrder($order)
+    {
+        return '/orders/' . (int)$order->getIncrementId();
     }
 }
