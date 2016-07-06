@@ -1,12 +1,14 @@
 ## Change Log
 
-#### [v0.2.2-dev](https://github.com/aplazame/magento/tree/v0.2.2) (2016-??-??)
+#### [v0.2.2](https://github.com/aplazame/magento/tree/v0.2.2) (2016-07-06)
 
 [Full Changelog v0.2.2](https://github.com/aplazame/magento/compare/v0.2.1...v0.2.2)
 
 * Widget cart
 * Refund observer
 * Widget data view
+* Remove `host` and `version` settings.
+* Remove obsolete `analytics` feature
 
 #### [v0.2.1](https://github.com/aplazame/magento/tree/v0.2.1) (2015-12-2)
 
