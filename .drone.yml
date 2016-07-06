@@ -6,15 +6,6 @@ build:
   commands:
     - 'make syntax.checker'
 
-deploy:
-  ssh:
-    host: magento.aplazame.com
-    user: $$DEPLOY_USER
-    commands:
-      - 'cd $$RELEASE_PATH'
-      - 'modgit update Magento_Aplazame'
-      - 'chown -R www-data:www-data .'
-
 notify:
   slack:
     webhook_url: $$SLACK_WEBHOOK_URL
