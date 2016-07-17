@@ -29,6 +29,15 @@
         </helpers>
     </global>
     <adminhtml>
+        <translate>
+            <modules>
+                <Aplazame_Aplazame>
+                    <files>
+                        <default>Aplazame_Aplazame.csv</default>
+                    </files>
+                </Aplazame_Aplazame>
+            </modules>
+        </translate>
         <events>
             <sales_order_place_after>
                 <observers>
