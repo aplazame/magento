@@ -59,4 +59,5 @@ RUN ln -s /aplazame/app/code/community/Aplazame /var/www/html/app/code/community
     && ln -s /aplazame/app/design/frontend/base/default/template/aplazame /var/www/html/app/design/frontend/base/default/template/aplazame \
     && mkdir -p /var/www/html/app/locale/es_ES/ \
     && ln -s /aplazame/app/locale/es_ES/Aplazame_Aplazame.csv /var/www/html/app/locale/es_ES/Aplazame_Aplazame.csv \
-    && ln -s /aplazame/var/connect /var/www/html/var/connect
+    && ln -s /aplazame/var/connect /var/www/html/var/connect \
+    && chown www-data:www-data -R /var/www/html
