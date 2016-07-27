@@ -80,7 +80,7 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
      */
     public function authorize($orderId)
     {
-        return $this->request(Varien_Http_Client::POST, "/" . $orderId . "/authorize");
+        return $this->request(Varien_Http_Client::POST, '/orders/' . $orderId . "/authorize");
     }
 
     /**
