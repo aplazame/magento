@@ -86,7 +86,7 @@ class Aplazame_Aplazame_Model_Api_Serializers extends Varien_Object
                 "name"=>$order->getShippingMethod()
             ));
 
-            if ($order->getShippingAmount()) {
+            if ($order->getShippingAmount() > 0) {
                 $shipping["tax_rate"] = 100 * $order->getShippingTaxAmount() / $order->getShippingAmount();
             }
         }
