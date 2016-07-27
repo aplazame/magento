@@ -1,5 +1,12 @@
 ## Change Log
 
+#### [v0.2.3](https://github.com/aplazame/magento/tree/v0.2.3) (2016-07-27)
+
+[Full Changelog v0.2.3](https://github.com/aplazame/magento/compare/v0.2.2...v0.2.3)
+
+* Fix order authorization
+* Improve translations
+
 #### [v0.2.2](https://github.com/aplazame/magento/tree/v0.2.2) (2016-07-06)
 
 [Full Changelog v0.2.2](https://github.com/aplazame/magento/compare/v0.2.1...v0.2.2)
