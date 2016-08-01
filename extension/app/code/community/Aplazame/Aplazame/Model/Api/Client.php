@@ -9,7 +9,7 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
     /**
      * @var string
      */
-    private $apiBaseUri;
+    public $apiBaseUri;
 
     public function __construct()
     {
