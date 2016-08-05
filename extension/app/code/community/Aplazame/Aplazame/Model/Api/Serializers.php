@@ -119,7 +119,7 @@ class Aplazame_Aplazame_Model_Api_Serializers extends Varien_Object
             $discounts = $product->getPrice() - $product->getFinalPrice();
 
             $articles[] = array(
-                "id" => $order_item->getId(),
+                "id" => $productId,
                 "sku" => $order_item->getSku(),
                 "name" => $order_item->getName(),
                 "description" => substr($product->getDescription(), 0, 255),
