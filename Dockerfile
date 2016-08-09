@@ -24,7 +24,6 @@ RUN cd /tmp \
     && cp -R magento-sample-data-1.9.1.0/media/* /var/www/html/media/ \
     && cp -R magento-sample-data-1.9.1.0/skin/* /var/www/html/skin/
 
-RUN chown www-data:www-data -R /var/www/html
 RUN mv /var/www/html/errors/local.xml.sample /var/www/html/errors/local.xml
 
 RUN curl -o n98-magerun.phar https://files.magerun.net/n98-magerun.phar \
