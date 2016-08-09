@@ -27,6 +27,9 @@ RUN cd /tmp \
 RUN chown www-data:www-data -R /var/www/html
 RUN mv /var/www/html/errors/local.xml.sample /var/www/html/errors/local.xml
 
+RUN curl -o n98-magerun.phar https://files.magerun.net/n98-magerun.phar \
+    && chmod +x n98-magerun.phar
+
 ENV MAGENTO_DATABASE=magento
 ENV MAGENTO_DB_USER=root
 

@@ -34,6 +34,12 @@ if [ ! -f app/etc/local.xml ]; then
 
     echo "Magento installed"
 
+    php n98-magerun.phar --skip-root-check cache:disable
+    php n98-magerun.phar --skip-root-check config:set 'web/seo/use_rewrites' '0'
+    php n98-magerun.phar --skip-root-check config:set 'dev/template/allow_symlink' '1'
+    php n98-magerun.phar --skip-root-check config:set 'general/country/default' 'ES'
+
+    echo "Magento configured"
 fi
 
 exec "$@"
