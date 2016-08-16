@@ -28,7 +28,27 @@
             </aplazame>
         </helpers>
     </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Aplazame_Aplazame after="Mage_Adminhtml">Aplazame_Aplazame_AdminHtml</Aplazame_Aplazame>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
     <adminhtml>
+        <layout>
+            <updates>
+                <aplazame>
+                    <file>aplazame.xml</file>
+                </aplazame>
+            </updates>
+        </layout>
         <translate>
             <modules>
                 <Aplazame_Aplazame>
@@ -75,6 +95,20 @@
                     </Aplazame>
                 </observers>
             </sales_order_payment_refund>
+            <core_block_abstract_prepare_layout_after>
+                <observers>
+                    <campaignsMassActions>
+                        <type>singleton</type>
+                        <class>aplazame/campaignsObserver</class>
+                        <method>campaignsMassActions</method>
+                    </campaignsMassActions>
+                    <productCampaigns>
+                        <type>singleton</type>
+                        <class>aplazame/campaignsObserver</class>
+                        <method>productCampaigns</method>
+                    </productCampaigns>
+                </observers>
+            </core_block_abstract_prepare_layout_after>
         </events>
     </adminhtml>
 
