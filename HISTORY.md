@@ -1,5 +1,11 @@
 ## Change Log
 
+#### [v0.3.1](https://github.com/aplazame/magento/tree/v0.3.1) (2016-09-14)
+
+[Full Changelog v0.3.1](https://github.com/aplazame/magento/compare/v0.2.3...v0.3.1)
+
+* Fix for fatal error in checkout redirection.
+
 #### [v0.3.0](https://github.com/aplazame/magento/tree/v0.3.0) (2016-08-16)
 
 [Full Changelog v0.3.0](https://github.com/aplazame/magento/compare/v0.2.3...v0.3.0)
