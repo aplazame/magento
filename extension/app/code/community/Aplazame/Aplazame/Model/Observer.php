@@ -61,8 +61,6 @@ class Aplazame_Aplazame_Model_Observer extends Mage_Core_Model_Abstract
      */
     public function salesOrderPaymentCancel($observer)
     {
-        $code = Aplazame_Aplazame_Model_Payment::METHOD_CODE;
-
         /** @var Mage_Sales_Model_Order|null $order */
         $order = $observer->getOrder();
 
