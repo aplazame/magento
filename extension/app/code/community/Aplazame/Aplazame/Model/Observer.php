@@ -88,7 +88,7 @@ class Aplazame_Aplazame_Model_Observer extends Mage_Core_Model_Abstract
     }
 
     /**
-     * Method to send a parcial (refund) or total (cancel) refund to aplazame when a creditmemo is created
+     * Method to send a partial (refund) or total (cancel) refund to aplazame when a creditmemo is created
      *
      * @param Varien_Event_Observer $observer
      * @return $this
