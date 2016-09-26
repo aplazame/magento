@@ -36,7 +36,6 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
             return;
         }
 
-        $order = Mage::getModel('sales/order')->loadByIncrementId($session->getLastRealOrderId());
         $this->getResponse()->setBody($this->getLayout()->createBlock('aplazame/payment_redirect')->toHtml());
 
         $session->unsQuoteId();
