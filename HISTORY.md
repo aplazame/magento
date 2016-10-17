@@ -1,5 +1,11 @@
 ## Change Log
 
+#### [v0.3.3](https://github.com/aplazame/magento/tree/v0.3.3) (2016-10-17)
+
+[Full Changelog v0.3.3](https://github.com/aplazame/magento/compare/v0.3.2...v0.3.3)
+
+* Prevent order cancellation after confirm.
+
 #### [v0.3.2](https://github.com/aplazame/magento/tree/v0.3.2) (2016-09-15)
 
 [Full Changelog v0.3.2](https://github.com/aplazame/magento/compare/v0.3.1...v0.3.2)
