@@ -74,7 +74,7 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
         if ($orderId) {
             /** @var Mage_Sales_Model_Order $order */
             $order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
-            if ($order->getId()) {
+            if ($order->getId() && $order->getState() === Mage_Sales_Model_Order::STATE_NEW) {
                 Mage::helper('aplazame/cart')->resuscitateCartFromOrder($order, $this);
             }
         }
