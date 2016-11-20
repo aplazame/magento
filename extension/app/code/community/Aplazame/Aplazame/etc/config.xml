@@ -59,15 +59,6 @@
             </modules>
         </translate>
         <events>
-            <sales_order_load_after>
-                <observers>
-                    <Aplazame>
-                        <type>singleton</type>
-                        <class>aplazame/observer</class>
-                        <method>salesOrderLoadAfter</method>
-                    </Aplazame>
-                </observers>
-            </sales_order_load_after>
             <order_cancel_after>
                 <observers>
                     <Aplazame>

@@ -19,14 +19,6 @@ class Aplazame_Aplazame_Model_Observer extends Mage_Core_Model_Abstract
     }
 
     /**
-     * Method after load order edition
-     */
-    public function salesOrderLoadAfter($observer)
-    {
-        return $this;
-    }
-
-    /**
      * Method used for canceling a Aplazame invoice when a Magento order is canceled
      *
      * @param Varien_Event_Observer $observer
