@@ -2,3 +2,4 @@
 composer.lock
 extension/var/connect/*
 !extension/var/connect/Aplazame_Aplazame.xml
+phpunit.xml
