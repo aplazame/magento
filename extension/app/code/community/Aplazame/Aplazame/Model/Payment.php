@@ -18,6 +18,8 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
     protected $_isInitializeNeeded     = true;
     protected $_canUseInternal         = false;
     protected $_canUseForMultishipping = false;
+    /** @var Aplazame_Aplazame_Model_Config Config */
+    private $_config;
 
 
     public function initialize($paymentAction, $stateObject)
