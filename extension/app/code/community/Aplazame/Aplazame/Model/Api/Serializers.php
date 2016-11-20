@@ -186,19 +186,6 @@ class Aplazame_Aplazame_Model_Api_Serializers extends Varien_Object
      * @param Mage_Sales_Model_Order $order
      * @return array
      */
-    public function getOrderUpdate($order)
-    {
-        return array(
-            "order"=>$this->getRenderOrder($order),
-            "billing"=>$this->_getAddr($order->getBillingAddress()),
-            "shipping"=>$this->getShipping($order),
-            "meta"=>self::_getMetadata());
-    }
-
-    /**
-     * @param Mage_Sales_Model_Order $order
-     * @return array
-     */
     public function getCheckout($order)
     {
         $info = $this->getInfoInstance();
