@@ -1,5 +1,13 @@
 ## Change Log
 
+#### [v0.4.0](https://github.com/aplazame/magento/tree/v0.4.0) (2016-11-23)
+
+[Full Changelog v0.4.0](https://github.com/aplazame/magento/compare/v0.3.3...v0.4.0)
+
+* [added] Global improvements.
+* [fixed] Compatibility with Magento CE 1.5.
+* [added] Merchant API.
+
 #### [v0.3.3](https://github.com/aplazame/magento/tree/v0.3.3) (2016-10-17)
 
 [Full Changelog v0.3.3](https://github.com/aplazame/magento/compare/v0.3.2...v0.3.3)
