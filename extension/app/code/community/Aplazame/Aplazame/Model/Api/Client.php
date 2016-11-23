@@ -55,6 +55,6 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
      */
     protected function getEndpointForOrder($order)
     {
-        return '/orders/' . (int)$order->getIncrementId();
+        return '/orders/' . $order->getIncrementId();
     }
 }

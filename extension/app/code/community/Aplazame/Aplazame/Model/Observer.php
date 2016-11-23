@@ -12,8 +12,7 @@ class Aplazame_Aplazame_Model_Observer extends Mage_Core_Model_Abstract
         $code = Aplazame_Aplazame_Model_Payment::METHOD_CODE;
 
         /** @var Mage_Sales_Model_Order $parentOrder */
-        $parentOrder = Mage::getModel('sales/order')->loadByIncrementId(
-            (int)$order->getIncrementId());
+        $parentOrder = Mage::getModel('sales/order')->loadByIncrementId($order->getIncrementId());
 
         return ($code == $parentOrder->getPayment()->getMethod());
     }
