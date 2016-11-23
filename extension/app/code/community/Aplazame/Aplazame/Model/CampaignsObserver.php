@@ -57,7 +57,7 @@ class Aplazame_Aplazame_Model_CampaignsObserver extends Mage_Core_Model_Abstract
         /** @var Mage_Adminhtml_Model_Url $adminUrl */
         $adminUrl = Mage::getModel('adminhtml/url');
 
-        $block->addTabAfter(
+        $block->addTab(
             'aplazameCampaigns',
             array(
                 'label' => $helper->__('Aplazame Campaigns'),
@@ -66,8 +66,7 @@ class Aplazame_Aplazame_Model_CampaignsObserver extends Mage_Core_Model_Abstract
                     array('id' => $product->getId())
                 ),
                 'class' => 'ajax',
-            ),
-            'categories'
+            )
         );
     }
 
