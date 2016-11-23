@@ -18,7 +18,7 @@ class Aplazame_Aplazame_AdminHtml_AplazameController extends Mage_Adminhtml_Cont
 
         $data = json_decode($request->getParam('data'));
 
-        $response = $this->aplazameClient->request(
+        $response = $this->aplazameClient->apiClient->request(
             $request->getParam('method'),
             $request->getParam('path'),
             $data

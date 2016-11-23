@@ -1,5 +1,5 @@
 <div
   data-aplazame-simulator=""
   data-view="product"
-  data-amount="<?php echo $this->getFinalPrice(); ?>">
+  data-amount="<?php echo Aplazame_Sdk_Serializer_Decimal::fromFloat($this->getFinalPrice())->jsonSerialize(); ?>">
 </div>

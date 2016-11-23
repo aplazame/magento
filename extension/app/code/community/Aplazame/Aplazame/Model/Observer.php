@@ -48,8 +48,8 @@ class Aplazame_Aplazame_Model_Observer extends Mage_Core_Model_Abstract
         $client = Mage::getModel('aplazame/api_client');
         try {
             $client->cancelOrder($order);
-        } catch (Mage_Core_Exception $e) {
-            if ($e->getMessage() === 'Aplazame error code 404: Not found') {
+        } catch (Aplazame_Sdk_Api_ApiClientException $e) {
+            if ($e->getStatusCode() == 404) {
                 return $this;
             }
 

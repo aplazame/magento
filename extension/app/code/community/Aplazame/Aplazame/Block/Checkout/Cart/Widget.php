@@ -1,7 +1,5 @@
 <?php
 
-require_once Mage::getBaseDir('lib').DS.'Aplazame'.DS.'Aplazame.php';
-
 class Aplazame_Aplazame_Block_Checkout_Cart_Widget Extends Mage_Core_Block_Template
 {
     /**
@@ -25,17 +23,19 @@ class Aplazame_Aplazame_Block_Checkout_Cart_Widget Extends Mage_Core_Block_Templ
     }
 
     /**
-     * Devuelve el final price del producto, formateado para Aplazame
-     * @return int
+     * Devuelve el final price del producto
+     * @return float
      */
     public function getTotal()
     {
         if($this->getQuote() instanceof Mage_Sales_Model_Quote)
         {
-            return Aplazame_Util::formatDecimals($this->getQuote()->getBaseGrandTotal());
+            $total = $this->getQuote()->getBaseGrandTotal();
+        } else {
+            $total = 0;
         }
 
-        return Aplazame_Util::formatDecimals(0);
+        return $total;
     }
 
     /**

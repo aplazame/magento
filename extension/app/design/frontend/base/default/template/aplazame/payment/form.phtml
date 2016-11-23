@@ -15,7 +15,7 @@
 <script>
 aplazame.button({
   selector: "<?php echo Mage::getStoreConfig('payment/aplazame/button') ?>",
-  amount: <?php echo $this->getTotal() ?>,
+  amount: <?php echo Aplazame_Sdk_Serializer_Decimal::fromFloat($this->getTotal())->jsonSerialize() ?>,
   currency: "EUR",
   country: "<?php echo $this->getCountry(); ?>"
 });

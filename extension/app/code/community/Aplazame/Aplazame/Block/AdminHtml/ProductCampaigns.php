@@ -24,17 +24,7 @@ class Aplazame_Aplazame_Block_AdminHtml_ProductCampaigns extends Mage_Adminhtml_
             /** @var Mage_Catalog_Model_Product $product */
             $product = $products->load($articleId);
 
-            $article = array(
-                "id" => $product->getId(),
-                "name" => $product->getName(),
-                "description" => substr($product->getDescription(), 0, 255),
-                "url" => $product->getProductUrl(),
-            );
-            if (isset($product->_data['media_gallery']['images'][0]['file'])) {
-                $article["image_url"] = $product->getMediaConfig()->getMediaUrl($product->_data['media_gallery']['images'][0]['file']);
-            }
-
-            $articles[] = $article;
+            $articles[] = Aplazame_Aplazame_Api_BusinessModel_Article::createFromProduct($product);
         }
 
         return $articles;

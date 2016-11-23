@@ -1,8 +1,5 @@
 <?php
 
-require_once Mage::getBaseDir('lib').DS.'Aplazame'.DS.'Aplazame.php';
-
-
 class Aplazame_Aplazame_Block_Payment_Form extends Mage_Payment_Block_Form
 {
     protected function _construct()
@@ -25,8 +22,7 @@ class Aplazame_Aplazame_Block_Payment_Form extends Mage_Payment_Block_Form
 
     public function getTotal()
     {
-        return Aplazame_Util::formatDecimals(
-            $this->getMethod()->getCheckout()->getQuote()->getGrandTotal());
+        return $this->getMethod()->getCheckout()->getQuote()->getGrandTotal();
     }
 
     /**

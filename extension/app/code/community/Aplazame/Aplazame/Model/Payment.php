@@ -1,9 +1,5 @@
 <?php
 
-
-require_once Mage::getBaseDir('lib').DS.'Aplazame'.DS.'Aplazame.php';
-
-
 class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
 {
     const METHOD_CODE = 'aplazame';
@@ -115,7 +111,7 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
             Mage::throwException(Mage::helper('aplazame')->__('Aplazame charge id not returned from call.'));
         }
 
-        $this->_validate_amount_result(Aplazame_Util::formatDecimals($amount), $result);
+        $this->_validate_amount_result(Aplazame_Sdk_Serializer_Decimal::fromFloat($amount)->jsonSerialize(), $result);
         $payment->setTransactionId($this->getChargeId())->setIsTransactionClosed(0);
         return $this;
     }
@@ -161,25 +157,13 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
         return $this;
     }
 
-    public function processHistory($order, $checkout_token)
-    {
-        /** @var Aplazame_Aplazame_Model_Api_Serializers $serializer */
-        $serializer = Mage::getModel('aplazame/api_serializers');
-
-        $result = $serializer->getHistory($order);
-
-        return json_encode($result);
-    }
-
     public function getCheckoutSerializer()
     {
         $orderIncrementId = $this->getCheckout()->getLastRealOrderId();
 
         /** @var Mage_Sales_Model_Order $order */
         $order = Mage::getModel('sales/order')->loadByIncrementId($orderIncrementId);
-        /** @var Aplazame_Aplazame_Model_Api_Serializers $serializer */
-        $serializer = Mage::getModel('aplazame/api_serializers');
 
-        return $serializer->getCheckout($order);
+        return Aplazame_Aplazame_BusinessModel_Checkout::createFromOrder($order);
     }
 }
