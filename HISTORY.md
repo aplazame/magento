@@ -1,5 +1,11 @@
 ## Change Log
 
+#### [v0.4.1](https://github.com/aplazame/magento/tree/v0.4.1) (2016-11-24)
+
+[Full Changelog v0.4.1](https://github.com/aplazame/magento/compare/v0.4.0...v0.4.1)
+
+* [fixed] Payment method label for narrow boxes
+
 #### [v0.4.0](https://github.com/aplazame/magento/tree/v0.4.0) (2016-11-23)
 
 [Full Changelog v0.4.0](https://github.com/aplazame/magento/compare/v0.3.3...v0.4.0)
