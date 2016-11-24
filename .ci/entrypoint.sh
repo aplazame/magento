@@ -4,8 +4,15 @@ cd /var/www/html/
 
 if [ ! -f app/etc/local.xml ]; then
 
-    echo "Wait 7s for the database to be ready"
-    sleep 7
+    RET=1
+    while [ $RET -ne 0 ]; do
+        mysql -h $MAGENTO_DB_HOST -u $MAGENTO_DB_USER -p$MAGENTO_DB_PASSWORD -e "status" > /dev/null 2>&1
+        RET=$?
+        if [ $RET -ne 0 ]; then
+            echo "\n* Waiting for confirmation of MySQL service startup";
+            sleep 5
+        fi
+    done
 
     echo "Install Magento sample data"
     mysql -h $MAGENTO_DB_HOST -u $MAGENTO_DB_USER -p$MAGENTO_DB_PASSWORD $MAGENTO_DATABASE < /tmp/magento-sample-data-1.9.1.0/magento_sample_data_for_1.9.1.0.sql
