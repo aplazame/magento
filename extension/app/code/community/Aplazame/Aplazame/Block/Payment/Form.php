@@ -15,7 +15,7 @@ class Aplazame_Aplazame_Block_Payment_Form extends Mage_Payment_Block_Form
 
         $logoSrc = 'https://aplazame.com/static/img/buttons/' . Mage::getStoreConfig('payment/aplazame/button_img') . '.png';
         $html = '<img src="' . $logoSrc . '" height="27" class="v-middle" />&nbsp;';
-        $html.= 'Financia tu compa con Aplazame';
+        $html.= 'Financia tu compra con Aplazame';
 
         $this->setMethodLabelAfterHtml($html);
     }
