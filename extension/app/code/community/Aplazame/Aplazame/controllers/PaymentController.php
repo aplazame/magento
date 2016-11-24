@@ -73,6 +73,11 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
 
     public function cancelAction()
     {
+        $this->_redirectUrl(Mage::getUrl('aplazame/payment/cart'));
+    }
+
+    public function cartAction()
+    {
         $session = $this->_getCheckoutSession();
         $orderId = $session->getLastRealOrderId();
 
@@ -80,7 +85,9 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
             /** @var Mage_Sales_Model_Order $order */
             $order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
             if ($order->getId() && $order->getState() === Mage_Sales_Model_Order::STATE_NEW) {
-                Mage::helper('aplazame/cart')->resuscitateCartFromOrder($order, $this);
+                /** @var Aplazame_Aplazame_Helper_Cart $cart */
+                $cart = Mage::helper('aplazame/cart');
+                $cart->resuscitateCartFromOrder($order, $this);
             }
         }
 
