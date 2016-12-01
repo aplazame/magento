@@ -14,7 +14,6 @@ Magento CE 1.4.0.1+
 * **Private API Key**: The Private Key provided by Aplazame. You cannot share this key with anyone!!
 * **Public API Key**: The Public Key provided by Aplazame.
 * **Button**: The CSS Selector for Aplazame payment method. The default selector is `dt:has(input#p_method_aplazame)`. [See bellow](#one-step-checkout-button) to configure button with One Step Checkout modules.
-* **Button Image**: [Select the image](http://docs.aplazame.com/#buttons) that appear as payment method on you cart. The default image is `white-148x46`.
 * **Position**: The position in the payment method list, by default is `1`, on the top.
 
 > Be sure that on all fields you don't keep any whitespace. Otherwise the module can generate unexpected results.
