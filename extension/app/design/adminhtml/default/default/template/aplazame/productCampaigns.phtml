@@ -73,6 +73,12 @@
         checkbox["data-campaignId"] = campaign.id;
         checkbox.addEventListener("click", campaignToggle, false);
 
+        if (!campaign.partial) {
+            checkbox.checked = true;
+            checkbox.disabled = true;
+            checkbox.title = "<?php echo $this->__('The campaign applies to all products from your catalogue'); ?>";
+        }
+
         /**
          * @type {HTMLLabelElement|Element}
          */
