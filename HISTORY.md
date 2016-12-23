@@ -1,5 +1,12 @@
 ## Change Log
 
+#### [v0.4.2](https://github.com/aplazame/magento/tree/v0.4.2) (2016-12-23)
+
+[Full Changelog v0.4.2](https://github.com/aplazame/magento/compare/v0.4.1...v0.4.2)
+
+* [fixed] Improve visualization when product is already included in a campaign which applies to the whole catalog.
+* [changed] "Sandbox" is now named "Test Mode (Sandbox)"
+
 #### [v0.4.1](https://github.com/aplazame/magento/tree/v0.4.1) (2016-11-24)
 
 [Full Changelog v0.4.1](https://github.com/aplazame/magento/compare/v0.4.0...v0.4.1)
