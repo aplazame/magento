@@ -120,10 +120,13 @@
                 <active>0</active>
                 <sandbox>0</sandbox>
                 <model>aplazame/payment</model>
-                <title>Aplazame</title>
+                <title>Financialo con Aplazame</title>
                 <secret_api_key backend_model="adminhtml/system_config_backend_encrypted"/>
                 <button>dt:has(input#p_method_aplazame)</button>
-                <sort_order>1</sort_order>
+                <instructions><![CDATA[Aplaza o fracciona tu compra con <a href="https://aplazame.com" target="_blank">Aplazame</a>.
+Obtén financiación al instante sólo con tu Nombre y Apellidos, DNI/NIE, Teléfono y tarjeta de débito o crédito.
+Sin comisiones ocultas ni letra pequeña.]]>
+                </instructions>
             </aplazame>
         </payment>
     </default>

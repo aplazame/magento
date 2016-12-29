@@ -1,16 +1,16 @@
-<fieldset class="form-list">
-  <?php $_code=$this->getMethodCode() ?>
-</fieldset>
+<?php
+/** @var Aplazame_Aplazame_Block_Payment_Form $this */
+?>
 
-<div data-aplazame-payment-info="">
-  <div id="payment_form_<?php echo $_code ?>" style="display:none;">
-      <p class="aplazame_title" style="padding-left: 20px; padding-top: 8px;">
-        Aplaza o fracciona tu compra con <a href="https://aplazame.com" target="_blank">Aplazame</a>.<br>
-        Obtén financiación al instante sólo con tu Nombre y Apellidos, DNI/NIE, Teléfono y tarjeta de débito o crédito.<br>
-        Sin comisiones ocultas ni letra pequeña.<br>
-      </p>
-  </div>
-</div>
+<?php if ($instructions = $this->getInstructions()): ?>
+    <ul class="form-list checkout-agreements" id="payment_form_<?php echo $this->getMethodCode() ?>" style="display:none;">
+        <li>
+            <div class="<?php echo $this->getMethodCode() ?>-instructions-content agreement-content">
+                <?php echo nl2br($instructions) ?>
+            </div>
+        </li>
+    </ul>
+<?php endif; ?>
 
 <script>
 aplazame.button({
