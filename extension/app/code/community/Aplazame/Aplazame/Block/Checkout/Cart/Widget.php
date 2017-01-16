@@ -30,7 +30,7 @@ class Aplazame_Aplazame_Block_Checkout_Cart_Widget Extends Mage_Core_Block_Templ
     {
         if($this->getQuote() instanceof Mage_Sales_Model_Quote)
         {
-            $total = $this->getQuote()->getBaseGrandTotal();
+            $total = $this->getQuote()->getGrandTotal();
         } else {
             $total = 0;
         }

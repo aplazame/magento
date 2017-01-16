@@ -30,7 +30,7 @@ class Aplazame_Aplazame_Block_Product_Widget Extends Mage_Core_Block_Template
     {
         if($this->getProduct() instanceof Mage_Catalog_Model_Product)
         {
-            $total = $this->getProduct()->getFinalPrice();
+            $total = Mage::app()->getStore()->convertPrice($this->getProduct()->getFinalPrice());
         } else {
             $total = 0;
         }

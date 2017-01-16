@@ -14,8 +14,6 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
     protected $_isInitializeNeeded     = true;
     protected $_canUseInternal         = false;
     protected $_canUseForMultishipping = false;
-    /** @var Aplazame_Aplazame_Model_Config Config */
-    private $_config;
 
 
     public function initialize($paymentAction, $stateObject)
@@ -27,32 +25,9 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
         $stateObject->setIsNotified(false);
     }
 
-    /**
-     * Whether method is available for specified currency
-     */
-    public function canUseForCurrency($currencyCode)
-    {
-        return $this->getConfig()->isCurrencyCodeSupported($currencyCode);
-    }
-
     private static function _orderTotal($order)
     {
         return $order->getTotalDue();
-    }
-
-    /**
-     * Config instance getter
-     */
-    public function getConfig()
-    {
-        if (null === $this->_config) {
-            $params = array($this->_code);
-            if ($store = $this->getStore()) {
-                $params[] = is_object($store) ? $store->getId() : $store;
-            }
-            $this->_config = Mage::getModel('aplazame/config', $params);
-        }
-        return $this->_config;
     }
 
     /**
@@ -84,15 +59,6 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
         return $this->getInfoInstance()->getAdditionalInformation("charge_id");
     }
 
-    protected function _validate_amount_result($amount, $result)
-    {
-        if ($result["amount"] != $amount) {
-            Mage::throwException(Mage::helper('aplazame')->__(
-                'Aplazame authorized amount of ' . $result["amount"] .
-                ' does not match requested amount of: ' . $amount));
-        }
-    }
-
     public function authorize(Varien_Object $payment, $amount)
     {
         if ($amount <= 0) {
@@ -103,15 +69,18 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
 
         /** @var Aplazame_Aplazame_Model_Api_Client $api */
         $api = Mage::getModel('aplazame/api_client');
-        $result = $api->authorize($token);
 
-        if (isset($result["id"])) {
-            $this->getInfoInstance()->setAdditionalInformation("charge_id", $result["id"]);
-        } else {
-            Mage::throwException(Mage::helper('aplazame')->__('Aplazame charge id not returned from call.'));
+        $aOrder = $api->fetchOrder($token);
+        if ($aOrder['total_amount'] !== Aplazame_Sdk_Serializer_Decimal::fromFloat($amount)->jsonSerialize() ||
+            $aOrder['currency']['code'] !== Mage::app()->getStore()->getCurrentCurrencyCode()
+        ) {
+            Mage::throwException(Mage::helper('aplazame')->__(
+                'Aplazame authorized amount of ' . $aOrder['total_amount'] .
+                ' does not match requested amount of: ' . $amount));
         }
 
-        $this->_validate_amount_result(Aplazame_Sdk_Serializer_Decimal::fromFloat($amount)->jsonSerialize(), $result);
+        $result = $api->authorize($token);
+        $this->getInfoInstance()->setAdditionalInformation("charge_id", $result["id"]);
         $payment->setTransactionId($this->getChargeId())->setIsTransactionClosed(0);
         return $this;
     }
