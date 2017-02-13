@@ -1,8 +1,11 @@
 <layout version="0.1.0">
     <default>
         <reference name="head" before="-">
-            <block type="page/html" name="aplazame_common" as="aplazame_common"
-                   template="aplazame/payment/common.phtml"/>
+            <block type="page/html" name="aplazame_common" as="aplazame_common">
+                <action method="setTemplate" ifconfig="payment/aplazame/active">
+                    <template>aplazame/payment/common.phtml</template>
+                </action>
+            </block>
         </reference>
     </default>
     <catalog_product_view>
