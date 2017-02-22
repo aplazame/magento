@@ -1,5 +1,11 @@
 ## Change Log
 
+#### [v0.4.3](https://github.com/aplazame/magento/tree/v0.4.3) (2017-02-22)
+
+[Full Changelog v0.4.3](https://github.com/aplazame/magento/compare/v0.4.2...v0.4.3)
+
+* Many improvements and fixes.
+
 #### [v0.4.2](https://github.com/aplazame/magento/tree/v0.4.2) (2016-12-23)
 
 [Full Changelog v0.4.2](https://github.com/aplazame/magento/compare/v0.4.1...v0.4.2)

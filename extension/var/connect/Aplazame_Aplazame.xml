@@ -1,5 +1,5 @@
 <_>
-   <form_key>lqoQn3UZzq9wVilu</form_key>
+   <form_key>JiX0f36DXpu0ne3g</form_key>
    <name>Aplazame_Aplazame</name>
    <channel>community</channel>
    <version_ids>
@@ -9,10 +9,9 @@
    <description>Aplazame, a consumer credit company, offers a payment system that can be used by online buyers to receive funding for their purchases.</description>
    <license>GPL</license>
    <license_uri/>
-   <version>0.4.2</version>
+   <version>0.4.3</version>
    <stability>stable</stability>
-   <notes>* [fixed] Improve visualization when product is already included in a campaign which applies to the whole catalog.
-* [changed] &quot;Sandbox&quot; is now named &quot;Test Mode (Sandbox)&quot;
+   <notes>* Many improvements and fixes.
 </notes>
    <authors>
       <name>
