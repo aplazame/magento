@@ -3,14 +3,20 @@
 class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
 {
     /**
+     * @var string
+     */
+    public $apiBaseUri;
+
+    /**
      * @var Aplazame_Sdk_Api_Client
      */
     public $apiClient;
 
     public function __construct()
     {
+        $this->apiBaseUri = getenv('APLAZAME_API_BASE_URI') ? getenv('APLAZAME_API_BASE_URI') : 'https://api.aplazame.com';
         $this->apiClient = new Aplazame_Sdk_Api_Client(
-            getenv('APLAZAME_API_BASE_URI') ? getenv('APLAZAME_API_BASE_URI') : 'https://api.aplazame.com',
+            $this->apiBaseUri,
             (Mage::getStoreConfig('payment/aplazame/sandbox') ? Aplazame_Sdk_Api_Client::ENVIRONMENT_SANDBOX : Aplazame_Sdk_Api_Client::ENVIRONMENT_PRODUCTION),
             Mage::getStoreConfig('payment/aplazame/secret_api_key'),
             new Aplazame_Aplazame_Http_ZendClient()
