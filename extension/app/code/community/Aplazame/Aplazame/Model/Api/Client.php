@@ -23,7 +23,7 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
      */
     public function authorize($orderId)
     {
-        return $this->apiClient->request(Varien_Http_Client::POST, '/orders/' . $orderId . "/authorize");
+        return $this->apiClient->request(Varien_Http_Client::POST, '/orders/' . urlencode(urlencode($orderId)) . '/authorize');
     }
 
     /**
@@ -32,7 +32,7 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
      */
     public function fetchOrder($orderId)
     {
-        $orders = $this->apiClient->request(Varien_Http_Client::GET, '/orders?mid=' . $orderId);
+        $orders = $this->apiClient->request(Varien_Http_Client::GET, '/orders?mid=' . urlencode($orderId));
 
         return $orders['results'][0];
     }
@@ -66,6 +66,6 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
      */
     protected function getEndpointForOrder($order)
     {
-        return '/orders/' . $order->getIncrementId();
+        return '/orders/' . urlencode(urlencode($order->getIncrementId()));
     }
 }
