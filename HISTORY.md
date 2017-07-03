@@ -1,5 +1,11 @@
 ## Change Log
 
+#### [v0.4.4](https://github.com/aplazame/magento/tree/v0.4.4) (2017-07-03)
+
+[Full Changelog v0.4.4](https://github.com/aplazame/magento/compare/v0.4.3...v0.4.4)
+
+* Fix for order ids with special characters
+
 #### [v0.4.3](https://github.com/aplazame/magento/tree/v0.4.3) (2017-02-22)
 
 [Full Changelog v0.4.3](https://github.com/aplazame/magento/compare/v0.4.2...v0.4.3)
