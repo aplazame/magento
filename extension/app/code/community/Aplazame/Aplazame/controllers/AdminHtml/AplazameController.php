@@ -39,6 +39,7 @@ class Aplazame_Aplazame_AdminHtml_AplazameController extends Mage_Adminhtml_Cont
         if (!($block instanceof Aplazame_Aplazame_Block_AdminHtml_ProductCampaigns)) {
             throw new LogicException('Expected Aplazame_Aplazame_Block_AdminHtml_ProductCampaigns');
         }
+
         $block->setArticlesId(array($productId));
 
         $this->getResponse()->setBody($block->toHtml());
@@ -54,6 +55,7 @@ class Aplazame_Aplazame_AdminHtml_AplazameController extends Mage_Adminhtml_Cont
         if (!($block instanceof Aplazame_Aplazame_Block_AdminHtml_ProductsCampaigns)) {
             throw new LogicException('Expected Aplazame_Aplazame_Block_AdminHtml_ProductsCampaigns');
         }
+
         $block->setArticlesId($products);
 
         $this->getLayout()->getBlock('content')->append($block);

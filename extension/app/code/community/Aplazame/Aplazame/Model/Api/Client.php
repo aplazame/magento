@@ -50,7 +50,8 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
     public function cancelOrder($order)
     {
         return $this->apiClient->request(
-            Varien_Http_Client::POST, $this->getEndpointForOrder($order) . "/cancel");
+            Varien_Http_Client::POST, $this->getEndpointForOrder($order) . "/cancel"
+        );
     }
 
     /**
@@ -63,7 +64,8 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
         $data = array('amount'=>Aplazame_Sdk_Serializer_Decimal::fromFloat($amount)->jsonSerialize());
 
         return $this->apiClient->request(
-            Varien_Http_Client::POST, $this->getEndpointForOrder($order) . "/refund", $data);
+            Varien_Http_Client::POST, $this->getEndpointForOrder($order) . "/refund", $data
+        );
     }
 
     /**

@@ -79,15 +79,18 @@ class Aplazame_Aplazame_Model_CampaignsObserver extends Mage_Core_Model_Abstract
         if ($product->getId()) {
             return true;
         }
+
         if (!$product->getAttributeSetId()) {
             return false;
         }
+
         $request = Mage::app()->getRequest();
         if ($request->getParam('type') == 'configurable') {
             if ($request->getParam('attributes')) {
                 return true;
             }
         }
+
         return false;
     }
 }

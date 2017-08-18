@@ -74,9 +74,12 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
         if ($aOrder['total_amount'] !== Aplazame_Sdk_Serializer_Decimal::fromFloat($amount)->jsonSerialize() ||
             $aOrder['currency']['code'] !== Mage::app()->getStore()->getCurrentCurrencyCode()
         ) {
-            Mage::throwException(Mage::helper('aplazame')->__(
-                'Aplazame authorized amount of ' . $aOrder['total_amount'] .
-                ' does not match requested amount of: ' . $amount));
+            Mage::throwException(
+                Mage::helper('aplazame')->__(
+                    'Aplazame authorized amount of ' . $aOrder['total_amount'] .
+                    ' does not match requested amount of: ' . $amount
+                )
+            );
         }
 
         $result = $api->authorize($token);

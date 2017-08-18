@@ -21,8 +21,10 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
             if (isset($token) && is_string($token)) {
                 return $token;
             }
+
             Mage::throwException($this->__('Authentication header format is invalid.'));
         }
+
         Mage::throwException($this->__('Authentication header is absent.'));
     }
 
@@ -68,6 +70,7 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
             // $this->_redirect('checkout/onepage/success');
             return;
         }
+
         // $this->_redirectUrl(Mage::helper('checkout/url')->getCheckoutUrl());
     }
 
@@ -122,8 +125,7 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
         /** @var Mage_Sales_Model_Order[] $history_collection */
         $history_collection = Mage::getModel('sales/order')
             ->getCollection()
-            ->addAttributeToFilter('customer_id', array('like'=> $order->getCustomerId()))
-        ;
+            ->addAttributeToFilter('customer_id', array('like'=> $order->getCustomerId()));
 
         $historyOrders = array_map(array('Aplazame_Aplazame_Api_BusinessModel_HistoricalOrder', 'createFromOrder'), $history_collection);
 

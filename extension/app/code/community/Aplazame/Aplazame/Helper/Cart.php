@@ -52,6 +52,7 @@ class Aplazame_Aplazame_Helper_Cart extends Mage_Core_Helper_Abstract
                 } else {
                     $session->addError($e->getMessage());
                 }
+
                 if($action)
                 {
                     $action->setRedirectWithCookieCheck('checkout/cart');
