@@ -54,24 +54,20 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
             Mage::throwException($this->__('Confirm has no checkout token.'));
         }
 
-
-        if ($session->getLastRealOrderId()) {
-            /** @var Mage_Sales_Model_Order $order */
-            $order = Mage::getModel('sales/order')->loadByIncrementId($session->getLastRealOrderId());
-            $payment = $order->getPayment()->getMethodInstance();
-            if (!$payment instanceof Aplazame_Aplazame_Model_Payment) {
-                Mage::throwException($this->__('Unexpected payment method.'));
-            }
-
-            $payment->processConfirmOrder($order, $checkout_token);
-
-            // TODO: add a boolean configuration option
-            $order->sendNewOrderEmail();
-            // $this->_redirect('checkout/onepage/success');
-            return;
+        if (!$session->getLastRealOrderId()) {
+            Mage::throwException($this->__('Session has expired.'));
         }
 
-        // $this->_redirectUrl(Mage::helper('checkout/url')->getCheckoutUrl());
+        /** @var Mage_Sales_Model_Order $order */
+        $order = Mage::getModel('sales/order')->loadByIncrementId($session->getLastRealOrderId());
+        $payment = $order->getPayment()->getMethodInstance();
+        if (!$payment instanceof Aplazame_Aplazame_Model_Payment) {
+            Mage::throwException($this->__('Unexpected payment method.'));
+        }
+
+        $payment->processConfirmOrder($order, $checkout_token);
+
+        $order->sendNewOrderEmail();
     }
 
     public function cancelAction()
