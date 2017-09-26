@@ -1,5 +1,11 @@
 ## Change Log
 
+#### [v0.4.5](https://github.com/aplazame/magento/tree/v0.4.5) (2017-09-26)
+
+[Full Changelog v0.4.5](https://github.com/aplazame/magento/compare/v0.4.4...v0.4.5)
+
+* Make confirm to hard fail.
+
 #### [v0.4.4](https://github.com/aplazame/magento/tree/v0.4.4) (2017-07-03)
 
 [Full Changelog v0.4.4](https://github.com/aplazame/magento/compare/v0.4.3...v0.4.4)
