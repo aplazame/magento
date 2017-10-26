@@ -21,9 +21,6 @@ services:
       - MAGENTO_URL=magento.aplazame
     volumes:
       - ./extension:/aplazame
-    networks:
-      - internal
-      - public
     ports:
       - "80:80"
 
@@ -32,9 +29,3 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=magento
-    networks:
-      - internal
-
-networks:
-  internal:
-  public:

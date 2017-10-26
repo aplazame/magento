@@ -1,6 +1,6 @@
 FROM php:5.6-apache
 
-RUN pecl install xdebug-beta \
+RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
 
 RUN echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
@@ -8,7 +8,7 @@ RUN echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.default_enable=0" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.coverage_enable=0" >> /usr/local/etc/php/conf.d/xdebug.ini
 
-ENV MAGENTO_VERSION=1.9.2.4
+ENV MAGENTO_VERSION=1.9.3.6
 
 RUN cd /tmp \
     && curl https://codeload.github.com/OpenMage/magento-mirror/tar.gz/$MAGENTO_VERSION -o $MAGENTO_VERSION.tar.gz \
