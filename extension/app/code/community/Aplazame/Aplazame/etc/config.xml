@@ -121,7 +121,7 @@
                 <sandbox>0</sandbox>
                 <model>aplazame/payment</model>
                 <title>Financialo con Aplazame</title>
-                <secret_api_key backend_model="adminhtml/system_config_backend_encrypted"/>
+                <secret_api_key backend_model="aplazame/config_privatekey"/>
                 <button>dt:has(input#p_method_aplazame)</button>
                 <instructions><![CDATA[Aplaza o fracciona tu compra con <a href="https://aplazame.com" target="_blank">Aplazame</a>.
 Obtén financiación al instante sólo con tu Nombre y Apellidos, DNI/NIE, Teléfono y tarjeta de débito o crédito.
