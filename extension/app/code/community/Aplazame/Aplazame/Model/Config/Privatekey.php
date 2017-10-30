@@ -20,8 +20,6 @@ class Aplazame_Aplazame_Model_Config_Privatekey extends Mage_Adminhtml_Model_Sys
 
     public function _beforeSave()
     {
-        $label = $this->getData('field_config/label');
-
         $client = new Aplazame_Sdk_Api_Client(
             getenv('APLAZAME_API_BASE_URI') ? getenv('APLAZAME_API_BASE_URI') : 'https://api.aplazame.com',
             (Mage::getStoreConfig('payment/aplazame/sandbox') ? Aplazame_Sdk_Api_Client::ENVIRONMENT_SANDBOX : Aplazame_Sdk_Api_Client::ENVIRONMENT_PRODUCTION),
@@ -31,6 +29,7 @@ class Aplazame_Aplazame_Model_Config_Privatekey extends Mage_Adminhtml_Model_Sys
         try {
             $response = $client->get('/me');
         } catch (Aplazame_Sdk_Api_ApiClientException $apiClientException) {
+            $label = $this->getData('field_config/label');
             Mage::throwException($this->__($label . ' ' . $apiClientException->getMessage()));
         }
 
