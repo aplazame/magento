@@ -27,6 +27,13 @@
                 <class>Aplazame_Aplazame_Helper</class>
             </aplazame>
         </helpers>
+        <resources>
+            <aplazame_setup>
+                <setup>
+                    <module>Aplazame_Aplazame</module>
+                </setup>
+            </aplazame_setup>
+        </resources>
     </global>
 
     <admin>
@@ -119,6 +126,7 @@
 Obtén financiación al instante sólo con tu Nombre y Apellidos, DNI/NIE, Teléfono y tarjeta de débito o crédito.
 Sin comisiones ocultas ni letra pequeña.]]>
                 </instructions>
+                <refund_method_magento_native>1</refund_method_magento_native>
             </aplazame>
         </payment>
     </default>
