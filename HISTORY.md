@@ -1,5 +1,12 @@
 ## Change Log
 
+#### [v0.4.6](https://github.com/aplazame/magento/tree/v0.4.6) (2017-11-02)
+
+[Full Changelog v0.4.6](https://github.com/aplazame/magento/compare/v0.4.5...v0.4.6)
+
+* Minor changes for Magento Marketplace
+* Raise maximum PHP version up to 8.0.0
+
 #### [v0.4.5](https://github.com/aplazame/magento/tree/v0.4.5) (2017-09-26)
 
 [Full Changelog v0.4.5](https://github.com/aplazame/magento/compare/v0.4.4...v0.4.5)

@@ -1,5 +1,5 @@
 <_>
-   <form_key>pKQRH4OJ2V0oCNrm</form_key>
+   <form_key>cJZUBFs0FV8ahxsc</form_key>
    <name>Aplazame_Aplazame</name>
    <channel>community</channel>
    <version_ids>
@@ -9,9 +9,11 @@
    <description>Aplazame, a consumer credit company, offers a payment system that can be used by online buyers to receive funding for their purchases.</description>
    <license>GPL</license>
    <license_uri/>
-   <version>0.4.5</version>
-   <stability>stable</stability>
-   <notes>* Make confirm to hard fail</notes>
+   <version>0.4.6</version>
+   <stability>beta</stability>
+   <notes>* Minor changes for Magento Marketplace
+* Raise maximum PHP version up to 8.0.0
+</notes>
    <authors>
       <name>
          <name>Aplazame</name>
