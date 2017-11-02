@@ -18,15 +18,15 @@ class Aplazame_Aplazame_AdminHtml_AplazameController extends Mage_Adminhtml_Cont
 
         $data = json_decode($request->getParam('data'));
 
-        $response = $this->aplazameClient->apiClient->request(
+        $aplazameResponse = $this->aplazameClient->apiClient->request(
             $request->getParam('method'),
             $request->getParam('path'),
             $data
         );
 
-        $this->getResponse()->setHeader('Content-Type', 'application/json');
-
-        echo json_encode($response);
+        $response = $this->getResponse();
+        $response->setHeader('Content-Type', 'application/json');
+        $response->setBody(json_encode($aplazameResponse));
     }
 
     public function productCampaignsAction()
