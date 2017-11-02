@@ -62,4 +62,9 @@ class Aplazame_Aplazame_AdminHtml_AplazameController extends Mage_Adminhtml_Cont
 
         $this->renderLayout();
     }
+
+    protected function _isAllowed()
+    {
+        return Mage::getSingleton('admin/session')->isAllowed('admin');
+    }
 }
