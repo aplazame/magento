@@ -10,6 +10,11 @@ class Aplazame_Aplazame_BusinessModel_ShippingInfo
         $address = $order->getShippingAddress();
 
         $shippingInfo = new self();
+
+        if (!$address) {
+            return $shippingInfo;
+        }
+
         $shippingInfo->first_name = $address->getFirstname();
         $shippingInfo->last_name = $address->getLastname();
         $shippingInfo->street = $address->getStreet(1);
