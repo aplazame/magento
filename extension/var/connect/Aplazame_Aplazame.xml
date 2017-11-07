@@ -1,5 +1,5 @@
 <_>
-   <form_key>cJZUBFs0FV8ahxsc</form_key>
+   <form_key>zbi4jAJByb0PIITE</form_key>
    <name>Aplazame_Aplazame</name>
    <channel>community</channel>
    <version_ids>
@@ -9,10 +9,12 @@
    <description>Aplazame, a consumer credit company, offers a payment system that can be used by online buyers to receive funding for their purchases.</description>
    <license>GPL</license>
    <license_uri/>
-   <version>0.4.6</version>
-   <stability>beta</stability>
-   <notes>* Minor changes for Magento Marketplace
-* Raise maximum PHP version up to 8.0.0
+   <version>1.0.0</version>
+   <stability>stable</stability>
+   <notes>* Module Refactor:
+- Private API key validation
+- Add support for orders with status &quot;pending&quot;
+- Refund orders are now available through &quot;Order &gt; Invoices &gt; Credit Memo&quot;
 </notes>
    <authors>
       <name>

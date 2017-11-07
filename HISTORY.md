@@ -1,5 +1,14 @@
 ## Change Log
 
+#### [v1.0.0](https://github.com/aplazame/magento/tree/v1.0.0) (2017-11-16)
+
+[Full Changelog v1.0.0](https://github.com/aplazame/magento/compare/v0.4.6...v1.0.0)
+
+* Module Refactor:
+- Private API key validation
+- Add support for orders with status "pending"
+- Refund orders are now available through "Order > Invoices > Credit Memo"
+
 #### [v0.4.6](https://github.com/aplazame/magento/tree/v0.4.6) (2017-11-02)
 
 [Full Changelog v0.4.6](https://github.com/aplazame/magento/compare/v0.4.5...v0.4.6)
