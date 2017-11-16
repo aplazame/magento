@@ -8,9 +8,9 @@ class Aplazame_Aplazame_BusinessModel_Checkout
     public static function createFromOrder(Mage_Sales_Model_Order $order)
     {
         $merchant = new stdClass();
-        $merchant->confirmation_url = Mage::getUrl("aplazame/payment/confirm", array('_secure' => true));
         $merchant->cancel_url = Mage::getUrl('aplazame/payment/cancel', array('_secure' => true));
         $merchant->success_url = Mage::getUrl('checkout/onepage/success', array('_secure' => true));
+        $merchant->pending_url = $merchant->success_url;
         $merchant->checkout_url = Mage::getUrl('aplazame/payment/cart');
 
         $checkout = new self();

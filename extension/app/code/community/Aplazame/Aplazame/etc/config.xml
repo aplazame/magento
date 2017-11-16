@@ -59,15 +59,6 @@
             </modules>
         </translate>
         <events>
-            <order_cancel_after>
-                <observers>
-                    <Aplazame>
-                        <type>singleton</type>
-                        <class>aplazame/observer</class>
-                        <method>salesOrderPaymentCancel</method>
-                    </Aplazame>
-                </observers>
-            </order_cancel_after>
             <sales_order_payment_refund>
                 <observers>
                     <Aplazame>
@@ -120,6 +111,7 @@
                 <active>0</active>
                 <sandbox>0</sandbox>
                 <model>aplazame/payment</model>
+                <payment_action>authorize</payment_action>
                 <title>Financialo con Aplazame</title>
                 <secret_api_key backend_model="aplazame/config_privatekey"/>
                 <button>dt:has(input#p_method_aplazame)</button>

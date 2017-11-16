@@ -24,26 +24,6 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
     }
 
     /**
-     * @param string $orderId
-     * @return array
-     */
-    public function authorize($orderId)
-    {
-        return $this->apiClient->request(Varien_Http_Client::POST, '/orders/' . urlencode(urlencode($orderId)) . '/authorize');
-    }
-
-    /**
-     * @param string $orderId
-     * @return array
-     */
-    public function fetchOrder($orderId)
-    {
-        $orders = $this->apiClient->request(Varien_Http_Client::GET, '/orders?mid=' . urlencode($orderId));
-
-        return $orders['results'][0];
-    }
-
-    /**
      * @param Mage_Sales_Model_Order $order
      * @return array
      */

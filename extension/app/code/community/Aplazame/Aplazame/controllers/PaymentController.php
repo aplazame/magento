@@ -44,32 +44,6 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
         $session->unsRedirectUrl();
     }
 
-
-    public function confirmAction()
-    {
-        $session = $this->_getCheckoutSession();
-        $checkout_token = $this->getRequest()->getParam("order_id");
-
-        if (!$checkout_token) {
-            Mage::throwException($this->__('Confirm has no checkout token.'));
-        }
-
-        if (!$session->getLastRealOrderId()) {
-            Mage::throwException($this->__('Session has expired.'));
-        }
-
-        /** @var Mage_Sales_Model_Order $order */
-        $order = Mage::getModel('sales/order')->loadByIncrementId($session->getLastRealOrderId());
-        $payment = $order->getPayment()->getMethodInstance();
-        if (!$payment instanceof Aplazame_Aplazame_Model_Payment) {
-            Mage::throwException($this->__('Unexpected payment method.'));
-        }
-
-        $payment->processConfirmOrder($order, $checkout_token);
-
-        $order->sendNewOrderEmail();
-    }
-
     public function cancelAction()
     {
         $this->_redirectUrl(Mage::getUrl('aplazame/payment/cart'));

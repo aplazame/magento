@@ -27,7 +27,17 @@ class Aplazame_Aplazame_Model_Config_Privatekey extends Mage_Adminhtml_Model_Sys
         );
 
         try {
-            $response = $client->get('/me');
+            $response = $client->patch('/me', array(
+                'confirmation_url' => Mage::getUrl(
+                    'aplazame/api/index',
+                    array(
+                        '_query' => array(
+                            'path' => '/confirm/',
+                        ),
+                        '_nosid' => true,
+                    )
+                ),
+            ));
         } catch (Aplazame_Sdk_Api_ApiClientException $apiClientException) {
             $label = $this->getData('field_config/label');
             Mage::throwException($this->__($label . ' ' . $apiClientException->getMessage()));
