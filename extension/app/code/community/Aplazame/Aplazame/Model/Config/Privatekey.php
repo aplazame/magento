@@ -12,7 +12,8 @@ class Aplazame_Aplazame_Model_Config_Privatekey extends Mage_Adminhtml_Model_Sys
      */
     private $publicApiKey;
 
-    public function _construct() {
+    public function _construct() 
+    {
         parent::_construct();
 
         $this->configData = Mage::getModel('core/config_data');
@@ -27,7 +28,8 @@ class Aplazame_Aplazame_Model_Config_Privatekey extends Mage_Adminhtml_Model_Sys
         );
 
         try {
-            $response = $client->patch('/me', array(
+            $response = $client->patch(
+                '/me', array(
                 'confirmation_url' => Mage::getUrl(
                     'aplazame/api/index',
                     array(
@@ -37,7 +39,8 @@ class Aplazame_Aplazame_Model_Config_Privatekey extends Mage_Adminhtml_Model_Sys
                         '_nosid' => true,
                     )
                 ),
-            ));
+                )
+            );
         } catch (Aplazame_Sdk_Api_ApiClientException $apiClientException) {
             $label = $this->getData('field_config/label');
             Mage::throwException($this->__($label . ' ' . $apiClientException->getMessage()));
@@ -55,8 +58,7 @@ class Aplazame_Aplazame_Model_Config_Privatekey extends Mage_Adminhtml_Model_Sys
             ->load($path, 'path')
             ->setValue($this->publicApiKey)
             ->setPath($path)
-            ->save()
-        ;
+            ->save();
 
         return parent::_afterSave();
     }

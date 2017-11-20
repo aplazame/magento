@@ -22,9 +22,11 @@ if (!empty($privateKey)) {
         )
     );
 
-    $response = $client->patch('/me', array(
+    $response = $client->patch(
+        '/me', array(
         'confirmation_url' => $confirmationUrl,
-    ));
+        )
+    );
 
     $publicKey = $response['public_api_key'];
 
@@ -33,14 +35,12 @@ if (!empty($privateKey)) {
         ->load($path, 'path')
         ->setValue($publicKey)
         ->setPath($path)
-        ->save()
-    ;
+        ->save();
 
     $path = 'payment/aplazame/refund_method_magento_native';
     $configData
         ->load($path, 'path')
         ->setValue(false)
         ->setPath($path)
-        ->save()
-    ;
+        ->save();
 }
