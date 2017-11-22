@@ -1,5 +1,5 @@
 <_>
-   <form_key>zbi4jAJByb0PIITE</form_key>
+   <form_key>um5OUnaqbVuvc7MR</form_key>
    <name>Aplazame_Aplazame</name>
    <channel>community</channel>
    <version_ids>
@@ -9,13 +9,10 @@
    <description>Aplazame, a consumer credit company, offers a payment system that can be used by online buyers to receive funding for their purchases.</description>
    <license>GPL</license>
    <license_uri/>
-   <version>1.0.0</version>
+   <version>1.0.1</version>
    <stability>stable</stability>
-   <notes>* Module Refactor:
-- Private API key validation
-- Add support for orders with status &quot;pending&quot;
-- Refund orders are now available through &quot;Order &gt; Invoices &gt; Credit Memo&quot;
-</notes>
+   <notes>- Adapt for pending / confirmation_required
+- SDK 0.2.2</notes>
    <authors>
       <name>
          <name>Aplazame</name>
@@ -44,7 +41,7 @@
             <max/>
          </max>
          <files>
-            <files>  </files>
+            <files>   </files>
          </files>
       </package>
       <extension>
@@ -116,4 +113,8 @@
          <ignore/>
       </ignore>
    </contents>
+   <page>1</page>
+   <limit>200</limit>
+   <folder/>
+   <package/>
 </_>
