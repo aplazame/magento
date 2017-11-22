@@ -64,26 +64,20 @@ final class Aplazame_Aplazame_Api_Confirm
         }
 
         switch ($payload['status']) {
-            case 'ok':
-                $payment->accept();
-                $order->save();
-
-                if ($payment->getIsFraudDetected()) {
-                    return self::ko();
+            case 'pending':
+                switch ($payload['status_reason']) {
+                    case 'confirmation_required':
+                        $payment->accept();
+                        $order->save();
+                        break;
                 }
-
-                return self::ok();
-            case 'ko':
-                $payment->deny();
-                $order->save();
-
-                if ($payment->getIsFraudDetected()) {
-                    return self::ko();
-                }
-
-                return self::ok();
-            default:
-                return Aplazame_Aplazame_ApiController::client_error('Unknown "status" ' . $payload['status']);
+                break;
         }
+
+        if ($payment->getIsFraudDetected()) {
+            return self::ko();
+        }
+
+        return self::ok();
     }
 }
