@@ -22,7 +22,11 @@ class Aplazame_Sdk_Serializer_JsonSerializer
             foreach (get_object_vars($value) as $nestedKey => $nestedValue) {
                 $value->{$nestedKey} = self::serializeValue($nestedValue);
             }
-        } elseif (is_array($value)) {
+
+            return $value;
+        }
+
+        if (is_array($value)) {
             foreach ($value as &$nestedValue) {
                 $nestedValue = self::serializeValue($nestedValue);
             }
