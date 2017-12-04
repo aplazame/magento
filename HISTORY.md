@@ -1,5 +1,12 @@
 ## Change Log
 
+#### [v1.0.3](https://github.com/aplazame/magento/tree/v1.0.3) (2017-12-04)
+
+[Full Changelog v1.0.3](https://github.com/aplazame/magento/compare/v1.0.2...v1.0.3)
+
+* [FIX] New order mail is not set
+* [ADD] Get access_token from query param if available
+
 #### [v1.0.2](https://github.com/aplazame/magento/tree/v1.0.2) (2017-11-30)
 
 [Full Changelog v1.0.2](https://github.com/aplazame/magento/compare/v1.0.1...v1.0.2)
