@@ -108,7 +108,7 @@ class Aplazame_Aplazame_ApiController extends Mage_Core_Controller_Front_Action
     {
         $privateKey = Mage::getStoreConfig('payment/aplazame/secret_api_key');
 
-        $authorization = $this->getHeaderAuthorization();
+        $authorization = $this->getAuthorizationFromRequest();
         if (!$authorization || empty($privateKey)) {
             return false;
         }
@@ -116,15 +116,53 @@ class Aplazame_Aplazame_ApiController extends Mage_Core_Controller_Front_Action
         return ($authorization === $privateKey);
     }
 
-    private function getHeaderAuthorization()
+    private function getAuthorizationFromRequest()
     {
-        $request = $this->getRequest();
-
-        $header = $request->getHeader('authorization');
-        if (!$header) {
-            return false;
+        $token = $this->getRequest()->getParam('access_token');
+        if ($token) {
+            return $token;
         }
 
-        return trim(str_replace('Bearer', '', $header));
+        if (function_exists('getallheaders')) {
+            $headers = getallheaders();
+        } else {
+            $headers = $this->getallheaders();
+        }
+        $headers = array_change_key_case($headers, CASE_LOWER);
+
+        if (isset($headers['authorization'])) {
+            return trim(str_replace('Bearer', '', $headers['authorization']));
+        }
+
+        return false;
+    }
+
+    private function getallheaders()
+    {
+        $headers = array();
+        $copy_server = array(
+            'CONTENT_TYPE'   => 'content-type',
+            'CONTENT_LENGTH' => 'content-length',
+            'CONTENT_MD5'    => 'content-md5',
+        );
+
+        foreach ($_SERVER as $name => $value) {
+            if (substr($name, 0, 5) === 'HTTP_') {
+                $name = substr($name, 5);
+                if (!isset($copy_server[$name]) || !isset($_SERVER[$name])) {
+                    $headers[str_replace(' ', '-', strtolower(str_replace('_', ' ', $name)))] = $value;
+                }
+            } elseif (isset($copy_server[$name])) {
+                $headers[$copy_server[$name]] = $value;
+            }
+        }
+
+        if (!isset($headers['authorization'])) {
+            if (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
+                $headers['authorization'] = $_SERVER['REDIRECT_HTTP_AUTHORIZATION'];
+            }
+        }
+
+        return $headers;
     }
 }

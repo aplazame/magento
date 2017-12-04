@@ -10,24 +10,6 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
         return Mage::getSingleton('checkout/session');
     }
 
-    protected function _getAccessToken()
-    {
-        $request = new Zend_Controller_Request_Http();
-        $authorization = $request->getHeader('authorization');
-
-        if ($authorization) {
-            $token = explode(' ', $authorization);
-            $token =$token[1];
-            if (isset($token) && is_string($token)) {
-                return $token;
-            }
-
-            Mage::throwException($this->__('Authentication header format is invalid.'));
-        }
-
-        Mage::throwException($this->__('Authentication header is absent.'));
-    }
-
     public function redirectAction()
     {
         $session = $this->_getCheckoutSession();
@@ -69,27 +51,19 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
 
     public function historyAction()
     {
-        $checkout_token = $this->getRequest()->getParam("checkout_token");
+        if (!$this->verifyAuthentication()) {
+            Mage::throwException($this->__("You don't have permissions."));
+        }
 
+        $checkout_token = $this->getRequest()->getParam("checkout_token");
         if (!$checkout_token) {
             Mage::throwException($this->__('History has no checkout token.'));
         }
 
         /** @var Mage_Sales_Model_Order $order */
         $order = Mage::getModel('sales/order')->loadByIncrementId($checkout_token);
-        $payment = $order->getPayment()->getMethodInstance();
-        if (!$payment instanceof Aplazame_Aplazame_Model_Payment) {
-            Mage::throwException($this->__('Unexpected payment method.'));
-        }
-
-        $code = Aplazame_Aplazame_Model_Payment::METHOD_CODE;
-
-        if (!$payment or $code !== $payment->getCode()) {
+        if (!$order) {
             Mage::throwException($this->__('Order not found.'));
-        }
-
-        if ($this->_getAccessToken() !== $payment->getConfigData('secret_api_key')) {
-            Mage::throwException($this->__('You don\'t have permissions.'));
         }
 
         /** @var Mage_Sales_Model_Order[] $history_collection */
@@ -101,5 +75,70 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
 
         $this->getResponse()->setHeader('Content-type', 'application/json');
         $this->getResponse()->setBody(json_encode(Aplazame_Sdk_Serializer_JsonSerializer::serializeValue($historyOrders)));
+    }
+
+    /**
+     * @return bool
+     */
+    private function verifyAuthentication()
+    {
+        $privateKey = Mage::getStoreConfig('payment/aplazame/secret_api_key');
+
+        $authorization = $this->getAuthorizationFromRequest();
+        if (!$authorization || empty($privateKey)) {
+            return false;
+        }
+
+        return ($authorization === $privateKey);
+    }
+
+    private function getAuthorizationFromRequest()
+    {
+        $token = $this->getRequest()->getParam('access_token');
+        if ($token) {
+            return $token;
+        }
+
+        if (function_exists('getallheaders')) {
+            $headers = getallheaders();
+        } else {
+            $headers = $this->getallheaders();
+        }
+        $headers = array_change_key_case($headers, CASE_LOWER);
+
+        if (isset($headers['authorization'])) {
+            return trim(str_replace('Bearer', '', $headers['authorization']));
+        }
+
+        return false;
+    }
+
+    private function getallheaders()
+    {
+        $headers = array();
+        $copy_server = array(
+            'CONTENT_TYPE'   => 'content-type',
+            'CONTENT_LENGTH' => 'content-length',
+            'CONTENT_MD5'    => 'content-md5',
+        );
+
+        foreach ($_SERVER as $name => $value) {
+            if (substr($name, 0, 5) === 'HTTP_') {
+                $name = substr($name, 5);
+                if (!isset($copy_server[$name]) || !isset($_SERVER[$name])) {
+                    $headers[str_replace(' ', '-', strtolower(str_replace('_', ' ', $name)))] = $value;
+                }
+            } elseif (isset($copy_server[$name])) {
+                $headers[$copy_server[$name]] = $value;
+            }
+        }
+
+        if (!isset($headers['authorization'])) {
+            if (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
+                $headers['authorization'] = $_SERVER['REDIRECT_HTTP_AUTHORIZATION'];
+            }
+        }
+
+        return $headers;
     }
 }
