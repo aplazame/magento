@@ -51,6 +51,11 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
             $payment->registerCaptureNotification($payment->getAmountAuthorized());
         }
 
+        $order = $payment->getOrder();
+        if (!$order->getEmailSent()) {
+            $order->queueNewOrderEmail();
+        }
+
         return true;
     }
 
