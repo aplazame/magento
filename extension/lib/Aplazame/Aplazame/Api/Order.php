@@ -16,8 +16,7 @@ final class Aplazame_Aplazame_Api_Order
             return Aplazame_Aplazame_ApiController::not_found();
         }
 
-        $orderId = Aplazame_Aplazame_BusinessModel_Order::getShopIdFromOrderId($params['order_id']);
-        $order = $this->orderModel->loadByIncrementId($orderId);
+        $order = $this->orderModel->loadByIncrementId($params['order_id']);
         if (!$order->getId()) {
             return Aplazame_Aplazame_ApiController::not_found();
         }

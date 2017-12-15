@@ -47,9 +47,9 @@ final class Aplazame_Aplazame_Api_Confirm
         if (!isset($payload['mid'])) {
             return Aplazame_Aplazame_ApiController::client_error('"mid" not provided');
         }
-        $orderId = Aplazame_Aplazame_BusinessModel_Order::getShopIdFromOrderId($payload['mid']);
+        $checkout_token = $payload['mid'];
 
-        $order = $this->orderModel->loadByIncrementId($orderId);
+        $order = $this->orderModel->loadByIncrementId($checkout_token);
         if (!$order->getId()) {
             return Aplazame_Aplazame_ApiController::not_found();
         }

@@ -60,9 +60,8 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
             Mage::throwException($this->__('History has no checkout token.'));
         }
 
-        $orderId = Aplazame_Aplazame_BusinessModel_Order::getShopIdFromOrderId($checkout_token);
         /** @var Mage_Sales_Model_Order $order */
-        $order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
+        $order = Mage::getModel('sales/order')->loadByIncrementId($checkout_token);
         if (!$order) {
             Mage::throwException($this->__('Order not found.'));
         }
