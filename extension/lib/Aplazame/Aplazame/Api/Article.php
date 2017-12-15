@@ -2,7 +2,7 @@
 
 final class Aplazame_Aplazame_Api_Article
 {
-    /** @var Mage_Catalog_Model_Product */
+    /** @var Mage_Catalog_Model_Resource_Product_Collection */
     private $productCollection;
 
     public function __construct(Mage_Catalog_Model_Resource_Product_Collection $productCollection)
