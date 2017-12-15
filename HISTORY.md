@@ -2,27 +2,19 @@
 
 #### [v1.0.3](https://github.com/aplazame/magento/tree/v1.0.3) (2017-12-04)
 
-[Full Changelog v1.0.3](https://github.com/aplazame/magento/compare/v1.0.2...v1.0.3)
-
 * [FIX] New order mail is not set
 * [ADD] Get access_token from query param if available
 
 #### [v1.0.2](https://github.com/aplazame/magento/tree/v1.0.2) (2017-11-30)
 
-[Full Changelog v1.0.2](https://github.com/aplazame/magento/compare/v1.0.1...v1.0.2)
-
 * Raise module version
 
 #### [v1.0.1](https://github.com/aplazame/magento/tree/v1.0.1) (2017-11-22)
-
-[Full Changelog v1.0.1](https://github.com/aplazame/magento/compare/v1.0.0...v1.0.1)
 
 * Adapt for pending / confirmation_required
 * SDK 0.2.2
 
 #### [v1.0.0](https://github.com/aplazame/magento/tree/v1.0.0) (2017-11-16)
-
-[Full Changelog v1.0.0](https://github.com/aplazame/magento/compare/v0.4.6...v1.0.0)
 
 * Module Refactor:
 - Private API key validation
@@ -31,45 +23,31 @@
 
 #### [v0.4.6](https://github.com/aplazame/magento/tree/v0.4.6) (2017-11-02)
 
-[Full Changelog v0.4.6](https://github.com/aplazame/magento/compare/v0.4.5...v0.4.6)
-
 * Minor changes for Magento Marketplace
 * Raise maximum PHP version up to 8.0.0
 
 #### [v0.4.5](https://github.com/aplazame/magento/tree/v0.4.5) (2017-09-26)
 
-[Full Changelog v0.4.5](https://github.com/aplazame/magento/compare/v0.4.4...v0.4.5)
-
 * Make confirm to hard fail.
 
 #### [v0.4.4](https://github.com/aplazame/magento/tree/v0.4.4) (2017-07-03)
-
-[Full Changelog v0.4.4](https://github.com/aplazame/magento/compare/v0.4.3...v0.4.4)
 
 * Fix for order ids with special characters
 
 #### [v0.4.3](https://github.com/aplazame/magento/tree/v0.4.3) (2017-02-22)
 
-[Full Changelog v0.4.3](https://github.com/aplazame/magento/compare/v0.4.2...v0.4.3)
-
 * Many improvements and fixes.
 
 #### [v0.4.2](https://github.com/aplazame/magento/tree/v0.4.2) (2016-12-23)
-
-[Full Changelog v0.4.2](https://github.com/aplazame/magento/compare/v0.4.1...v0.4.2)
 
 * [fixed] Improve visualization when product is already included in a campaign which applies to the whole catalog.
 * [changed] "Sandbox" is now named "Test Mode (Sandbox)"
 
 #### [v0.4.1](https://github.com/aplazame/magento/tree/v0.4.1) (2016-11-24)
 
-[Full Changelog v0.4.1](https://github.com/aplazame/magento/compare/v0.4.0...v0.4.1)
-
 * [fixed] Payment method label for narrow boxes
 
 #### [v0.4.0](https://github.com/aplazame/magento/tree/v0.4.0) (2016-11-23)
-
-[Full Changelog v0.4.0](https://github.com/aplazame/magento/compare/v0.3.3...v0.4.0)
 
 * [added] Global improvements.
 * [fixed] Compatibility with Magento CE 1.5.
@@ -77,38 +55,26 @@
 
 #### [v0.3.3](https://github.com/aplazame/magento/tree/v0.3.3) (2016-10-17)
 
-[Full Changelog v0.3.3](https://github.com/aplazame/magento/compare/v0.3.2...v0.3.3)
-
 * Prevent order cancellation after confirm.
 
 #### [v0.3.2](https://github.com/aplazame/magento/tree/v0.3.2) (2016-09-15)
-
-[Full Changelog v0.3.2](https://github.com/aplazame/magento/compare/v0.3.1...v0.3.2)
 
 * Order cancellation improvements.
 
 #### [v0.3.1](https://github.com/aplazame/magento/tree/v0.3.1) (2016-09-14)
 
-[Full Changelog v0.3.1](https://github.com/aplazame/magento/compare/v0.3.0...v0.3.1)
-
 * Fix for fatal error in checkout redirection.
 
 #### [v0.3.0](https://github.com/aplazame/magento/tree/v0.3.0) (2016-08-16)
-
-[Full Changelog v0.3.0](https://github.com/aplazame/magento/compare/v0.2.3...v0.3.0)
 
 * Aplazame Campaigns.
 
 #### [v0.2.3](https://github.com/aplazame/magento/tree/v0.2.3) (2016-07-27)
 
-[Full Changelog v0.2.3](https://github.com/aplazame/magento/compare/v0.2.2...v0.2.3)
-
 * Fix order authorization
 * Improve translations
 
 #### [v0.2.2](https://github.com/aplazame/magento/tree/v0.2.2) (2016-07-06)
-
-[Full Changelog v0.2.2](https://github.com/aplazame/magento/compare/v0.2.1...v0.2.2)
 
 * Widget cart
 * Refund observer
@@ -118,14 +84,10 @@
 
 #### [v0.2.1](https://github.com/aplazame/magento/tree/v0.2.1) (2015-12-2)
 
-[Full Changelog v0.2.1](https://github.com/aplazame/magento/compare/v0.2.0...v0.2.1)
-
 * Allow secure urls over ssl
 * Fix stock exception handling on cart recovered
 
 #### [v0.2.0](https://github.com/aplazame/magento/tree/v0.2.0) (2015-11-5)
-
-[Full Changelog v0.2.0](https://github.com/aplazame/magento/compare/v0.1.0...v0.2.0)
 
 * Aplazame Widget
 * Button css selector
