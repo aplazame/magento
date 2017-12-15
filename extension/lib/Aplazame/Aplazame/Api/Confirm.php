@@ -72,6 +72,10 @@ final class Aplazame_Aplazame_Api_Confirm
                         break;
                 }
                 break;
+            case 'ko':
+                $payment->deny();
+                $order->save();
+                break;
         }
 
         if ($payment->getIsFraudDetected()) {
