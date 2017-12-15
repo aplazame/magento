@@ -7,6 +7,8 @@ class Aplazame_Aplazame_BusinessModel_Checkout
 {
     public static function createFromOrder(Mage_Sales_Model_Order $order)
     {
+        $moduleConfig = Mage::getConfig()->getModuleConfig('Aplazame_Aplazame');
+
         $merchant = new stdClass();
         $merchant->cancel_url = Mage::getUrl('aplazame/payment/cancel', array('_secure' => true));
         $merchant->success_url = Mage::getUrl('checkout/onepage/success', array('_secure' => true));
@@ -23,9 +25,9 @@ class Aplazame_Aplazame_BusinessModel_Checkout
         $checkout->meta = array(
             "module" => array(
                 "name" => "aplazame:magento",
-                "version" => Mage::getVersion(),
+                "version" => (string) $moduleConfig->version[0],
             ),
-            "version" => Mage::getConfig()->getModuleConfig('Aplazame_Aplazame')->version,
+            "version" => Mage::getVersion(),
         );
 
         return $checkout;
