@@ -16,7 +16,7 @@ class Aplazame_Aplazame_BusinessModel_Article
         $aArticle->id = $productId;
         $aArticle->name = $orderItem->getName();
         $aArticle->url = $product->getProductUrl();
-        $aArticle->image_url = $product->getImageUrl();
+        $aArticle->image_url = self::getProductImage($product);
         $aArticle->quantity = intval($orderItem->getQtyOrdered());
         $aArticle->price = Aplazame_Sdk_Serializer_Decimal::fromFloat($orderItem->getPrice() + $discounts);
         $aArticle->description = substr($product->getDescription(), 0, 255);
@@ -24,6 +24,14 @@ class Aplazame_Aplazame_BusinessModel_Article
         $aArticle->discount = Aplazame_Sdk_Serializer_Decimal::fromFloat($discounts);
 
         return $aArticle;
+    }
+
+    public static function getProductImage(Mage_Catalog_Model_Product $product)
+    {
+        /** @var Mage_Catalog_Helper_Image $imageHelper */
+        $imageHelper = Mage::helper('catalog/image');
+
+        return (string) $imageHelper->init($product, 'image');
     }
 
     private static function getProductTaxRate(Mage_Catalog_Model_Product $product)

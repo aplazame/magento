@@ -82,7 +82,7 @@ class Aplazame_Aplazame_ApiController extends Mage_Core_Controller_Front_Action
 
         switch ($path) {
             case '/article/':
-                $controller = new Aplazame_Aplazame_Api_Article(Mage::getModel('catalog/product'));
+                $controller = new Aplazame_Aplazame_Api_Article(Mage::getResourceModel('catalog/product_collection'));
 
                 return $controller->articles($queryArguments);
             case '/confirm/':
