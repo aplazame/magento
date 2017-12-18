@@ -104,6 +104,7 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
         } else {
             $headers = $this->getallheaders();
         }
+
         $headers = array_change_key_case($headers, CASE_LOWER);
 
         if (isset($headers['authorization'])) {
