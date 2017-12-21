@@ -123,14 +123,7 @@ class Aplazame_Aplazame_ApiController extends Mage_Core_Controller_Front_Action
             return $token;
         }
 
-        if (function_exists('getallheaders')) {
-            $headers = getallheaders();
-        } else {
-            $headers = $this->getallheaders();
-        }
-
-        $headers = array_change_key_case($headers, CASE_LOWER);
-
+        $headers = array_change_key_case($this->getallheaders(), CASE_LOWER);
         if (isset($headers['authorization'])) {
             return trim(str_replace('Bearer', '', $headers['authorization']));
         }
@@ -140,6 +133,10 @@ class Aplazame_Aplazame_ApiController extends Mage_Core_Controller_Front_Action
 
     private function getallheaders()
     {
+        if (function_exists('getallheaders')) {
+            return getallheaders();
+        }
+
         $headers = array();
         $copy_server = array(
             'CONTENT_TYPE'   => 'content-type',
