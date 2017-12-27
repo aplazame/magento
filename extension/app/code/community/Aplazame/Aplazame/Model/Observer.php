@@ -61,6 +61,6 @@ class Aplazame_Aplazame_Model_Observer extends Mage_Core_Model_Abstract
 
     private function isMagentoNativeRefundMethodEnable()
     {
-        return (bool) Mage::getStoreConfig('refund_method_magento_native');
+        return (bool) Mage::getStoreConfig('payment/aplazame/refund_method_magento_native');
     }
 }
