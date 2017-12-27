@@ -1,5 +1,9 @@
 ## Change Log
 
+#### [v1.0.5](https://github.com/aplazame/magento/tree/v1.0.5) (2017-12-27)
+
+* [FIX] Legacy refund does not honor Magento native setting.
+
 #### [v1.0.4](https://github.com/aplazame/magento/tree/v1.0.4) (2017-12-15)
 
 * [FIX] Order cannot be automatically cancelled
