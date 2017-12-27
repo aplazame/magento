@@ -5,7 +5,7 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
     /**
      * @return Mage_Checkout_Model_Session
      */
-    private function _getCheckoutSession()
+    protected function _getCheckoutSession()
     {
         return Mage::getSingleton('checkout/session');
     }
@@ -55,23 +55,23 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
             Mage::throwException($this->__("You don't have permissions."));
         }
 
-        $checkout_token = $this->getRequest()->getParam("checkout_token");
-        if (!$checkout_token) {
+        $checkoutToken = $this->getRequest()->getParam("checkout_token");
+        if (!$checkoutToken) {
             Mage::throwException($this->__('History has no checkout token.'));
         }
 
         /** @var Mage_Sales_Model_Order $order */
-        $order = Mage::getModel('sales/order')->loadByIncrementId($checkout_token);
+        $order = Mage::getModel('sales/order')->loadByIncrementId($checkoutToken);
         if (!$order) {
             Mage::throwException($this->__('Order not found.'));
         }
 
-        /** @var Mage_Sales_Model_Order[] $history_collection */
-        $history_collection = Mage::getModel('sales/order')
+        /** @var Mage_Sales_Model_Order[] $historyCollection */
+        $historyCollection = Mage::getModel('sales/order')
             ->getCollection()
             ->addAttributeToFilter('customer_id', array('like'=> $order->getCustomerId()));
 
-        $historyOrders = array_map(array('Aplazame_Aplazame_Api_BusinessModel_HistoricalOrder', 'createFromOrder'), $history_collection);
+        $historyOrders = array_map(array('Aplazame_Aplazame_Api_BusinessModel_HistoricalOrder', 'createFromOrder'), $historyCollection);
 
         $this->getResponse()->setHeader('Content-type', 'application/json');
         $this->getResponse()->setBody(json_encode(Aplazame_Sdk_Serializer_JsonSerializer::serializeValue($historyOrders)));
@@ -80,7 +80,7 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
     /**
      * @return bool
      */
-    private function verifyAuthentication()
+    protected function verifyAuthentication()
     {
         $privateKey = Mage::getStoreConfig('payment/aplazame/secret_api_key');
 
@@ -92,54 +92,13 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
         return ($authorization === $privateKey);
     }
 
-    private function getAuthorizationFromRequest()
+    protected function getAuthorizationFromRequest()
     {
         $token = $this->getRequest()->getParam('access_token');
         if ($token) {
             return $token;
         }
 
-        if (function_exists('getallheaders')) {
-            $headers = getallheaders();
-        } else {
-            $headers = $this->getallheaders();
-        }
-
-        $headers = array_change_key_case($headers, CASE_LOWER);
-
-        if (isset($headers['authorization'])) {
-            return trim(str_replace('Bearer', '', $headers['authorization']));
-        }
-
         return false;
-    }
-
-    private function getallheaders()
-    {
-        $headers = array();
-        $copy_server = array(
-            'CONTENT_TYPE'   => 'content-type',
-            'CONTENT_LENGTH' => 'content-length',
-            'CONTENT_MD5'    => 'content-md5',
-        );
-
-        foreach ($_SERVER as $name => $value) {
-            if (substr($name, 0, 5) === 'HTTP_') {
-                $name = substr($name, 5);
-                if (!isset($copy_server[$name]) || !isset($_SERVER[$name])) {
-                    $headers[str_replace(' ', '-', strtolower(str_replace('_', ' ', $name)))] = $value;
-                }
-            } elseif (isset($copy_server[$name])) {
-                $headers[$copy_server[$name]] = $value;
-            }
-        }
-
-        if (!isset($headers['authorization'])) {
-            if (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
-                $headers['authorization'] = $_SERVER['REDIRECT_HTTP_AUTHORIZATION'];
-            }
-        }
-
-        return $headers;
     }
 }

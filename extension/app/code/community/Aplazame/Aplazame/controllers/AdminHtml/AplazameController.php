@@ -3,13 +3,13 @@
 class Aplazame_Aplazame_AdminHtml_AplazameController extends Mage_Adminhtml_Controller_Action
 {
     /** @var Aplazame_Aplazame_Model_Api_Client */
-    private $aplazameClient;
+    protected $_aplazameClient;
 
     public function __construct(Zend_Controller_Request_Abstract $request, Zend_Controller_Response_Abstract $response, array $invokeArgs = array())
     {
         parent::__construct($request, $response, $invokeArgs);
 
-        $this->aplazameClient = Mage::getModel('aplazame/api_client');
+        $this->_aplazameClient = Mage::getModel('aplazame/api_client');
     }
 
     public function proxyAction()
@@ -18,7 +18,7 @@ class Aplazame_Aplazame_AdminHtml_AplazameController extends Mage_Adminhtml_Cont
 
         $data = json_decode($request->getParam('data'));
 
-        $aplazameResponse = $this->aplazameClient->apiClient->request(
+        $aplazameResponse = $this->_aplazameClient->apiClient->request(
             $request->getParam('method'),
             $request->getParam('path'),
             $data

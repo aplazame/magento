@@ -53,8 +53,7 @@ class Aplazame_Aplazame_Helper_Cart extends Mage_Core_Helper_Abstract
                     $session->addError($e->getMessage());
                 }
 
-                if($action)
-                {
+                if ($action) {
                     $action->setRedirectWithCookieCheck('checkout/cart');
                 }
             } catch (Exception $e) {
@@ -62,8 +61,7 @@ class Aplazame_Aplazame_Helper_Cart extends Mage_Core_Helper_Abstract
                 $session = Mage::getSingleton('checkout/session');
                 $session->addNotice($e->getMessage());
                 $session->addException($e, Mage::helper('checkout')->__('Cannot add the item to shopping cart.'));
-                if($action)
-                {
+                if ($action) {
                     $action->setRedirectWithCookieCheck('checkout/cart');
                 }
             }

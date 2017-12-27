@@ -17,7 +17,7 @@ class Aplazame_Aplazame_Block_Checkout_Onepage_Shipping extends Mage_Checkout_Bl
      */
     public function getAddress()
     {
-        if (is_null($this->_address)) {
+        if (null === $this->_address) {
             $this->_address = $this->getQuote()->getShippingAddress();
         }
 

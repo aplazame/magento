@@ -14,8 +14,7 @@ class Aplazame_Aplazame_Block_Checkout_Cart_Widget Extends Mage_Core_Block_Templ
      */
     public function getQuote()
     {
-        if(!$this->_quote)
-        {
+        if (!$this->_quote) {
             $this->_quote = $quote = Mage::getSingleton('checkout/session')->getQuote();
         }
 
@@ -28,8 +27,7 @@ class Aplazame_Aplazame_Block_Checkout_Cart_Widget Extends Mage_Core_Block_Templ
      */
     public function getTotal()
     {
-        if($this->getQuote() instanceof Mage_Sales_Model_Quote)
-        {
+        if ($this->getQuote() instanceof Mage_Sales_Model_Quote) {
             $total = $this->getQuote()->getGrandTotal();
         } else {
             $total = 0;
@@ -38,19 +36,13 @@ class Aplazame_Aplazame_Block_Checkout_Cart_Widget Extends Mage_Core_Block_Templ
         return $total;
     }
 
-    /**
-     * Solo renderizamos si el modulo esta activo en la tienda actual
-     *
-     * @return string
-     */
     public function _toHtml()
     {
-        if(Mage::helper('aplazame')->isEnabled())
-        {
-            return parent::_toHtml();
+        if (!Mage::helper('aplazame')->isEnabled()) {
+            return '';
         }
 
-        return '';
+        return parent::_toHtml();
     }
 
 }

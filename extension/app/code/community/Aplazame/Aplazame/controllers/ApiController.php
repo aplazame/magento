@@ -36,14 +36,14 @@ class Aplazame_Aplazame_ApiController extends Mage_Core_Controller_Front_Action
         );
     }
 
-    public static function collection($page, $page_size, array $elements)
+    public static function collection($page, $pageSize, array $elements)
     {
         return array(
             'status_code' => 200,
             'payload' => array(
                 'query' => array(
                     'page' => $page,
-                    'page_size' => $page_size,
+                    'page_size' => $pageSize,
                 ),
                 'elements' => $elements,
             ),
@@ -104,7 +104,7 @@ class Aplazame_Aplazame_ApiController extends Mage_Core_Controller_Front_Action
     /**
      * @return bool
      */
-    private function verifyAuthentication()
+    protected function verifyAuthentication()
     {
         $privateKey = Mage::getStoreConfig('payment/aplazame/secret_api_key');
 
@@ -116,51 +116,13 @@ class Aplazame_Aplazame_ApiController extends Mage_Core_Controller_Front_Action
         return ($authorization === $privateKey);
     }
 
-    private function getAuthorizationFromRequest()
+    protected function getAuthorizationFromRequest()
     {
         $token = $this->getRequest()->getParam('access_token');
         if ($token) {
             return $token;
         }
 
-        $headers = array_change_key_case($this->getallheaders(), CASE_LOWER);
-        if (isset($headers['authorization'])) {
-            return trim(str_replace('Bearer', '', $headers['authorization']));
-        }
-
         return false;
-    }
-
-    private function getallheaders()
-    {
-        if (function_exists('getallheaders')) {
-            return getallheaders();
-        }
-
-        $headers = array();
-        $copy_server = array(
-            'CONTENT_TYPE'   => 'content-type',
-            'CONTENT_LENGTH' => 'content-length',
-            'CONTENT_MD5'    => 'content-md5',
-        );
-
-        foreach ($_SERVER as $name => $value) {
-            if (substr($name, 0, 5) === 'HTTP_') {
-                $name = substr($name, 5);
-                if (!isset($copy_server[$name]) || !isset($_SERVER[$name])) {
-                    $headers[str_replace(' ', '-', strtolower(str_replace('_', ' ', $name)))] = $value;
-                }
-            } elseif (isset($copy_server[$name])) {
-                $headers[$copy_server[$name]] = $value;
-            }
-        }
-
-        if (!isset($headers['authorization'])) {
-            if (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
-                $headers['authorization'] = $_SERVER['REDIRECT_HTTP_AUTHORIZATION'];
-            }
-        }
-
-        return $headers;
     }
 }

@@ -17,7 +17,7 @@ class Aplazame_Aplazame_Block_Checkout_Onepage_Billing extends Mage_Checkout_Blo
      */
     public function getAddress()
     {
-        if (is_null($this->_address)) {
+        if (null === $this->_address) {
             $this->_address = $this->getQuote()->getBillingAddress();
         }
 

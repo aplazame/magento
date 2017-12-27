@@ -5,18 +5,18 @@ class Aplazame_Aplazame_Model_Config_Privatekey extends Mage_Adminhtml_Model_Sys
     /**
      * @var Mage_Core_Model_Config_Data
      */
-    private $configData;
+    protected $_configData;
 
     /**
      * @var string
      */
-    private $publicApiKey;
+    protected $_publicApiKey;
 
     public function _construct() 
     {
         parent::_construct();
 
-        $this->configData = Mage::getModel('core/config_data');
+        $this->_configData = Mage::getModel('core/config_data');
     }
 
     public function _beforeSave()
@@ -46,7 +46,7 @@ class Aplazame_Aplazame_Model_Config_Privatekey extends Mage_Adminhtml_Model_Sys
             Mage::throwException($this->__($label . ' ' . $apiClientException->getMessage()));
         }
 
-        $this->publicApiKey = $response['public_api_key'];
+        $this->_publicApiKey = $response['public_api_key'];
 
         return parent::_beforeSave();
     }
@@ -54,9 +54,9 @@ class Aplazame_Aplazame_Model_Config_Privatekey extends Mage_Adminhtml_Model_Sys
     public function _afterSave()
     {
         $path = 'payment/aplazame/public_api_key';
-        $this->configData
+        $this->_configData
             ->load($path, 'path')
-            ->setValue($this->publicApiKey)
+            ->setValue($this->_publicApiKey)
             ->setPath($path)
             ->save();
 
