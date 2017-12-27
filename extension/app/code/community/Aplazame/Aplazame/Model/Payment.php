@@ -111,10 +111,6 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
      */
     public function refund(Varien_Object $payment, $amount)
     {
-        if (!((bool) $this->getConfigData('refund_method_magento_native'))) {
-            return $this;
-        }
-
         $order = $payment->getOrder();
 
         /** @var Aplazame_Aplazame_Model_Api_Client $client */
@@ -126,6 +122,11 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
         }
 
         return $this;
+    }
+
+    public function isMagentoNativeRefundMethodEnable()
+    {
+        return (bool) $this->getConfigData('refund_method_magento_native');
     }
 
     /**
