@@ -19,17 +19,6 @@
     ],
     "homepage": "https://aplazame.com/",
     "license": "GPL-3.0",
-    "authors": [
-        {  
-            "name": "calvin",
-            "email": "dani@aplazame.com",
-            "homepage": "https://aplazame.com"
-        },
-        {  
-            "name": "Oscar Reales",
-            "email": "oreales@gmail.com"
-        }
-    ],
     "require": {  
         "php": ">=5.2"
     },
