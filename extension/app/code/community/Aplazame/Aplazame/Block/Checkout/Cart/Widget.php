@@ -38,7 +38,9 @@ class Aplazame_Aplazame_Block_Checkout_Cart_Widget Extends Mage_Core_Block_Templ
 
     public function _toHtml()
     {
-        if (!Mage::helper('aplazame')->isEnabled()) {
+        /** @var Aplazame_Aplazame_Helper_Data $aplazame */
+        $aplazame = Mage::helper('aplazame');
+        if (!$aplazame->isCartWidgetEnabled()) {
             return '';
         }
 

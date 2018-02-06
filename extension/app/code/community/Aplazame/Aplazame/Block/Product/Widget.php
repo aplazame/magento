@@ -38,7 +38,9 @@ class Aplazame_Aplazame_Block_Product_Widget Extends Mage_Core_Block_Template
 
     public function _toHtml()
     {
-        if (!Mage::helper('aplazame')->isEnabled()) {
+        /** @var Aplazame_Aplazame_Helper_Data $aplazame */
+        $aplazame = Mage::helper('aplazame');
+        if (!$aplazame->isProductWidgetEnabled()) {
             return '';
         }
 
