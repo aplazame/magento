@@ -1,6 +1,8 @@
 "Test Mode (Sandbox)","Modo de Pruebas (Sandbox)"
 "Private API Key","Clave API privada"
 "Public API Key","Clave API pública"
+"Show widget on product page","Mostrar el widget en la página del producto"
+"Show widget on cart page","Mostrar el widget en la página del carrito"
 "Aplazame Button CSS Selector","Selector CSS del botón de Aplazame"
 "Automatic invoice generation","Facturar automáticamente"
 "Applicable only if the payment was successful.","Genera factura si el pago es correcto."
