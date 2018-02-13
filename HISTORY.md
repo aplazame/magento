@@ -1,5 +1,10 @@
 ## Change Log
 
+#### [v1.1.0](https://github.com/aplazame/magento/tree/v1.1.0) (2018-02-03)
+
+* [ADD] Added a new setting for toggle the rendering of Aplazame's widget on product page.
+* [ADD] Added a new setting for toggle the rendering of Aplazame's widget on cart page.
+
 #### [v1.0.5](https://github.com/aplazame/magento/tree/v1.0.5) (2017-12-27)
 
 * [FIX] Legacy refund does not honor Magento native setting.

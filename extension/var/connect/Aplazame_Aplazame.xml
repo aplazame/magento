@@ -1,5 +1,5 @@
 <_>
-   <form_key>NHico9fNtyyKJdIq</form_key>
+   <form_key>1Efq7LjwDqsYVssd</form_key>
    <name>Aplazame_Aplazame</name>
    <channel>community</channel>
    <version_ids>
@@ -9,9 +9,10 @@
    <description>Aplazame, a consumer credit company, offers a payment system that can be used by online buyers to receive funding for their purchases.</description>
    <license>GPL</license>
    <license_uri/>
-   <version>1.0.5</version>
+   <version>1.1.0</version>
    <stability>stable</stability>
-   <notes>* [FIX] Legacy refund does not honor Magento native setting.
+   <notes>* [ADD] Added a new setting for toggle the rendering of Aplazame&apos;s widget on product page.
+* [ADD] Added a new setting for toggle the rendering of Aplazame&apos;s widget on cart page.
 </notes>
    <authors>
       <name>
