@@ -1,5 +1,9 @@
 ## Change Log
 
+#### [v1.1.1](https://github.com/aplazame/magento/tree/v1.1.1) (2018-02-26)
+
+* [FIX] Improve generation of confirmation_url
+
 #### [v1.1.0](https://github.com/aplazame/magento/tree/v1.1.0) (2018-02-03)
 
 * [ADD] Added a new setting for toggle the rendering of Aplazame's widget on product page.
