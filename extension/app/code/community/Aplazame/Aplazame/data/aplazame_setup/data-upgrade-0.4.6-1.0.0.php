@@ -6,28 +6,7 @@ if (!empty($privateKey)) {
     $configData = Mage::getModel('core/config_data');
     $sandbox = Mage::getStoreConfig('payment/aplazame/sandbox');
 
-    $client = new Aplazame_Sdk_Api_Client(
-        getenv('APLAZAME_API_BASE_URI') ? getenv('APLAZAME_API_BASE_URI') : 'https://api.aplazame.com',
-        (Mage::getStoreConfig('payment/aplazame/sandbox') ? Aplazame_Sdk_Api_Client::ENVIRONMENT_SANDBOX : Aplazame_Sdk_Api_Client::ENVIRONMENT_PRODUCTION),
-        $privateKey
-    );
-
-    $confirmationUrl = Mage::getUrl(
-        'aplazame/api/index',
-        array(
-            '_query' => array(
-                'path' => '/confirm/',
-            ),
-            '_nosid' => true,
-        )
-    );
-
-    $response = $client->patch(
-        '/me', array(
-        'confirmation_url' => $confirmationUrl,
-        )
-    );
-
+    $response = Aplazame_Aplazame_Model_Config_Privatekey::setAplazameMerchantParams($privateKey);
     $publicKey = $response['public_api_key'];
 
     $path = 'payment/aplazame/public_api_key';
