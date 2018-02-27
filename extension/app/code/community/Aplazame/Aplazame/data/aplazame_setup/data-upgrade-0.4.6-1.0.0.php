@@ -4,7 +4,6 @@ $privateKey = Mage::getStoreConfig('payment/aplazame/secret_api_key');
 if (!empty($privateKey)) {
     /** @var Mage_Core_Model_Config_Data $configData */
     $configData = Mage::getModel('core/config_data');
-    $sandbox = Mage::getStoreConfig('payment/aplazame/sandbox');
 
     $response = Aplazame_Aplazame_Model_Config_Privatekey::setAplazameMerchantParams($privateKey);
     $publicKey = $response['public_api_key'];
