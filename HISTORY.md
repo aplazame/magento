@@ -1,5 +1,9 @@
 ## Change Log
 
+#### [v1.1.2](https://github.com/aplazame/magento/tree/v1.1.2) (2018-02-27)
+
+* [FIX] Incompatibility with PHP 5.3
+
 #### [v1.1.1](https://github.com/aplazame/magento/tree/v1.1.1) (2018-02-26)
 
 * [FIX] Improve generation of confirmation_url
