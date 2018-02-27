@@ -1,5 +1,9 @@
 ## Change Log
 
+#### [v1.1.3](https://github.com/aplazame/magento/tree/v1.1.3) (2018-02-27)
+
+* [FIX] Incompatibility with Magento <1.9.1.0
+
 #### [v1.1.2](https://github.com/aplazame/magento/tree/v1.1.2) (2018-02-27)
 
 * [FIX] Incompatibility with PHP 5.3
