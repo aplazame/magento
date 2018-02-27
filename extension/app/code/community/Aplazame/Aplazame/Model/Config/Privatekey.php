@@ -10,15 +10,20 @@ class Aplazame_Aplazame_Model_Config_Privatekey extends Mage_Adminhtml_Model_Sys
             $privateKey
         );
 
-        $response = $client->patch('/me', array(
-            'confirmation_url' => Mage::getUrl('aplazame/api/index', array(
-                '_query' => array(
-                    'path' => '/confirm/',
+        $response = $client->patch(
+            '/me',
+            array(
+                'confirmation_url' => Mage::getUrl(
+                    'aplazame/api/index', array(
+                        '_query' => array(
+                            'path' => '/confirm/',
+                        ),
+                        '_nosid' => true,
+                        '_store' => Mage::app()->getDefaultStoreView(),
+                    )
                 ),
-                '_nosid' => true,
-                '_store' => Mage::app()->getDefaultStoreView(),
-            )),
-        ));
+            )
+        );
 
         return $response;
     }
