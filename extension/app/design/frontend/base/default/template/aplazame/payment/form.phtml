@@ -2,6 +2,12 @@
 /** @var Aplazame_Aplazame_Block_Payment_Form $this */
 
 $quote = $this->getQuote();
+
+$buttonParams = array(
+    'selector' => Mage::getStoreConfig('payment/aplazame/button'),
+    'amount' => Aplazame_Sdk_Serializer_Decimal::fromFloat($quote->getGrandTotal())->jsonSerialize(),
+    'currency' => $quote->getQuoteCurrencyCode(),
+);
 ?>
 
 <?php if ($instructions = $this->getInstructions()): ?>
@@ -15,9 +21,5 @@ $quote = $this->getQuote();
 <?php endif; ?>
 
 <script>
-aplazame.button({
-  selector: "<?php echo Mage::getStoreConfig('payment/aplazame/button') ?>",
-  amount: <?php echo Aplazame_Sdk_Serializer_Decimal::fromFloat($quote->getGrandTotal())->jsonSerialize() ?>,
-  currency: "<?php echo $quote->getQuoteCurrencyCode() ?>"
-});
+aplazame.button(<?php echo json_encode($buttonParams) ?>);
 </script>
