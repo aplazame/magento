@@ -58,6 +58,7 @@ class Aplazame_Sdk_Api_ApiRequest extends Aplazame_Sdk_Http_Request
                 'Magento/' . Mage::getVersion(),
                 'AplazameMagento/' . Mage::getConfig()->getModuleConfig('Aplazame_Aplazame')->version,
             ),
+            'Accept-Language' => array('es'),
         );
 
         if ($data && !is_string($data)) {
