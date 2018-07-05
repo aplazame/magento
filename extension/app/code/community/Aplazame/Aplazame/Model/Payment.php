@@ -144,6 +144,27 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
         return Mage::getUrl('aplazame/payment/redirect', array('_secure' => true));
     }
 
+    /**
+     * @return array
+     *
+     * @throws Exception
+     */
+    public function createCheckoutOnAplazame()
+    {
+        $orderIncrementId = $this->getCheckout()->getLastRealOrderId();
+
+        /** @var Mage_Sales_Model_Order $order */
+        $order = Mage::getModel('sales/order')->loadByIncrementId($orderIncrementId);
+
+        $checkout = Aplazame_Aplazame_BusinessModel_Checkout::createFromOrder($order);
+
+        /** @var Aplazame_Aplazame_Model_Api_Client $client */
+        $client = Mage::getModel('aplazame/api_client');
+        $response = $client->create_checkout(Aplazame_Sdk_Serializer_JsonSerializer::serializeValue($checkout));
+
+        return $response;
+    }
+
     public function getCheckoutSerializer()
     {
         $orderIncrementId = $this->getCheckout()->getLastRealOrderId();

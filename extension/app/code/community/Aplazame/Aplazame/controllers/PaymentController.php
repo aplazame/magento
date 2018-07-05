@@ -16,11 +16,17 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
 
         if (!$session->getLastRealOrderId()) {
             $session->addError($this->__('Your order has expired.'));
-            $this->_redirect('checkout/cart');
+            $this->_redirect('aplazame/payment/cart');
             return;
         }
 
-        $this->getResponse()->setBody($this->getLayout()->createBlock('aplazame/payment_redirect')->toHtml());
+        try {
+            $this->getResponse()->setBody($this->getLayout()->createBlock('aplazame/payment_redirect')->toHtml());
+        } catch (Aplazame_Sdk_Api_ApiClientException $e) {
+            $session->addError('Aplazame Error: ' . $e->getMessage());
+            $this->_redirect('aplazame/payment/cart');
+            return;
+        }
 
         $session->unsQuoteId();
         $session->unsRedirectUrl();
