@@ -14,6 +14,15 @@ class Aplazame_Aplazame_BusinessModel_Checkout
         $merchant->success_url = Mage::getUrl('checkout/onepage/success', array('_secure' => true));
         $merchant->pending_url = $merchant->success_url;
         $merchant->checkout_url = Mage::getUrl('aplazame/payment/cart');
+        $merchant->notification_url = Mage::getUrl(
+            'aplazame/api/index', array(
+                '_query' => array(
+                    'path' => '/confirm/',
+                ),
+                '_nosid' => true,
+                '_store' => Mage::app()->getDefaultStoreView(),
+            )
+        );
 
         $checkout = new self();
         $checkout->toc = true;
