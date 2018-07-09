@@ -67,14 +67,14 @@ final class Aplazame_Aplazame_Api_Confirm
             case 'pending':
                 switch ($payload['status_reason']) {
                     case 'confirmation_required':
-                        $payment->accept();
-                        $order->save();
+                        $cart = $this->getCartHelper();
+                        $cart->approveOrder($order);
                         break;
                 }
                 break;
             case 'ko':
-                $payment->deny();
-                $order->save();
+                $cart = $this->getCartHelper();
+                $cart->cancelOrder($order);
                 break;
         }
 
@@ -83,5 +83,13 @@ final class Aplazame_Aplazame_Api_Confirm
         }
 
         return self::ok();
+    }
+
+    /**
+     * @return Aplazame_Aplazame_Helper_Cart
+     */
+    private function getCartHelper()
+    {
+        return Mage::helper('aplazame/cart');
     }
 }
