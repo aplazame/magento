@@ -1,5 +1,9 @@
 ## Change Log
 
+#### [v1.1.5](https://github.com/aplazame/magento/tree/v1.1.5) (2018-07-09)
+
+* [FIX] Improve cart restoration
+
 #### [v1.1.4](https://github.com/aplazame/magento/tree/v1.1.4) (2018-05-16)
 
 * [FIX] Rare issue with long article descriptions and multibyte characters
