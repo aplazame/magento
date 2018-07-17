@@ -10,21 +10,19 @@ final class Aplazame_Aplazame_Api_Confirm
 
     private static function ok()
     {
-        return array(
-            'status_code' => 200,
-            'payload' => array(
+        return Aplazame_Aplazame_ApiController::success(
+            array(
                 'status' => 'ok',
-            ),
+            )
         );
     }
 
     private static function ko()
     {
-        return array(
-            'status_code' => 200,
-            'payload' => array(
+        return Aplazame_Aplazame_ApiController::success(
+            array(
                 'status' => 'ko',
-            ),
+            )
         );
     }
 

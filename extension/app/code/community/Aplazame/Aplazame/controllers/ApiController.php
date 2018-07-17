@@ -36,17 +36,24 @@ class Aplazame_Aplazame_ApiController extends Mage_Core_Controller_Front_Action
         );
     }
 
-    public static function collection($page, $pageSize, array $elements)
+    public static function success(array $payload)
     {
         return array(
             'status_code' => 200,
-            'payload' => array(
+            'payload' => $payload,
+        );
+    }
+
+    public static function collection($page, $page_size, array $elements)
+    {
+        return self::success(
+            array(
                 'query' => array(
                     'page' => $page,
-                    'page_size' => $pageSize,
+                    'page_size' => $page_size,
                 ),
                 'elements' => $elements,
-            ),
+            )
         );
     }
 
@@ -54,11 +61,10 @@ class Aplazame_Aplazame_ApiController extends Mage_Core_Controller_Front_Action
     {
         $request = $this->getRequest();
         $path = $request->getParam('path', '');
-        $pathArguments = json_decode($request->getParam('path_arguments', '[]'), true);
-        $queryArguments = json_decode($request->getParam('query_arguments', '[]'), true);
+        $queryArguments = $request->getParams();
         $payload = json_decode($request->getRawBody(), true);
 
-        $result = $this->route($path, $pathArguments, $queryArguments, $payload);
+        $result = $this->route($path, $queryArguments, $payload);
 
         $response = $this->getResponse();
         $response->setHttpResponseCode($result['status_code']);
@@ -68,13 +74,12 @@ class Aplazame_Aplazame_ApiController extends Mage_Core_Controller_Front_Action
 
     /**
      * @param string $path
-     * @param array $pathArguments
      * @param array $queryArguments
      * @param null|array $payload
      *
      * @return array
      */
-    public function route($path, array $pathArguments, array $queryArguments, $payload)
+    public function route($path, array $queryArguments, $payload)
     {
         if (!$this->verifyAuthentication()) {
             return self::forbidden();
@@ -95,7 +100,7 @@ class Aplazame_Aplazame_ApiController extends Mage_Core_Controller_Front_Action
             case '/order/{order_id}/history/':
                 $controller = new Aplazame_Aplazame_Api_Order(Mage::getModel('sales/order'));
 
-                return $controller->history($pathArguments, $queryArguments);
+                return $controller->history($queryArguments);
             default:
                 return self::not_found();
         }
