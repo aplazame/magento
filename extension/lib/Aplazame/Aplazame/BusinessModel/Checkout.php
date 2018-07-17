@@ -23,6 +23,15 @@ class Aplazame_Aplazame_BusinessModel_Checkout
                 '_store' => Mage::app()->getDefaultStoreView(),
             )
         );
+        $merchant->history_url = Mage::getUrl(
+            'aplazame/api/index', array(
+                '_query' => array(
+                    'path' => '/order/{order_id}/history/',
+                ),
+                '_nosid' => true,
+                '_store' => Mage::app()->getDefaultStoreView(),
+            )
+        );
 
         $checkout = new self();
         $checkout->toc = true;
