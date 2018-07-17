@@ -16,7 +16,18 @@ class Aplazame_Aplazame_Helper_Cart extends Mage_Core_Helper_Abstract
 
     public function cancelOrder(Mage_Sales_Model_Order $order)
     {
-        $order->getPayment()->deny();
+        $payment = $order->getPayment();
+
+        $payment->deny();
+
+        /** @var Aplazame_Aplazame_Model_Payment $aplazame */
+        $aplazame= Mage::getModel('aplazame/payment');
+        try {
+            $aplazame->cancel($payment);
+        } catch (Exception $e) {
+            // do nothing
+        }
+
         $order->save();
     }
 
