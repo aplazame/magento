@@ -1,0 +1,34 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/php
+    working_directory: ~/aplazame
+    steps:
+      - run: sudo docker-php-ext-install gettext
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "composer.json" }}
+          - v1-dependencies-
+
+      - run: composer install -n --prefer-dist
+
+      - save_cache:
+          paths:
+            - ./vendor
+          key: v1-dependencies-{{ checksum "composer.json" }}
+
+      - run:
+          name: Check Syntax
+          command: make syntax.checker
+
+      - run:
+          name: CS
+          command: make style
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
