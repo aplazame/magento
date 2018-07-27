@@ -1,15 +1,15 @@
 <?php
 
-class Aplazame_Aplazame_Block_Product_Widget Extends Mage_Core_Block_Template
+class Aplazame_Aplazame_Block_Product_Widget extends Mage_Core_Block_Template
 {
     /**
      * @var Mage_Catalog_Model_Product $_product
      */
     protected $_product;
 
-
     /**
      * Devuelve el current product cuando estamos en ficha de producto
+     *
      * @return Mage_Catalog_Model_Product|mixed
      */
     public function getProduct()
@@ -23,6 +23,7 @@ class Aplazame_Aplazame_Block_Product_Widget Extends Mage_Core_Block_Template
 
     /**
      * Devuelve el final price del producto
+     *
      * @return float
      */
     public function getFinalPrice()

@@ -25,31 +25,37 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
 
     /**
      * @param Mage_Sales_Model_Order $order
+     *
      * @return array
      */
     public function cancelOrder($order)
     {
         return $this->apiClient->request(
-            Varien_Http_Client::POST, $this->getEndpointForOrder($order) . "/cancel"
+            Varien_Http_Client::POST,
+            $this->getEndpointForOrder($order) . '/cancel'
         );
     }
 
     /**
      * @param Mage_Sales_Model_Order $order
      * @param float $amount
+     *
      * @return array
      */
     public function refundAmount($order, $amount)
     {
-        $data = array('amount'=>Aplazame_Sdk_Serializer_Decimal::fromFloat($amount)->jsonSerialize());
+        $data = array('amount' => Aplazame_Sdk_Serializer_Decimal::fromFloat($amount)->jsonSerialize());
 
         return $this->apiClient->request(
-            Varien_Http_Client::POST, $this->getEndpointForOrder($order) . "/refund", $data
+            Varien_Http_Client::POST,
+            $this->getEndpointForOrder($order) . '/refund',
+            $data
         );
     }
 
     /**
      * @param Mage_Sales_Model_Order $order
+     *
      * @return string
      */
     protected function getEndpointForOrder($order)

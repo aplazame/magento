@@ -72,6 +72,7 @@ class Aplazame_Aplazame_Model_CampaignsObserver extends Mage_Core_Model_Abstract
 
     /**
      * @param Mage_Adminhtml_Block_Catalog_Product $product
+     *
      * @return bool
      */
     protected function _canAddTab($product)

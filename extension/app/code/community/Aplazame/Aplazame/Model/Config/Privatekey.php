@@ -14,7 +14,8 @@ class Aplazame_Aplazame_Model_Config_Privatekey extends Mage_Adminhtml_Model_Sys
             '/me',
             array(
                 'confirmation_url' => Mage::getUrl(
-                    'aplazame/api/index', array(
+                    'aplazame/api/index',
+                    array(
                         '_query' => array(
                             'path' => '/confirm/',
                         ),
@@ -38,7 +39,7 @@ class Aplazame_Aplazame_Model_Config_Privatekey extends Mage_Adminhtml_Model_Sys
      */
     protected $_publicApiKey;
 
-    public function _construct() 
+    public function _construct()
     {
         parent::_construct();
 

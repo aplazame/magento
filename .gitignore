@@ -1,4 +1,5 @@
 /vendor/
+.php_cs.cache
 composer.lock
 extension/var/connect/*
 !extension/var/connect/Aplazame_Aplazame.xml

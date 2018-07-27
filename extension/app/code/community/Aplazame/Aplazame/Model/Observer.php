@@ -9,6 +9,7 @@ class Aplazame_Aplazame_Model_Observer extends Mage_Core_Model_Abstract
      * @deprecated since v1.0.0
      *
      * @param Varien_Event_Observer $observer
+     *
      * @return $this
      */
     public function salesOrderPaymentRefund($observer)

@@ -19,17 +19,17 @@ class Aplazame_Aplazame_Block_Payment_Redirect extends Mage_Core_Block_Abstract
 
         <script
             type="text/javascript"
-            src="'. $aplazameJsUri . '"
+            src="' . $aplazameJsUri . '"
             data-api-host="' . $client->apiBaseUri . '"
-            data-aplazame="'. Mage::getStoreConfig('payment/aplazame/public_api_key') . '"
-            data-sandbox="'. (Mage::getStoreConfig('payment/aplazame/sandbox')?'true':'false') . '">
+            data-aplazame="' . Mage::getStoreConfig('payment/aplazame/public_api_key') . '"
+            data-sandbox="' . (Mage::getStoreConfig('payment/aplazame/sandbox') ? 'true' : 'false') . '">
         </script>
 
         <script>
             aplazame.checkout(' . json_encode(Aplazame_Sdk_Serializer_JsonSerializer::serializeValue($payment->getCheckoutSerializer())) . ');
         </script>
 
-        <iframe src="'./*Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)*/Mage::getUrl('', array('_secure'=>true)).'" style="position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;">
+        <iframe src="' . /*Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)*/Mage::getUrl('', array('_secure' => true)) . '" style="position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;">
             Your browser does not support IFrames
         </iframe>
     </body>

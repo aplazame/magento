@@ -7,7 +7,7 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
     protected $_code = self::METHOD_CODE;
     protected $_formBlockType = 'aplazame/payment_form';
     protected $_infoBlockType = 'aplazame/payment_info';
-    protected $_canUseInternal         = false;
+    protected $_canUseInternal = false;
     protected $_canUseForMultishipping = false;
     protected $_canRefund = true;
     protected $_canRefundInvoicePartial = true;
@@ -138,7 +138,6 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
     {
         return Mage::getSingleton('checkout/session');
     }
-
 
     public function getOrderPlaceRedirectUrl()
     {

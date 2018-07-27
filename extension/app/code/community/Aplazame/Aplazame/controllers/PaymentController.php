@@ -55,7 +55,7 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
             Mage::throwException($this->__("You don't have permissions."));
         }
 
-        $checkoutToken = $this->getRequest()->getParam("checkout_token");
+        $checkoutToken = $this->getRequest()->getParam('checkout_token');
         if (!$checkoutToken) {
             Mage::throwException($this->__('History has no checkout token.'));
         }
@@ -69,7 +69,7 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
         /** @var Mage_Sales_Model_Order[] $historyCollection */
         $historyCollection = Mage::getModel('sales/order')
             ->getCollection()
-            ->addAttributeToFilter('customer_id', array('like'=> $order->getCustomerId()));
+            ->addAttributeToFilter('customer_id', array('like' => $order->getCustomerId()));
 
         $historyOrders = array_map(array('Aplazame_Aplazame_Api_BusinessModel_HistoricalOrder', 'createFromOrder'), $historyCollection);
 

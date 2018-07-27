@@ -1,15 +1,15 @@
 <?php
 
-class Aplazame_Aplazame_Block_Checkout_Cart_Widget Extends Mage_Core_Block_Template
+class Aplazame_Aplazame_Block_Checkout_Cart_Widget extends Mage_Core_Block_Template
 {
     /**
      * @var Mage_Sales_Model_Quote $_product
      */
     protected $_quote;
 
-
     /**
      * Devuelve el quote actual
+     *
      * @return Mage_Sales_Model_Quote|mixed
      */
     public function getQuote()
@@ -23,6 +23,7 @@ class Aplazame_Aplazame_Block_Checkout_Cart_Widget Extends Mage_Core_Block_Templ
 
     /**
      * Devuelve el final price del producto
+     *
      * @return float
      */
     public function getTotal()
@@ -46,5 +47,4 @@ class Aplazame_Aplazame_Block_Checkout_Cart_Widget Extends Mage_Core_Block_Templ
 
         return parent::_toHtml();
     }
-
 }

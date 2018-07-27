@@ -23,11 +23,11 @@ class Aplazame_Aplazame_BusinessModel_Checkout
         $checkout->billing = Aplazame_Aplazame_BusinessModel_Address::createFromAddress($order->getBillingAddress());
         $checkout->shipping = Aplazame_Aplazame_BusinessModel_ShippingInfo::createFromOrder($order);
         $checkout->meta = array(
-            "module" => array(
-                "name" => "aplazame:magento",
-                "version" => (string) $moduleConfig->version[0],
+            'module' => array(
+                'name' => 'aplazame:magento',
+                'version' => (string) $moduleConfig->version[0],
             ),
-            "version" => Mage::getVersion(),
+            'version' => Mage::getVersion(),
         );
 
         return $checkout;

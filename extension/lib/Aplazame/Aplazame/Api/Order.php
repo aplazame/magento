@@ -27,7 +27,7 @@ final class Aplazame_Aplazame_Api_Order
         /** @var Mage_Sales_Model_Resource_Order_Collection $orders */
         $orders = $this->orderModel
             ->getCollection()
-            ->addAttributeToFilter('customer_id', array('like'=>$order->getCustomerId()))
+            ->addAttributeToFilter('customer_id', array('like' => $order->getCustomerId()))
             ->setPage($page, $page_size)
         ;
 

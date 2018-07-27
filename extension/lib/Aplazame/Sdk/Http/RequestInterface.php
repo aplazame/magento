@@ -39,7 +39,7 @@ interface Aplazame_Sdk_Http_RequestInterface
     /**
      * Retrieves the URI instance.
      *
-     * @link http://tools.ietf.org/html/rfc3986#section-4.3
+     * @see http://tools.ietf.org/html/rfc3986#section-4.3
      *
      * @return string Returns the URI of the request.
      */

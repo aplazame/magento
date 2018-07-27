@@ -21,7 +21,7 @@ class Aplazame_Aplazame_Helper_Cart extends Mage_Core_Helper_Abstract
         $payment->deny();
 
         /** @var Aplazame_Aplazame_Model_Payment $aplazame */
-        $aplazame= Mage::getModel('aplazame/payment');
+        $aplazame = Mage::getModel('aplazame/payment');
         try {
             $aplazame->cancel($payment);
         } catch (Exception $e) {
@@ -49,6 +49,7 @@ class Aplazame_Aplazame_Helper_Cart extends Mage_Core_Helper_Abstract
 
     /**
      * @param int $quoteId Quote identifier
+     *
      * @return Mage_Sales_Model_Quote
      */
     private function getQuote($quoteId)

@@ -19,7 +19,7 @@ class Aplazame_Aplazame_BusinessModel_Article
         $aArticle->name = $orderItem->getName();
         $aArticle->url = $product->getProductUrl();
         $aArticle->image_url = self::getProductImage($product);
-        $aArticle->quantity = intval($orderItem->getQtyOrdered());
+        $aArticle->quantity = (int) ($orderItem->getQtyOrdered());
         $aArticle->price = Aplazame_Sdk_Serializer_Decimal::fromFloat($originalPrice);
         $aArticle->description = $product->getDescription();
         $aArticle->tax_rate = Aplazame_Sdk_Serializer_Decimal::fromFloat($orderItem->getTaxPercent());
