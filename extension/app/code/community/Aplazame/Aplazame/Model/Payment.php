@@ -147,7 +147,7 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
     /**
      * @return array
      *
-     * @throws Exception
+     * @throws Aplazame_Sdk_Api_AplazameExceptionInterface
      */
     public function createCheckoutOnAplazame()
     {
