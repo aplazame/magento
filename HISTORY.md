@@ -1,5 +1,9 @@
 ## Change Log
 
+#### [v1.2.0](https://github.com/aplazame/magento/tree/v1.2.0) (2018-07-30)
+
+* Improve Checkout creation
+
 #### [v1.1.5](https://github.com/aplazame/magento/tree/v1.1.5) (2018-07-09)
 
 * [FIX] Improve cart restoration
