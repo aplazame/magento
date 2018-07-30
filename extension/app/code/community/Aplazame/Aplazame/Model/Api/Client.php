@@ -54,6 +54,38 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
     }
 
     /**
+     * @param array|null $data The data of the request.
+     *
+     * @return array
+     *
+     * @throws Aplazame_Sdk_Api_ApiCommunicationException if an I/O error occurs.
+     * @throws Aplazame_Sdk_Api_DeserializeException if response cannot be deserialized.
+     * @throws Aplazame_Sdk_Api_ApiClientException if an I/O error occurs.
+     * @throws Aplazame_Sdk_Api_ApiServerException if request is invalid.
+     */
+    public function create_checkout($data)
+    {
+        return $this->apiClient->request(Varien_Http_Client::POST, '/checkout', $data);
+    }
+
+    /**
+     * @param int $order_id
+     *
+     * @return array
+     *
+     * @throws Aplazame_Sdk_Api_ApiCommunicationException if an I/O error occurs.
+     * @throws Aplazame_Sdk_Api_DeserializeException if response cannot be deserialized.
+     * @throws Aplazame_Sdk_Api_ApiClientException if an I/O error occurs.
+     * @throws Aplazame_Sdk_Api_ApiServerException if request is invalid.
+     */
+    public function fetch($order_id)
+    {
+        $orders = $this->apiClient->request('GET', '/orders?mid=' . $order_id);
+
+        return array_shift($orders['results']);
+    }
+
+    /**
      * @param Mage_Sales_Model_Order $order
      *
      * @return string

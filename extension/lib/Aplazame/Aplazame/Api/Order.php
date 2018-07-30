@@ -10,7 +10,7 @@ final class Aplazame_Aplazame_Api_Order
         $this->orderModel = $orderModel;
     }
 
-    public function history(array $params, array $queryArguments)
+    public function history(array $params)
     {
         if (!isset($params['order_id'])) {
             return Aplazame_Aplazame_ApiController::not_found();
@@ -21,18 +21,14 @@ final class Aplazame_Aplazame_Api_Order
             return Aplazame_Aplazame_ApiController::not_found();
         }
 
-        $page = (isset($queryArguments['page'])) ? $queryArguments['page'] : 1;
-        $page_size = (isset($queryArguments['page_size'])) ? $queryArguments['page_size'] : 10;
-
         /** @var Mage_Sales_Model_Resource_Order_Collection $orders */
         $orders = $this->orderModel
             ->getCollection()
             ->addAttributeToFilter('customer_id', array('like' => $order->getCustomerId()))
-            ->setPage($page, $page_size)
         ;
 
         $historyOrders = array_map(array('Aplazame_Aplazame_Api_BusinessModel_HistoricalOrder', 'createFromOrder'), $orders->getItems());
 
-        return Aplazame_Aplazame_ApiController::collection($page, $page_size, $historyOrders);
+        return Aplazame_Aplazame_ApiController::success($historyOrders);
     }
 }

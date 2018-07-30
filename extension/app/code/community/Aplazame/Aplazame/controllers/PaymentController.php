@@ -14,91 +14,96 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
     {
         $session = $this->_getCheckoutSession();
 
-        if (!$session->getLastRealOrderId()) {
+        if (! $session->getLastRealOrderId()) {
             $session->addError($this->__('Your order has expired.'));
-            $this->_redirect('checkout/cart');
+            $this->_redirect('aplazame/payment/cart');
+
             return;
         }
 
-        $this->getResponse()->setBody($this->getLayout()->createBlock('aplazame/payment_redirect')->toHtml());
+        try {
+            $this->getResponse()
+                 ->setBody($this->getLayout()
+                                ->createBlock('aplazame/payment_redirect')
+                                ->toHtml())
+            ;
+        } catch (Aplazame_Sdk_Api_ApiClientException $e) {
+            $session->addError('Aplazame Error: ' . $e->getMessage());
+            $this->_redirect('aplazame/payment/cart');
+
+            return;
+        }
 
         $session->unsQuoteId();
         $session->unsRedirectUrl();
-    }
-
-    public function cancelAction()
-    {
-        $this->_redirectUrl(Mage::getUrl('aplazame/payment/cart'));
     }
 
     public function cartAction()
     {
         $session = $this->_getCheckoutSession();
         $orderId = $session->getLastRealOrderId();
-
-        if ($orderId) {
-            /** @var Mage_Sales_Model_Order $order */
-            $order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
-            if ($order->getId()) {
-                /** @var Aplazame_Aplazame_Helper_Cart $cart */
-                $cart = Mage::helper('aplazame/cart');
-                $cart->restoreCartFromOrder($order);
-            }
-        }
-
-        $this->_redirectUrl(Mage::helper('checkout/url')->getCheckoutUrl());
-    }
-
-    public function historyAction()
-    {
-        if (!$this->verifyAuthentication()) {
-            Mage::throwException($this->__("You don't have permissions."));
-        }
-
-        $checkoutToken = $this->getRequest()->getParam('checkout_token');
-        if (!$checkoutToken) {
-            Mage::throwException($this->__('History has no checkout token.'));
+        if (! $orderId) {
+            $this->goToCheckout();
+            return;
         }
 
         /** @var Mage_Sales_Model_Order $order */
-        $order = Mage::getModel('sales/order')->loadByIncrementId($checkoutToken);
-        if (!$order) {
-            Mage::throwException($this->__('Order not found.'));
+        $order = Mage::getModel('sales/order')
+                     ->loadByIncrementId($orderId)
+        ;
+        if (! $order->getId()) {
+            $this->goToCheckout();
+            return;
         }
 
-        /** @var Mage_Sales_Model_Order[] $historyCollection */
-        $historyCollection = Mage::getModel('sales/order')
-            ->getCollection()
-            ->addAttributeToFilter('customer_id', array('like' => $order->getCustomerId()));
+        /** @var Aplazame_Aplazame_Model_Api_Client $client */
+        $client = Mage::getModel('aplazame/api_client');
+        $aOrder = $client->fetch($order->getIncrementId());
+        if (! $aOrder) {
+            $this->restoreCart($order);
+            $this->goToCheckout();
+            return;
+        }
 
-        $historyOrders = array_map(array('Aplazame_Aplazame_Api_BusinessModel_HistoricalOrder', 'createFromOrder'), $historyCollection);
+        switch ($aOrder['status']) {
+            case 'ok':
+                $this->goToSuccess();
+                return;
+            case 'pending':
+                switch ($aOrder['status_reason']) {
+                    case 'in_process':
+                        $this->restoreCart($order);
+                        $this->goToCheckout();
+                        return;
+                    default:
+                        $this->goToSuccess();
+                        return;
+                }
+                // no break
+            case 'ko':
+                $this->restoreCart($order);
+                $this->goToCheckout();
+                return;
+        }
 
-        $this->getResponse()->setHeader('Content-type', 'application/json');
-        $this->getResponse()->setBody(json_encode(Aplazame_Sdk_Serializer_JsonSerializer::serializeValue($historyOrders)));
+        $this->goToCheckout();
     }
 
-    /**
-     * @return bool
-     */
-    protected function verifyAuthentication()
+    private function goToCheckout()
     {
-        $privateKey = Mage::getStoreConfig('payment/aplazame/secret_api_key');
-
-        $authorization = $this->getAuthorizationFromRequest();
-        if (!$authorization || empty($privateKey)) {
-            return false;
-        }
-
-        return ($authorization === $privateKey);
+        $this->_redirectUrl(Mage::helper('checkout/url')
+                                ->getCartUrl());
     }
 
-    protected function getAuthorizationFromRequest()
+    private function goToSuccess()
     {
-        $token = $this->getRequest()->getParam('access_token');
-        if ($token) {
-            return $token;
-        }
+        $this->_redirectUrl(Mage::getUrl('checkout/onepage/success', array('_secure' => true)));
+    }
 
-        return false;
+    private function restoreCart(Mage_Sales_Model_Order $order)
+    {
+        /** @var Aplazame_Aplazame_Helper_Cart $cart */
+        $cart = Mage::helper('aplazame/cart');
+        $cart->restoreCartFromOrder($order);
     }
 }

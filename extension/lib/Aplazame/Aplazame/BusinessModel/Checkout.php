@@ -8,12 +8,33 @@ class Aplazame_Aplazame_BusinessModel_Checkout
     public static function createFromOrder(Mage_Sales_Model_Order $order)
     {
         $moduleConfig = Mage::getConfig()->getModuleConfig('Aplazame_Aplazame');
+        $checkoutUrl = Mage::getUrl('aplazame/payment/cart');
 
         $merchant = new stdClass();
-        $merchant->cancel_url = Mage::getUrl('aplazame/payment/cancel', array('_secure' => true));
+        $merchant->cancel_url = $checkoutUrl;
         $merchant->success_url = Mage::getUrl('checkout/onepage/success', array('_secure' => true));
         $merchant->pending_url = $merchant->success_url;
-        $merchant->checkout_url = Mage::getUrl('aplazame/payment/cart');
+        $merchant->checkout_url = $checkoutUrl;
+        $merchant->notification_url = Mage::getUrl(
+            'aplazame/api/index',
+            array(
+                '_query' => array(
+                    'path' => '/confirm/',
+                ),
+                '_nosid' => true,
+                '_store' => Mage::app()->getDefaultStoreView(),
+            )
+        );
+        $merchant->history_url = Mage::getUrl(
+            'aplazame/api/index',
+            array(
+                '_query' => array(
+                    'path' => '/order/{order_id}/history/',
+                ),
+                '_nosid' => true,
+                '_store' => Mage::app()->getDefaultStoreView(),
+            )
+        );
 
         $checkout = new self();
         $checkout->toc = true;
