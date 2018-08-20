@@ -13,6 +13,8 @@ class Aplazame_Aplazame_Block_Payment_Redirect extends Mage_Core_Block_Abstract
         /** @var Aplazame_Aplazame_Model_Payment $payment */
         $payment = Mage::getModel('aplazame/payment');
 
+        $payload = $payment->createCheckoutOnAplazame();
+
         $html = '
 <html>
     <body style="margin: 0;">
@@ -26,7 +28,7 @@ class Aplazame_Aplazame_Block_Payment_Redirect extends Mage_Core_Block_Abstract
         </script>
 
         <script>
-            aplazame.checkout(' . json_encode($payment->createCheckoutOnAplazame()) . ');
+            aplazame.checkout("' . $payload['id'] . '");
         </script>
 
         <iframe src="' . /*Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)*/Mage::getUrl('', array('_secure' => true)) . '" style="position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;">
