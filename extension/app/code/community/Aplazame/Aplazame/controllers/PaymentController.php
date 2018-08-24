@@ -56,11 +56,14 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
             return;
         }
 
+        /** @var Aplazame_Aplazame_Helper_Cart $cartHelper */
+        $cartHelper = Mage::helper('aplazame/cart');
+
         /** @var Aplazame_Aplazame_Model_Api_Client $client */
         $client = Mage::getModel('aplazame/api_client');
         $aOrder = $client->fetch($order->getIncrementId());
         if (! $aOrder) {
-            $this->restoreCart($order);
+            $cartHelper->restoreCartFromOrder($order);
             $this->goToCheckout();
             return;
         }
@@ -72,7 +75,8 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
             case 'pending':
                 switch ($aOrder['status_reason']) {
                     case 'in_process':
-                        $this->restoreCart($order);
+	                    $cartHelper->cancelOrder($order);
+	                    $cartHelper->restoreCartFromOrder($order);
                         $this->goToCheckout();
                         return;
                     default:
@@ -81,7 +85,7 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
                 }
                 // no break
             case 'ko':
-                $this->restoreCart($order);
+                $cartHelper->restoreCartFromOrder($order);
                 $this->goToCheckout();
                 return;
         }
@@ -98,12 +102,5 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
     private function goToSuccess()
     {
         $this->_redirectUrl(Mage::getUrl('checkout/onepage/success', array('_secure' => true)));
-    }
-
-    private function restoreCart(Mage_Sales_Model_Order $order)
-    {
-        /** @var Aplazame_Aplazame_Helper_Cart $cart */
-        $cart = Mage::helper('aplazame/cart');
-        $cart->restoreCartFromOrder($order);
     }
 }

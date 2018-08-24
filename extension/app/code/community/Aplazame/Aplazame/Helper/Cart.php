@@ -4,7 +4,6 @@ class Aplazame_Aplazame_Helper_Cart extends Mage_Core_Helper_Abstract
 {
     public function restoreCartFromOrder(Mage_Sales_Model_Order $order)
     {
-        $this->cancelOrder($order);
         $this->reactivateQuote($this->getQuote($order->getQuoteId()));
     }
 
