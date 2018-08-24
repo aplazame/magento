@@ -53,6 +53,9 @@ final class Aplazame_Aplazame_Api_Confirm
         }
 
         $payment = $order->getPayment();
+        if ($payment->getMethod() !== Aplazame_Aplazame_Model_Payment::METHOD_CODE) {
+        	return self::ko();
+        }
 
         $amount = $order->getGrandTotal();
         if ($payload['total_amount'] !== Aplazame_Sdk_Serializer_Decimal::fromFloat($amount)->jsonSerialize() ||
