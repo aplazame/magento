@@ -42,7 +42,7 @@ class Aplazame_Sdk_Api_Client
         Aplazame_Sdk_Http_ClientInterface $httpClient = null
     ) {
         $this->apiBaseUri = $apiBaseUri;
-        $this->useSandbox = ($environment === self::ENVIRONMENT_SANDBOX) ? true : false;
+        $this->useSandbox = $environment === self::ENVIRONMENT_SANDBOX;
         $this->accessToken = $accessToken;
         $this->httpClient = $httpClient ? $httpClient : new Aplazame_Sdk_Http_CurlClient();
     }
@@ -100,7 +100,7 @@ class Aplazame_Sdk_Api_Client
      * @throws Aplazame_Sdk_Api_ApiServerException if an I/O error occurs.
      * @throws Aplazame_Sdk_Api_ApiClientException if request is invalid.
      */
-    public function patch($path, array $data)
+    public function patch($path, $data)
     {
         return $this->request('PATCH', $path, $data);
     }
@@ -118,7 +118,7 @@ class Aplazame_Sdk_Api_Client
      * @throws Aplazame_Sdk_Api_ApiServerException if an I/O error occurs.
      * @throws Aplazame_Sdk_Api_ApiClientException if request is invalid.
      */
-    public function post($path, array $data)
+    public function post($path, $data)
     {
         return $this->request('POST', $path, $data);
     }
@@ -136,7 +136,7 @@ class Aplazame_Sdk_Api_Client
      * @throws Aplazame_Sdk_Api_ApiServerException if an I/O error occurs.
      * @throws Aplazame_Sdk_Api_ApiClientException if request is invalid.
      */
-    public function put($path, array $data)
+    public function put($path, $data)
     {
         return $this->request('PUT', $path, $data);
     }
@@ -153,7 +153,7 @@ class Aplazame_Sdk_Api_Client
      * @throws Aplazame_Sdk_Api_ApiClientException if an I/O error occurs.
      * @throws Aplazame_Sdk_Api_ApiServerException if request is invalid.
      */
-    public function request($method, $path, array $data = null)
+    public function request($method, $path, $data = null)
     {
         $uri = $this->apiBaseUri . '/' . ltrim($path, '/');
 
