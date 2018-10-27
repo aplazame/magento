@@ -19,6 +19,7 @@ services:
       - MAGENTO_DB_HOST=db
       - MAGENTO_DB_PASSWORD=password
       - MAGENTO_URL=magento.aplazame
+      - XDEBUG_CONFIG
     volumes:
       - ./extension:/aplazame
     ports:
