@@ -1,6 +1,7 @@
-version: 2
+version: 2.1
+
 jobs:
-  build:
+  test:
     docker:
       - image: circleci/php
     working_directory: ~/aplazame
@@ -11,20 +12,17 @@ jobs:
           keys:
           - v1-dependencies-{{ checksum "composer.json" }}
           - v1-dependencies-
-
       - run: composer install -n --prefer-dist
-
       - save_cache:
           paths:
             - ./vendor
           key: v1-dependencies-{{ checksum "composer.json" }}
-
       - run:
           name: CS
           command: make style
 
 workflows:
   version: 2
-  build-deploy:
+  test:
     jobs:
-      - build
+      - test
