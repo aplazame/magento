@@ -1,5 +1,10 @@
 ## Change Log
 
+#### [v1.3.1](https://github.com/aplazame/magento/tree/v1.3.1) (2018-10-29)
+
+* Fix checkout creation
+* Minor improvements
+
 #### [v1.3.0](https://github.com/aplazame/magento/tree/v1.3.0) (2018-08-20)
 
 * Prevent conflicts with 3rd party systems who perform unsafe filtering 
