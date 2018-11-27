@@ -1,5 +1,9 @@
 ## Change Log
 
+#### [v1.3.2](https://github.com/aplazame/magento/tree/v1.3.2) (2018-11-xx)
+
+* Don't display finished campaigns
+
 #### [v1.3.1](https://github.com/aplazame/magento/tree/v1.3.1) (2018-10-29)
 
 * Fix checkout creation
@@ -7,7 +11,7 @@
 
 #### [v1.3.0](https://github.com/aplazame/magento/tree/v1.3.0) (2018-08-20)
 
-* Prevent conflicts with 3rd party systems who perform unsafe filtering 
+* Prevent conflicts with 3rd party systems who perform unsafe filtering
 
 #### [v1.2.0](https://github.com/aplazame/magento/tree/v1.2.0) (2018-07-30)
 
@@ -147,7 +151,7 @@
 
 * Back to checkout
 * aplazame-js
-* Allow edit `processing` orders 
+* Allow edit `processing` orders
 * Button Id config field
 * Payment method in order config field
 * ci strategy
