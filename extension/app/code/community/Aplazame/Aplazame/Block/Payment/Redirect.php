@@ -1,6 +1,5 @@
 <?php
 
-
 class Aplazame_Aplazame_Block_Payment_Redirect extends Mage_Core_Block_Abstract
 {
     protected function _toHtml()

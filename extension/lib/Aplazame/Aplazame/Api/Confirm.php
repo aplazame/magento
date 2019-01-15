@@ -21,8 +21,8 @@ final class Aplazame_Aplazame_Api_Confirm
     {
         return Aplazame_Aplazame_ApiController::success(
             array(
-				'status' => 'ko',
-				'reason' => $reason,
+                'status' => 'ko',
+                'reason' => $reason,
             )
         );
     }

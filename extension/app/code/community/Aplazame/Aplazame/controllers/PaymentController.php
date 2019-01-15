@@ -75,8 +75,8 @@ class Aplazame_Aplazame_PaymentController extends Mage_Core_Controller_Front_Act
             case 'pending':
                 switch ($aOrder['status_reason']) {
                     case 'in_process':
-	                    $cartHelper->cancelOrder($order);
-	                    $cartHelper->restoreCartFromOrder($order);
+                        $cartHelper->cancelOrder($order);
+                        $cartHelper->restoreCartFromOrder($order);
                         $this->goToCheckout();
                         return;
                     default:
