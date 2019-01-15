@@ -17,11 +17,12 @@ final class Aplazame_Aplazame_Api_Confirm
         );
     }
 
-    private static function ko()
+    private static function ko($reason)
     {
         return Aplazame_Aplazame_ApiController::success(
             array(
-                'status' => 'ko',
+				'status' => 'ko',
+				'reason' => $reason,
             )
         );
     }
@@ -54,7 +55,7 @@ final class Aplazame_Aplazame_Api_Confirm
 
         $payment = $order->getPayment();
         if ($payment->getMethod() !== Aplazame_Aplazame_Model_Payment::METHOD_CODE) {
-        	return self::ko();
+            return self::ko('Aplazame is not the payment method');
         }
 
         $amount = $order->getGrandTotal();
@@ -80,7 +81,7 @@ final class Aplazame_Aplazame_Api_Confirm
         }
 
         if ($payment->getIsFraudDetected()) {
-            return self::ko();
+            return self::ko('Fraud detected');
         }
 
         return self::ok();
