@@ -1,6 +1,5 @@
 <?php
 
-
 class Aplazame_Aplazame_Model_CampaignsObserver extends Mage_Core_Model_Abstract
 {
     /**

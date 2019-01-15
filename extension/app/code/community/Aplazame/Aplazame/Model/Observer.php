@@ -1,6 +1,5 @@
 <?php
 
-
 class Aplazame_Aplazame_Model_Observer extends Mage_Core_Model_Abstract
 {
     /**
