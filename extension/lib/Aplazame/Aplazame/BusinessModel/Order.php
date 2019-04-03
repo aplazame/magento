@@ -11,6 +11,7 @@ class Aplazame_Aplazame_BusinessModel_Order
         $aOrder->id = $order->getIncrementId();
         $aOrder->currency = $order->getOrderCurrencyCode();
         $aOrder->total_amount = Aplazame_Sdk_Serializer_Decimal::fromFloat($order->getGrandTotal());
+        $aOrder->tax_rate = Aplazame_Sdk_Serializer_Decimal::fromFloat(100 * $order->getTaxAmount() / ($order->getGrandTotal() - $order->getTaxAmount()));
         $aOrder->articles = array_map(array('Aplazame_Aplazame_BusinessModel_Article', 'crateFromOrderItem'), $order->getAllVisibleItems());
 
         if (($discounts = $order->getDiscountAmount()) !== null) {
