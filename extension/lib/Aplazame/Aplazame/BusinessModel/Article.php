@@ -11,8 +11,8 @@ class Aplazame_Aplazame_BusinessModel_Article
         /** @var Mage_Catalog_Model_Product $product */
         $product = Mage::getModel('catalog/product')->load($productId);
 
-        $originalPrice = max($orderItem->getPrice(), $product->getPrice());
-        $discounts = abs($product->getPrice() - $orderItem->getPrice());
+        $discounts = $product->getPrice() - $product->getFinalPrice();
+        $originalPrice = $orderItem->getPrice() + $discounts;
 
         $aArticle = new self();
         $aArticle->id = $productId;
