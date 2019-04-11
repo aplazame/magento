@@ -21,5 +21,7 @@ $buttonParams = array(
 <?php endif; ?>
 
 <script>
-aplazame.button(<?php echo json_encode($buttonParams) ?>);
+    (window.aplazame = window.aplazame || []).push(function (aplazame) {
+        aplazame.button(<?php echo json_encode($buttonParams) ?>)
+    })
 </script>
