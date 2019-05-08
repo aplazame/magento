@@ -4,17 +4,20 @@ class Aplazame_Aplazame_Block_Payment_Redirect extends Mage_Core_Block_Abstract
 {
     protected function _toHtml()
     {
-        $aplazameJsUri = getenv('APLAZAME_JS_URI') ? getenv('APLAZAME_JS_URI') : 'https://cdn.aplazame.com/aplazame.js';
-
-        $aplazameJsParams = http_build_query(
-            array(
-                'public_key' => Mage::getStoreConfig('payment/aplazame/public_api_key'),
-                'sandbox' => Mage::getStoreConfig('payment/aplazame/sandbox') ? 'true' : 'false',
-            )
-        );
-
         /** @var Aplazame_Aplazame_Model_Api_Client $client */
         $client = Mage::getModel('aplazame/api_client');
+
+        $aplazameJsUri = getenv('APLAZAME_JS_URI') ? getenv('APLAZAME_JS_URI') : 'https://cdn.aplazame.com/aplazame.js';
+
+        $aplazameJsParams = urldecode(
+            http_build_query(
+                array(
+                    'public_key' => Mage::getStoreConfig('payment/aplazame/public_api_key'),
+                    'sandbox' => Mage::getStoreConfig('payment/aplazame/sandbox') ? 'true' : 'false',
+                    'host' => $client->apiBaseUri,
+                )
+            )
+        );
 
         /** @var Aplazame_Aplazame_Model_Payment $payment */
         $payment = Mage::getModel('aplazame/payment');
@@ -27,7 +30,6 @@ class Aplazame_Aplazame_Block_Payment_Redirect extends Mage_Core_Block_Abstract
 
         <script
             type="text/javascript" src="' . $aplazameJsUri . '?' . $aplazameJsParams . '"
-            data-api-host="' . $client->apiBaseUri . '"
             async defer
         ></script>
 
