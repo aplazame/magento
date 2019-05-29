@@ -1,4 +1,4 @@
-FROM php:5.6-apache-jessie
+FROM php:5.6-apache
 
 ENV XDEBUG_CONFIG="remote_enable=on remote_connect_back=on"
 
@@ -33,7 +33,7 @@ RUN buildDeps="libxml2-dev" \
     && set -x \
     && apt-get update && apt-get install -y \
         $buildDeps \
-        mysql-client-5.5 \
+        mysql-client \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
