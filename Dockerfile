@@ -1,11 +1,11 @@
-FROM php:5.6-apache-jessie
+FROM php:5.6-apache
 
 ENV XDEBUG_CONFIG="remote_enable=on remote_connect_back=on"
 
 RUN pecl install xdebug-2.5.5 \
     && docker-php-ext-enable xdebug
 
-ENV MAGENTO_VERSION=1.9.3.6
+ENV MAGENTO_VERSION=1.9.4.1
 
 RUN cd /tmp \
     && curl https://codeload.github.com/OpenMage/magento-mirror/tar.gz/$MAGENTO_VERSION -o $MAGENTO_VERSION.tar.gz \
@@ -33,7 +33,7 @@ RUN buildDeps="libxml2-dev" \
     && set -x \
     && apt-get update && apt-get install -y \
         $buildDeps \
-        mysql-client-5.5 \
+        mysql-client \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
