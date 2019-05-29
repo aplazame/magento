@@ -1,6 +1,12 @@
 ## Change Log
 
-#### [v1.3.2](https://github.com/aplazame/magento/tree/v1.3.2) (2018-11-xx)
+#### [v1.3.3](https://github.com/aplazame/magento/tree/v1.3.3) (2019-05-29)
+
+* [FIX] Don't display finished campaigns on products page
+* [FIX] Various cart/order fixes
+* [ADD] JS async load
+
+#### [v1.3.2](https://github.com/aplazame/magento/tree/v1.3.2) (2018-11-27)
 
 * Don't display finished campaigns
 
