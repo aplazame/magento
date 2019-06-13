@@ -40,7 +40,7 @@ class Aplazame_Aplazame_BusinessModel_Customer
         $aCustomer->first_name = $customer->getFirstname();
         $aCustomer->last_name = $customer->getLastname();
         if (($birthday = $customer->getDob()) !== null) {
-            $aCustomer->birthday = Aplazame_Sdk_Serializer_Date::fromDateTime(new DateTime($birthday));
+            $aCustomer->birthday = date("Y-m-d", strtotime($birthday));
         }
         if (($document_id = $customer->getTaxvat()) !== null) {
             $aCustomer->document_id = $document_id;
