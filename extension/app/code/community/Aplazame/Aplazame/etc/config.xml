@@ -124,7 +124,7 @@
                 <cart_widget_enabled>1</cart_widget_enabled>
                 <button>dt:has(input#p_method_aplazame)</button>
                 <instructions><![CDATA[Aplaza o fracciona tu compra con <a href="https://aplazame.com" target="_blank">Aplazame</a>.
-Obtén financiación al instante sólo con tu Nombre y Apellidos, DNI/NIE, Teléfono y tarjeta de débito o crédito.
+Obtén financiación al instante sólo con tu Nombre y Apellidos, Teléfono y tarjeta de débito o crédito.
 Sin comisiones ocultas ni letra pequeña.]]>
                 </instructions>
                 <refund_method_magento_native>1</refund_method_magento_native>
