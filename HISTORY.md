@@ -1,5 +1,9 @@
 ## Change Log
 
+#### [v1.3.4](https://github.com/aplazame/magento/tree/v1.3.4) (2019-08-22)
+
+* [FIX] Payment method description for countries different than Spain.
+
 #### [v1.3.3](https://github.com/aplazame/magento/tree/v1.3.3) (2019-05-29)
 
 * [FIX] Don't display finished campaigns on products page
