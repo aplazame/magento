@@ -48,7 +48,18 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
 
         return $this->apiClient->request(
             Varien_Http_Client::POST,
-            $this->getEndpointForOrder($order) . '/refund',
+            $this->getEndpointForOrder($order) . '/refund-extended',
+            $data
+        );
+    }
+
+    public function captureAmount($order, $amount)
+    {
+        $data = array('amount' => Aplazame_Sdk_Serializer_Decimal::fromFloat($amount)->jsonSerialize());
+
+        return $this->apiClient->request(
+            Varien_Http_Client::POST,
+            $this->getEndpointForOrder($order) . '/captures',
             $data
         );
     }

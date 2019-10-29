@@ -1,8 +1,8 @@
 <?php
 
-class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
+class Aplazame_Aplazame_Model_PaymentPayLater extends Mage_Payment_Model_Method_Abstract
 {
-    const METHOD_CODE = 'aplazame';
+    const METHOD_CODE = 'aplazame_pay_later';
 
     protected $_code = self::METHOD_CODE;
     protected $_formBlockType = 'aplazame/payment_form';
@@ -118,7 +118,7 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
 
     public function getOrderPlaceRedirectUrl()
     {
-        return $this->getPaymentsHelper()->getAplazameRedirectUrl('instalments');
+        return $this->getPaymentsHelper()->getAplazameRedirectUrl('pay_later');
     }
 
     /**
@@ -128,12 +128,12 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
      */
     public function createCheckoutOnAplazame()
     {
-        return $this->getPaymentsHelper()->getAplazameCheckout($this->getCheckout()->getLastRealOrderId(), 'instalments');
+        return $this->getPaymentsHelper()->getAplazameCheckout($this->getCheckout()->getLastRealOrderId(), 'pay_later');
     }
 
     public function getCheckoutSerializer()
     {
-        return $this->getPaymentsHelper()->getAplazameCheckout($this->getCheckout()->getLastRealOrderId(), 'instalments', true);
+        return $this->getPaymentsHelper()->getAplazameCheckout($this->getCheckout()->getLastRealOrderId(), 'pay_later', true);
     }
 
     /**

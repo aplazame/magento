@@ -23,9 +23,10 @@ class Aplazame_Aplazame_Model_Observer extends Mage_Core_Model_Abstract
         /** @var Mage_Sales_Model_Order_Payment $payment */
         $payment = $observer->getPayment();
 
-        /** @var Aplazame_Aplazame_Model_Payment $paymentMethod */
+        /** @var Aplazame_Aplazame_Model_Payment|Aplazame_Aplazame_Model_PaymentPayLater $paymentMethod */
         $paymentMethod = $payment->getMethodInstance();
-        if (! ($paymentMethod instanceof Aplazame_Aplazame_Model_Payment)) {
+        if (! ($paymentMethod instanceof Aplazame_Aplazame_Model_Payment ||
+            $paymentMethod instanceof Aplazame_Aplazame_Model_PaymentPayLater)) {
             // Only return payments made with Aplazame
             return $this;
         }

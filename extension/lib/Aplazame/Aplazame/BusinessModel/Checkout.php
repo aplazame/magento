@@ -5,7 +5,7 @@
  */
 class Aplazame_Aplazame_BusinessModel_Checkout
 {
-    public static function createFromOrder(Mage_Sales_Model_Order $order)
+    public static function createFromOrder(Mage_Sales_Model_Order $order, $type)
     {
         $moduleConfig = Mage::getConfig()->getModuleConfig('Aplazame_Aplazame');
         $checkoutUrl = Mage::getUrl('aplazame/payment/cart');
@@ -50,6 +50,8 @@ class Aplazame_Aplazame_BusinessModel_Checkout
             ),
             'version' => Mage::getVersion(),
         );
+
+        $checkout->product = array('type' => $type);
 
         return $checkout;
     }
