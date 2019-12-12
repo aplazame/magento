@@ -54,8 +54,10 @@ final class Aplazame_Aplazame_Api_Confirm
         }
 
         $payment = $order->getPayment();
-        if ($payment->getMethod() !== Aplazame_Aplazame_Model_Payment::METHOD_CODE &&
-            $payment->getMethod() !== Aplazame_Aplazame_Model_PaymentPayLater::METHOD_CODE) {
+        if (!in_array(
+            $payment->getMethod(),
+            array(Aplazame_Aplazame_Model_Payment::METHOD_CODE, Aplazame_Aplazame_Model_PaymentPayLater::METHOD_CODE)
+        )) {
             return self::ko('Aplazame is not the payment method');
         }
 
