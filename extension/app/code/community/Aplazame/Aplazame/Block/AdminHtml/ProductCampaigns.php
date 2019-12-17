@@ -2,8 +2,7 @@
 
 /**
  * @method void setArticlesId(string[] $articlesId)
- * @method string[] getArticlesId()
- * @method array[] getArticlesId()
+ * @method string[]|array[] getArticlesId()
  */
 class Aplazame_Aplazame_Block_AdminHtml_ProductCampaigns extends Mage_Adminhtml_Block_Widget
 {

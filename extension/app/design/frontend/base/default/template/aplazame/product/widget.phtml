@@ -2,8 +2,9 @@
 /** @var Aplazame_Aplazame_Block_Product_Widget $this */
 ?>
 <div
-  data-aplazame-simulator=""
+  data-aplazame-widget-instalments=""
   data-view="product"
   data-amount="<?php echo Aplazame_Sdk_Serializer_Decimal::fromFloat($this->getFinalPrice())->jsonSerialize(); ?>"
   data-currency="<?php echo Mage::app()->getStore()->getCurrentCurrencyCode(); ?>"
+  data-article-id="<?php echo $this->getProduct()->getId(); ?>"
 ></div>

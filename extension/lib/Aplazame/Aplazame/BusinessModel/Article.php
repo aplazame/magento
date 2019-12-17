@@ -33,6 +33,12 @@ class Aplazame_Aplazame_BusinessModel_Article
         /** @var Mage_Catalog_Helper_Image $imageHelper */
         $imageHelper = Mage::helper('catalog/image');
 
-        return (string) $imageHelper->init($product, 'image');
+        try {
+            $imageUrl = $imageHelper->init($product, 'image');
+        } catch (Exception $e) {
+            $imageUrl = '';
+        }
+
+        return (string) $imageUrl;
     }
 }
