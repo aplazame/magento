@@ -97,7 +97,7 @@ class Aplazame_Aplazame_ApiController extends Mage_Core_Controller_Front_Action
                 );
 
                 return $controller->confirm($payload);
-            case '/order/{order_id}/history/':
+            case '/order/history/':
                 $controller = new Aplazame_Aplazame_Api_Order(Mage::getModel('sales/order'));
 
                 return $controller->history($queryArguments);

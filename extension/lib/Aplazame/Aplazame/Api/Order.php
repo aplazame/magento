@@ -27,8 +27,12 @@ final class Aplazame_Aplazame_Api_Order
             ->addAttributeToFilter('customer_id', array('like' => $order->getCustomerId()))
         ;
 
-        $historyOrders = array_map(array('Aplazame_Aplazame_Api_BusinessModel_HistoricalOrder', 'createFromOrder'), $orders->getItems());
+        $historyOrders = array();
 
-        return Aplazame_Aplazame_ApiController::success($historyOrders);
+        foreach ($orders->getItems() as $order) {
+            $historyOrders[] = Aplazame_Aplazame_Api_BusinessModel_HistoricalOrder::createFromOrder($order);
+        }
+
+        return Aplazame_Aplazame_ApiController::success(Aplazame_Sdk_Serializer_JsonSerializer::serializeValue($historyOrders));
     }
 }
