@@ -7,7 +7,6 @@ class Aplazame_Aplazame_BusinessModel_Checkout
 {
     public static function createFromOrder(Mage_Sales_Model_Order $order, $type)
     {
-        $moduleConfig = Mage::getConfig()->getModuleConfig('Aplazame_Aplazame');
         $checkoutUrl = Mage::getUrl('aplazame/payment/cart');
 
         $merchant = new stdClass();
@@ -43,14 +42,7 @@ class Aplazame_Aplazame_BusinessModel_Checkout
         $checkout->customer = Aplazame_Aplazame_BusinessModel_Customer::createFromOrder($order);
         $checkout->billing = Aplazame_Aplazame_BusinessModel_Address::createFromAddress($order->getBillingAddress());
         $checkout->shipping = Aplazame_Aplazame_BusinessModel_ShippingInfo::createFromOrder($order);
-        $checkout->meta = array(
-            'module' => array(
-                'name' => 'aplazame:magento',
-                'version' => (string) $moduleConfig->version[0],
-            ),
-            'version' => Mage::getVersion(),
-        );
-
+        $checkout->meta = Aplazame_Aplazame_BusinessModel_Meta::create();
         $checkout->product = array('type' => $type);
 
         return $checkout;

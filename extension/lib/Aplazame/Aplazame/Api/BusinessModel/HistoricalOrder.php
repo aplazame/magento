@@ -9,7 +9,6 @@ class Aplazame_Aplazame_Api_BusinessModel_HistoricalOrder
      */
     public static function createFromOrder(Mage_Sales_Model_Order $order)
     {
-        $moduleConfig = Mage::getConfig()->getModuleConfig('Aplazame_Aplazame');
         $status = $order->getState();
 
         switch ($status) {
@@ -47,13 +46,7 @@ class Aplazame_Aplazame_Api_BusinessModel_HistoricalOrder
             'customer' => Aplazame_Aplazame_BusinessModel_Customer::createFromOrder($order),
             'order' => Aplazame_Aplazame_BusinessModel_Order::crateFromOrder($order, $order->getCreatedAt()),
             'billing' => Aplazame_Aplazame_BusinessModel_Address::createFromAddress($order->getBillingAddress()),
-            'meta' => array(
-                'module' => array(
-                    'name' => 'aplazame:magento',
-                    'version' => (string) $moduleConfig->version[0],
-                ),
-                'version' => Mage::getVersion(),
-            ),
+            'meta' => Aplazame_Aplazame_BusinessModel_Meta::create(),
             'payment' => array(
                 'method' => $payment_method,
                 'status' => $payment_status,
