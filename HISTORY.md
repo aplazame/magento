@@ -1,5 +1,10 @@
 ## Change Log
 
+#### [v2.0.1](https://github.com/aplazame/magento/tree/v2.0.1) (2019-12-23)
+
+* [ADD] Update history endpoint.
+* [FIX] Various fixes and improvements.
+
 #### [v2.0.0](https://github.com/aplazame/magento/tree/v2.0.0) (2019-10-30)
 
 * [ADD] 'Pay in 15 days' as payment method.
