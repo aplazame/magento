@@ -61,13 +61,6 @@ final class Aplazame_Aplazame_Api_Confirm
             return self::ko('Aplazame is not the payment method');
         }
 
-        $amount = $order->getGrandTotal();
-        if ($payload['total_amount'] !== Aplazame_Sdk_Serializer_Decimal::fromFloat($amount)->jsonSerialize() ||
-            $payload['currency']['code'] !== $order->getBaseCurrencyCode()
-        ) {
-            $payment->setIsFraudDetected(true);
-        }
-
         switch ($payload['status']) {
             case 'pending':
                 switch ($payload['status_reason']) {
