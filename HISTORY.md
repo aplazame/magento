@@ -1,5 +1,9 @@
 ## Change Log
 
+#### [v2.0.2](https://github.com/aplazame/magento/tree/v2.0.2) (2020-01-14)
+
+* [FIX] Deprecated checks.
+
 #### [v2.0.1](https://github.com/aplazame/magento/tree/v2.0.1) (2019-12-23)
 
 * [ADD] Update history endpoint.
