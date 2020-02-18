@@ -2,8 +2,9 @@
 /** @var Aplazame_Aplazame_Block_Checkout_Cart_Widget $this */
 ?>
 <div
-  data-aplazame-simulator=""
+  data-aplazame-widget-instalments=""
   data-view="cart"
   data-amount="<?php echo Aplazame_Sdk_Serializer_Decimal::fromFloat($this->getTotal())->jsonSerialize(); ?>"
   data-currency="<?php echo Mage::app()->getStore()->getCurrentCurrencyCode() ?>"
+  data-option-legal-advice="<?php echo $this->getShowLegalAdvice(); ?>"
 ></div>

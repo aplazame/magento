@@ -8,6 +8,14 @@ class Aplazame_Aplazame_Block_Product_Widget extends Mage_Core_Block_Template
     protected $_product;
 
     /**
+     * @return Mage_Core_Helper_Abstract|Aplazame_Aplazame_Helper_Data
+     */
+    public function getAplazameHelper()
+    {
+        return Mage::helper('aplazame');
+    }
+
+    /**
      * Devuelve el current product cuando estamos en ficha de producto
      *
      * @return Mage_Catalog_Model_Product|mixed
@@ -37,11 +45,14 @@ class Aplazame_Aplazame_Block_Product_Widget extends Mage_Core_Block_Template
         return $total;
     }
 
+    public function getShowLegalAdvice()
+    {
+        return $this->getAplazameHelper()->isProductWidgetLegalAdviceEnabled() ? 'true' : 'false';
+    }
+
     public function _toHtml()
     {
-        /** @var Aplazame_Aplazame_Helper_Data $aplazame */
-        $aplazame = Mage::helper('aplazame');
-        if (!$aplazame->isProductWidgetEnabled()) {
+        if (!$this->getAplazameHelper()->isProductWidgetEnabled()) {
             return '';
         }
 

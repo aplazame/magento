@@ -8,6 +8,14 @@ class Aplazame_Aplazame_Block_Checkout_Cart_Widget extends Mage_Core_Block_Templ
     protected $_quote;
 
     /**
+     * @return Mage_Core_Helper_Abstract|Aplazame_Aplazame_Helper_Data
+     */
+    public function getAplazameHelper()
+    {
+        return Mage::helper('aplazame');
+    }
+
+    /**
      * Devuelve el quote actual
      *
      * @return Mage_Sales_Model_Quote|mixed
@@ -37,11 +45,14 @@ class Aplazame_Aplazame_Block_Checkout_Cart_Widget extends Mage_Core_Block_Templ
         return $total;
     }
 
+    public function getShowLegalAdvice()
+    {
+        return $this->getAplazameHelper()->isCartWidgetLegalAdviceEnabled() ? 'true' : 'false';
+    }
+
     public function _toHtml()
     {
-        /** @var Aplazame_Aplazame_Helper_Data $aplazame */
-        $aplazame = Mage::helper('aplazame');
-        if (!$aplazame->isCartWidgetEnabled()) {
+        if (!$this->getAplazameHelper()->isCartWidgetEnabled()) {
             return '';
         }
 

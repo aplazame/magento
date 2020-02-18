@@ -130,7 +130,9 @@
                 <title>Aplazame - Pago a plazos</title>
                 <secret_api_key backend_model="aplazame/config_privatekey"/>
                 <product_widget_enabled>1</product_widget_enabled>
+                <product_legal_advice>0</product_legal_advice>
                 <cart_widget_enabled>1</cart_widget_enabled>
+                <cart_legal_advice>0</cart_legal_advice>
                 <button>dt:has(input#p_method_aplazame)</button>
                 <instructions><![CDATA[Financia tu compra en segundos y sin documentación con <a href="https://aplazame.com" target="_blank">Aplazame</a>.
 Puedes dividir el pago en cuotas mensuales y obtener una respuesta instantánea a tu solicitud. Sin comisiones ocultas.]]>
