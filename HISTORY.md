@@ -1,5 +1,9 @@
 ## Change Log
 
+#### [v2.1.0](https://github.com/aplazame/magento/tree/v2.1.0) (2020-02-18)
+
+* [ADD] Legal notice option to widget setup.
+
 #### [v2.0.2](https://github.com/aplazame/magento/tree/v2.0.2) (2020-01-14)
 
 * [FIX] Deprecated checks.
