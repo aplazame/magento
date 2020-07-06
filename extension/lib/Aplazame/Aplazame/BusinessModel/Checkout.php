@@ -10,10 +10,10 @@ class Aplazame_Aplazame_BusinessModel_Checkout
         $checkoutUrl = Mage::getUrl('aplazame/payment/cart');
 
         $merchant = new stdClass();
-        $merchant->cancel_url = $checkoutUrl;
+        $merchant->ko_url = $checkoutUrl;
         $merchant->success_url = Mage::getUrl('checkout/onepage/success', array('_secure' => true));
         $merchant->pending_url = $merchant->success_url;
-        $merchant->checkout_url = $checkoutUrl;
+        $merchant->dismiss_url = $checkoutUrl;
         $merchant->notification_url = Mage::getUrl(
             'aplazame/api/index',
             array(
