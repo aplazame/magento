@@ -134,7 +134,7 @@
                 <cart_widget_enabled>1</cart_widget_enabled>
                 <cart_legal_advice>0</cart_legal_advice>
                 <button>dt:has(input#p_method_aplazame)</button>
-                <instructions><![CDATA[Financia tu compra en segundos y sin documentación con <a href="https://aplazame.com" target="_blank">Aplazame</a>.
+                <instructions><![CDATA[Financia tu compra en segundos con <a href="https://aplazame.com" target="_blank">Aplazame</a>.
 Puedes dividir el pago en cuotas mensuales y obtener una respuesta instantánea a tu solicitud. Sin comisiones ocultas.]]>
                 </instructions>
                 <refund_method_magento_native>1</refund_method_magento_native>
