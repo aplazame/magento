@@ -53,9 +53,15 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
         );
     }
 
+    /**
+     * @param Mage_Sales_Model_Order $order
+     * @param int $amount
+     *
+     * @return array
+     */
     public function captureAmount($order, $amount)
     {
-        $data = array('amount' => Aplazame_Sdk_Serializer_Decimal::fromFloat($amount)->jsonSerialize());
+        $data = array('amount' => $amount);
 
         return $this->apiClient->request(
             Varien_Http_Client::POST,
@@ -94,6 +100,16 @@ class Aplazame_Aplazame_Model_Api_Client extends Varien_Object
         $orders = $this->apiClient->request('GET', '/orders?mid=' . $order_id);
 
         return array_shift($orders['results']);
+    }
+
+    /**
+     * @param Mage_Sales_Model_Order $order
+     *
+     * @return array
+     */
+    public function getOrderCapture($order)
+    {
+        return $this->apiClient->request('GET', $this->getEndpointForOrder($order) . '/captures');
     }
 
     /**

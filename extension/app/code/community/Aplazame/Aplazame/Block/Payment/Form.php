@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @method Aplazame_Aplazame_Model_Payment|Aplazame_Aplazame_Model_PaymentPayLater getMethod()
+ * @method Aplazame_Aplazame_Model_Payment getMethod()
  */
 class Aplazame_Aplazame_Block_Payment_Form extends Mage_Payment_Block_Form
 {

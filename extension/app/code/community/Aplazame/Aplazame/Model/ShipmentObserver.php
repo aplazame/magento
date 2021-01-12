@@ -14,22 +14,28 @@ class Aplazame_Aplazame_Model_ShipmentObserver extends Mage_Core_Model_Abstract
         /** @var Mage_Sales_Model_Order $order */
         $order = $observer->getEvent()->getShipment()->getOrder();
 
-        /** @var Aplazame_Aplazame_Model_Payment|Aplazame_Aplazame_Model_PaymentPayLater $paymentMethod */
+        /** @var Aplazame_Aplazame_Model_Payment $paymentMethod */
         $paymentMethod = $order->getPayment()->getMethodInstance();
 
-        if (! ($paymentMethod instanceof Aplazame_Aplazame_Model_PaymentPayLater)) {
-            // Only capture payments made with Aplazame Pay Later
+        if (! ($paymentMethod instanceof Aplazame_Aplazame_Model_Payment)) {
             return $this;
         }
 
-        $amount = $order->getGrandTotal() - $order->getTotalRefunded();
-
         /** @var Aplazame_Aplazame_Model_Api_Client $client */
         $client = Mage::getModel('aplazame/api_client');
+
         try {
-            $client->captureAmount($order, $amount);
+            $payload = $client->getOrderCapture($order);
         } catch (Aplazame_Sdk_Api_ApiClientException $e) {
             throw $e;
+        }
+
+        if ($payload['remaining_capture_amount'] != 0) {
+            try {
+                $client->captureAmount($order, $payload['remaining_capture_amount']);
+            } catch (Aplazame_Sdk_Api_ApiClientException $e) {
+                throw $e;
+            }
         }
 
         return $this;

@@ -1,31 +1,19 @@
 <?php
 /** @var Aplazame_Aplazame_Block_Payment_Form $this */
-
 $quote = $this->getQuote();
-$methodCode = $this->getMethodCode();
-
-switch ($methodCode) {
-    case 'aplazame':
-        $type = 'instalments';
-        break;
-    case 'aplazame_pay_later':
-        $type = 'pay_later';
-        break;
-}
 
 $buttonParams = array(
-    'selector' => Mage::getStoreConfig('payment/' . $methodCode . '/button'),
+    'selector' => Mage::getStoreConfig('payment/aplazame/button'),
     'amount' => Aplazame_Sdk_Serializer_Decimal::fromFloat($quote->getGrandTotal())->jsonSerialize(),
     'currency' => $quote->getQuoteCurrencyCode(),
-    'product' => array('type' => $type)
 );
 ?>
 
 <?php if ($instructions = $this->getInstructions()): ?>
-    <ul class="form-list checkout-agreements" id="payment_form_<?php echo $methodCode ?>" style="display:none;">
+    <ul class="form-list checkout-agreements" id="payment_form_<?php echo $this->getMethodCode(); ?>" style="display:none;">
         <li>
-            <div class="<?php echo $methodCode ?>-instructions-content agreement-content">
-                <?php echo nl2br($instructions) ?>
+            <div class="<?php echo $this->getMethodCode(); ?>-instructions-content agreement-content">
+                <?php echo nl2br($instructions); ?>
             </div>
         </li>
     </ul>
@@ -33,6 +21,6 @@ $buttonParams = array(
 
 <script>
     (window.aplazame = window.aplazame || []).push(function (aplazame) {
-        aplazame.button(<?php echo json_encode($buttonParams) ?>)
+        aplazame.button(<?php echo json_encode($buttonParams); ?>)
     })
 </script>

@@ -25,7 +25,13 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
             return $this;
         }
 
-        $this->getPaymentsHelper()->authorizePayment($payment);
+        $order = $payment->getOrder();
+        $mid = $order->getIncrementId();
+
+        $payment->setTransactionId($mid);
+
+        $payment->setIsTransactionPending(true);
+        $payment->setIsTransactionClosed(false);
 
         return $this;
     }
@@ -37,7 +43,20 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
      */
     public function acceptPayment(Mage_Payment_Model_Info $payment)
     {
-        return $this->getPaymentsHelper()->isPaymentAccepted($payment, $this->getConfigData('autoinvoice'));
+        if ($payment->getIsFraudDetected()) {
+            return false;
+        }
+
+        if ((bool) $this->getConfigData('autoinvoice')) {
+            $payment->registerCaptureNotification($payment->getAmountAuthorized());
+        }
+
+        $order = $payment->getOrder();
+        if (!$order->getEmailSent()) {
+            $order->sendNewOrderEmail();
+        }
+
+        return true;
     }
 
     /**
@@ -59,8 +78,10 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
     {
         $order = $payment->getOrder();
 
+        /** @var Aplazame_Aplazame_Model_Api_Client $client */
+        $client = Mage::getModel('aplazame/api_client');
         try {
-            $this->getPaymentsHelper()->getApiClient()->cancelOrder($order);
+            $client->cancelOrder($order);
         } catch (Aplazame_Sdk_Api_ApiClientException $e) {
             if ($e->getStatusCode() == 404) {
                 return $this;
@@ -92,8 +113,10 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
     {
         $order = $payment->getOrder();
 
+        /** @var Aplazame_Aplazame_Model_Api_Client $client */
+        $client = Mage::getModel('aplazame/api_client');
         try {
-            $this->getPaymentsHelper()->getApiClient()->refundAmount($order, $amount);
+            $client->refundAmount($order, $amount);
         } catch (Aplazame_Sdk_Api_ApiClientException $e) {
             throw $e;
         }
@@ -118,7 +141,7 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
 
     public function getOrderPlaceRedirectUrl()
     {
-        return $this->getPaymentsHelper()->getAplazameRedirectUrl('instalments');
+        return Mage::getUrl('aplazame/payment/redirect', array('_secure' => true));
     }
 
     /**
@@ -128,19 +151,27 @@ class Aplazame_Aplazame_Model_Payment extends Mage_Payment_Model_Method_Abstract
      */
     public function createCheckoutOnAplazame()
     {
-        return $this->getPaymentsHelper()->getAplazameCheckout($this->getCheckout()->getLastRealOrderId(), 'instalments');
+        $orderIncrementId = $this->getCheckout()->getLastRealOrderId();
+
+        /** @var Mage_Sales_Model_Order $order */
+        $order = Mage::getModel('sales/order')->loadByIncrementId($orderIncrementId);
+
+        $checkout = Aplazame_Aplazame_BusinessModel_Checkout::createFromOrder($order);
+
+        /** @var Aplazame_Aplazame_Model_Api_Client $client */
+        $client = Mage::getModel('aplazame/api_client');
+        $response = $client->create_checkout(Aplazame_Sdk_Serializer_JsonSerializer::serializeValue($checkout));
+
+        return $response;
     }
 
     public function getCheckoutSerializer()
     {
-        return $this->getPaymentsHelper()->getAplazameCheckout($this->getCheckout()->getLastRealOrderId(), 'instalments', true);
-    }
+        $orderIncrementId = $this->getCheckout()->getLastRealOrderId();
 
-    /**
-     * @return Aplazame_Aplazame_Helper_Payments
-     */
-    private function getPaymentsHelper()
-    {
-        return Mage::helper('aplazame/payments');
+        /** @var Mage_Sales_Model_Order $order */
+        $order = Mage::getModel('sales/order')->loadByIncrementId($orderIncrementId);
+
+        return Aplazame_Aplazame_BusinessModel_Checkout::createFromOrder($order);
     }
 }

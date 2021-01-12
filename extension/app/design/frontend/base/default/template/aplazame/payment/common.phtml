@@ -1,8 +1,4 @@
 <?php
-    if (!Mage::getStoreConfig('payment/aplazame/active') && !Mage::getStoreConfig('payment/aplazame_pay_later/active')) {
-        return;
-    }
-
     $aplazameJsUri = getenv('APLAZAME_JS_URI') ? getenv('APLAZAME_JS_URI') : 'https://cdn.aplazame.com/aplazame.js';
 
     $aplazameJsParams = http_build_query(
