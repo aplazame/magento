@@ -1,5 +1,11 @@
 ## Change Log
 
+#### [v3.0.0](https://github.com/aplazame/magento/tree/v3.0.0) (2021-01-12)
+
+* [ADD] Blended checkout.
+* [FIX] Campaigns pagination.
+* [CHANGE] Redirect URLs.
+
 #### [v2.1.0](https://github.com/aplazame/magento/tree/v2.1.0) (2020-02-18)
 
 * [ADD] Legal notice option to widget setup.
