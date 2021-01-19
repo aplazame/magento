@@ -50,6 +50,11 @@ class Aplazame_Aplazame_Block_Checkout_Cart_Widget extends Mage_Core_Block_Templ
         return $this->getAplazameHelper()->isCartWidgetLegalAdviceEnabled() ? 'true' : 'false';
     }
 
+    public function getDefaultInstalments()
+    {
+        return $this->getAplazameHelper()->getCartDefaultInstalments();
+    }
+
     public function _toHtml()
     {
         if (!$this->getAplazameHelper()->isCartWidgetEnabled()) {

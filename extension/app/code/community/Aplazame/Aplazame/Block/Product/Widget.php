@@ -50,6 +50,11 @@ class Aplazame_Aplazame_Block_Product_Widget extends Mage_Core_Block_Template
         return $this->getAplazameHelper()->isProductWidgetLegalAdviceEnabled() ? 'true' : 'false';
     }
 
+    public function getDefaultInstalments()
+    {
+        return $this->getAplazameHelper()->getProductDefaultInstalments();
+    }
+
     public function _toHtml()
     {
         if (!$this->getAplazameHelper()->isProductWidgetEnabled()) {
