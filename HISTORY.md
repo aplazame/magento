@@ -1,5 +1,9 @@
 ## Change Log
 
+#### [v3.1.0](https://github.com/aplazame/magento/tree/v3.1.0) (2021-01-20)
+
+* [ADD] Instalments selector for widgets.
+
 #### [v3.0.0](https://github.com/aplazame/magento/tree/v3.0.0) (2021-01-12)
 
 * [ADD] Blended checkout.
