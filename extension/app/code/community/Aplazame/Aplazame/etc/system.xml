@@ -47,6 +47,15 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
                         </secret_api_key>
+                        <widget_legacy_enabled translate="label">
+                            <label>Show widget legacy instead new widget</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </widget_legacy_enabled>
                         <product_widget_enabled translate="label">
                             <label>Show widget on product page</label>
                             <frontend_type>select</frontend_type>
@@ -74,11 +83,29 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
                         </product_default_instalments>
+                        <product_widget_primary_color translate="label">
+                            <label>Primary color hexadecimal code for product widget (only new widget)</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>color</validate>
+                            <sort_order>43</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </product_widget_primary_color>
+                        <product_widget_layout translate="label">
+                            <label>Layout of product widget (only new widget)</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>aplazame/config_widgetlayout</source_model>
+                            <sort_order>44</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </product_widget_layout>
                         <cart_widget_enabled translate="label">
                             <label>Show widget on cart page</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>43</sort_order>
+                            <sort_order>45</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
@@ -87,7 +114,7 @@
                             <label>Show legal notice in cart widget</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>44</sort_order>
+                            <sort_order>46</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
@@ -96,15 +123,33 @@
                             <label>Select the default number instalments for the cart widget</label>
                             <frontend_type>text</frontend_type>
                             <frontend_class>validate-number</frontend_class>
-                            <sort_order>45</sort_order>
+                            <sort_order>47</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
                         </cart_default_instalments>
+                        <cart_widget_primary_color translate="label">
+                            <label>Primary color hexadecimal code for cart widget (only new widget)</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>color</validate>
+                            <sort_order>48</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </cart_widget_primary_color>
+                        <cart_widget_layout translate="label">
+                            <label>Layout of cart widget (only new widget)</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>aplazame/config_widgetlayout</source_model>
+                            <sort_order>49</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </cart_widget_layout>
                         <button>
                             <label>Aplazame Button CSS Selector</label>
                             <frontend_type>text</frontend_type>
-                            <sort_order>46</sort_order>
+                            <sort_order>50</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
@@ -112,7 +157,7 @@
                         <allowspecific translate="label">
                             <label>Payment from Applicable Countries</label>
                             <frontend_type>allowspecific</frontend_type>
-                            <sort_order>50</sort_order>
+                            <sort_order>55</sort_order>
                             <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
@@ -121,7 +166,7 @@
                         <specificcountry translate="label">
                             <label>Payment from Specific Countries</label>
                             <frontend_type>multiselect</frontend_type>
-                            <sort_order>55</sort_order>
+                            <sort_order>60</sort_order>
                             <source_model>adminhtml/system_config_source_country</source_model>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
@@ -131,7 +176,7 @@
                         <instructions translate="label">
                             <label>Instructions</label>
                             <frontend_type>textarea</frontend_type>
-                            <sort_order>60</sort_order>
+                            <sort_order>65</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>

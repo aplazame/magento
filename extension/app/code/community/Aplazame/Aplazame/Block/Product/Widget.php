@@ -45,6 +45,11 @@ class Aplazame_Aplazame_Block_Product_Widget extends Mage_Core_Block_Template
         return $total;
     }
 
+    public function getShowWidgetLegacy()
+    {
+        return $this->getAplazameHelper()->isWidgetLegacyEnabled();
+    }
+
     public function getShowLegalAdvice()
     {
         return $this->getAplazameHelper()->isProductWidgetLegalAdviceEnabled() ? 'true' : 'false';
@@ -53,6 +58,16 @@ class Aplazame_Aplazame_Block_Product_Widget extends Mage_Core_Block_Template
     public function getDefaultInstalments()
     {
         return $this->getAplazameHelper()->getProductDefaultInstalments();
+    }
+
+    public function getPrimaryColor()
+    {
+        return '#' . $this->getAplazameHelper()->getProductPrimaryColor();
+    }
+
+    public function getWidgetLayout()
+    {
+        return $this->getAplazameHelper()->getProductLayout();
     }
 
     public function _toHtml()

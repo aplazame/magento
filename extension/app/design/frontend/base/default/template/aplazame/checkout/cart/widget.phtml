@@ -2,8 +2,15 @@
 /** @var Aplazame_Aplazame_Block_Checkout_Cart_Widget $this */
 ?>
 <div
-  data-aplazame-widget-instalments=""
-  data-view="cart"
+  <?php if ($this->getShowWidgetLegacy()) : ?>
+    data-aplazame-widget-instalments=""
+    data-view="cart"
+  <?php else : ?>
+    data-aplazame-widget-instalments="v4"
+    data-type="cart"
+    data-option-primary-color="<?php echo $this->getPrimaryColor(); ?>"
+    data-option-layout="<?php echo $this->getWidgetLayout(); ?>"
+  <?php endif; ?>
   data-amount="<?php echo Aplazame_Sdk_Serializer_Decimal::fromFloat($this->getTotal())->jsonSerialize(); ?>"
   data-currency="<?php echo Mage::app()->getStore()->getCurrentCurrencyCode(); ?>"
   data-option-legal-advice="<?php echo $this->getShowLegalAdvice(); ?>"
