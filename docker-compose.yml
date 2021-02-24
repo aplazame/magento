@@ -15,7 +15,7 @@ services:
       - MAGENTO_ADMIN_LASTNAME=Store
       - MAGENTO_ADMIN_EMAIL=admin@example.com
       - MAGENTO_ADMIN_USERNAME=admin
-      - MAGENTO_ADMIN_PASSWORD=p4%%sw0rd
+      - MAGENTO_ADMIN_PASSWORD=my_admin_p4%%sw0rd
       - MAGENTO_DB_HOST=db
       - MAGENTO_DB_PASSWORD=password
       - MAGENTO_URL=magento.aplazame
