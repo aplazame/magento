@@ -24,6 +24,11 @@ class Aplazame_Aplazame_Helper_Data extends Mage_Core_Helper_Abstract
         return (bool) Mage::getStoreConfig('payment/aplazame/product_legal_advice');
     }
 
+    public function isProductWidgetBorderEnabled()
+    {
+        return (bool) Mage::getStoreConfig('payment/aplazame/product_widget_border');
+    }
+
     public function getProductDefaultInstalments()
     {
         return (int) Mage::getStoreConfig('payment/aplazame/product_default_instalments');

@@ -60,6 +60,11 @@ class Aplazame_Aplazame_Block_Product_Widget extends Mage_Core_Block_Template
         return $this->getAplazameHelper()->getProductDefaultInstalments();
     }
 
+    public function getShowBorder()
+    {
+        return $this->getAplazameHelper()->isProductWidgetBorderEnabled() ? 'true' : 'false';
+    }
+
     public function getPrimaryColor()
     {
         return '#' . $this->getAplazameHelper()->getProductPrimaryColor();
