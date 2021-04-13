@@ -1,5 +1,10 @@
 ## Change Log
 
+#### [v3.3.0](https://github.com/aplazame/magento/tree/v3.3.0) (2021-04-13)
+
+* [ADD] Show/hide border option on product widget v4.
+* [CHANGE] Loads script only at product, cart and checkout.
+
 #### [v3.2.0](https://github.com/aplazame/magento/tree/v3.2.0) (2021-02-24)
 
 * [ADD] New widget (v4).
