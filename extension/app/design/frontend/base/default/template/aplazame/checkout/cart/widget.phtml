@@ -10,6 +10,7 @@
     data-type="cart"
     data-option-primary-color="<?php echo $this->getPrimaryColor(); ?>"
     data-option-layout="<?php echo $this->getWidgetLayout(); ?>"
+    data-option-align="<?php echo $this->getWidgetAlign(); ?>"
   <?php endif; ?>
   data-amount="<?php echo Aplazame_Sdk_Serializer_Decimal::fromFloat($this->getTotal())->jsonSerialize(); ?>"
   data-currency="<?php echo Mage::app()->getStore()->getCurrentCurrencyCode(); ?>"

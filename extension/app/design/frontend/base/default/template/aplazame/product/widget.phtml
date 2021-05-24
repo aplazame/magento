@@ -11,6 +11,7 @@
     data-option-border-product="<?php echo $this->getShowBorder(); ?>"
     data-option-primary-color="<?php echo $this->getPrimaryColor(); ?>"
     data-option-layout="<?php echo $this->getWidgetLayout(); ?>"
+    data-option-align="<?php echo $this->getWidgetAlign(); ?>"
   <?php endif; ?>
   data-amount="<?php echo Aplazame_Sdk_Serializer_Decimal::fromFloat($this->getFinalPrice())->jsonSerialize(); ?>"
   data-currency="<?php echo Mage::app()->getStore()->getCurrentCurrencyCode(); ?>"

@@ -44,6 +44,11 @@ class Aplazame_Aplazame_Helper_Data extends Mage_Core_Helper_Abstract
         return Mage::getStoreConfig('payment/aplazame/product_widget_layout');
     }
 
+    public function getProductAlign()
+    {
+        return Mage::getStoreConfig('payment/aplazame/product_widget_align');
+    }
+
     // Cart widget
 
     public function isCartWidgetEnabled()
@@ -69,5 +74,10 @@ class Aplazame_Aplazame_Helper_Data extends Mage_Core_Helper_Abstract
     public function getCartLayout()
     {
         return Mage::getStoreConfig('payment/aplazame/cart_widget_layout');
+    }
+
+    public function getCartAlign()
+    {
+        return Mage::getStoreConfig('payment/aplazame/cart_widget_align');
     }
 }

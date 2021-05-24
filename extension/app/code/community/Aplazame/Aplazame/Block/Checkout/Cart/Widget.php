@@ -70,6 +70,11 @@ class Aplazame_Aplazame_Block_Checkout_Cart_Widget extends Mage_Core_Block_Templ
         return $this->getAplazameHelper()->getCartLayout();
     }
 
+    public function getWidgetAlign()
+    {
+        return $this->getAplazameHelper()->getCartAlign();
+    }
+
     public function _toHtml()
     {
         if (!$this->getAplazameHelper()->isCartWidgetEnabled()) {
