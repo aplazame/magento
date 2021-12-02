@@ -42,9 +42,6 @@ class Aplazame_Aplazame_BusinessModel_Customer
         if (($birthday = $customer->getDob()) !== null) {
             $aCustomer->birthday = Aplazame_Sdk_Serializer_Date::fromDateTime(new DateTime($birthday));
         }
-        if (($document_id = $customer->getTaxvat()) !== null) {
-            $aCustomer->document_id = $document_id;
-        }
         $aCustomer->date_joined = Aplazame_Sdk_Serializer_Date::fromDateTime(new DateTime('@' . $customer->getCreatedAtTimestamp()));
         if (($lastLogin = $logCustomer->getLoginAtTimestamp()) != null) {
             $aCustomer->last_login = Aplazame_Sdk_Serializer_Date::fromDateTime(new DateTime('@' . $lastLogin));
