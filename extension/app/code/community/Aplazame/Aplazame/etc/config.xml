@@ -129,6 +129,7 @@
                 <payment_action>authorize</payment_action>
                 <title>Aplazame</title>
                 <secret_api_key backend_model="aplazame/config_privatekey"/>
+                <widget_out_of_limits>show</widget_out_of_limits>
                 <widget_legacy_enabled>1</widget_legacy_enabled>
                 <product_widget_enabled>1</product_widget_enabled>
                 <product_legal_advice>0</product_legal_advice>

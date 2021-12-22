@@ -12,6 +12,11 @@ class Aplazame_Aplazame_Helper_Data extends Mage_Core_Helper_Abstract
         return (bool) Mage::getStoreConfig('payment/aplazame/widget_legacy_enabled');
     }
 
+    public function getWidgetOutOfLimits()
+    {
+        return Mage::getStoreConfig('payment/aplazame/widget_out_of_limits');
+    }
+
     // Product widget
 
     public function isProductWidgetEnabled()

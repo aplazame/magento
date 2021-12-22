@@ -15,6 +15,7 @@
   data-amount="<?php echo Aplazame_Sdk_Serializer_Decimal::fromFloat($this->getTotal())->jsonSerialize(); ?>"
   data-currency="<?php echo Mage::app()->getStore()->getCurrentCurrencyCode(); ?>"
   data-option-legal-advice="<?php echo $this->getShowLegalAdvice(); ?>"
+  data-option-out-of-limits="<?php echo $this->getOptionOutOfLimits(); ?>"
   <?php if ($this->getShowPayIn4()) : ?>
     data-pay-in-4=""
   <?php endif; ?>
