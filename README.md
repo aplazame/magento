@@ -2,7 +2,7 @@
 
 **Compatible with**
 
-Magento CE 1.4.0.1+
+Magento CE 1.4.0.1+.
 
 #### Release history
 
