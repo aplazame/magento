@@ -1,5 +1,9 @@
 ## Change Log
 
+#### [v3.6.1](https://github.com/aplazame/magento/tree/v3.6.1) (2022-06-13)
+
+* [FIX] Deprecations.
+
 #### [v3.6.0](https://github.com/aplazame/magento/tree/v3.6.0) (2021-12-22)
 
 * [ADD] Show/hide alternative widget option.
