@@ -44,13 +44,14 @@ class Aplazame_Sdk_Api_ApiRequest extends Aplazame_Sdk_Http_Request
      */
     public function __construct(
         $useSandbox,
+        $apiVersion,
         $accessToken,
         $method,
         $uri,
         $data = null
     ) {
         $headers = array(
-            'Accept' => array(self::createAcceptHeader($useSandbox, 1, self::FORMAT_JSON)),
+            'Accept' => array(self::createAcceptHeader($useSandbox, $apiVersion, self::FORMAT_JSON)),
             'Authorization' => array(self::createAuthorizationHeader($accessToken)),
             'User-Agent' => array(
                 'Sdk/' . self::SDK_VERSION,
