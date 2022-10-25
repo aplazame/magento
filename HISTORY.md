@@ -1,5 +1,9 @@
 ## Change Log
 
+#### [v3.6.2](https://github.com/aplazame/magento/tree/v3.6.2) (2022-10-25)
+
+* [CHANGE] Checkout header.
+
 #### [v3.6.1](https://github.com/aplazame/magento/tree/v3.6.1) (2022-06-13)
 
 * [FIX] Deprecations.

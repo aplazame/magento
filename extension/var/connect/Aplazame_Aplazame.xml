@@ -1,5 +1,5 @@
 <_>
-   <form_key>26RCnoS6d3C0DqrO</form_key>
+   <form_key>095grft44XZiISP1</form_key>
    <name>Aplazame_Aplazame</name>
    <channel>community</channel>
    <version_ids>
@@ -9,9 +9,9 @@
    <description>Aplazame, a consumer credit company, offers a payment system that can be used by online buyers to receive funding for their purchases.</description>
    <license>GPL</license>
    <license_uri/>
-   <version>3.6.1</version>
+   <version>3.6.2</version>
    <stability>stable</stability>
-   <notes>* [FIX] Deprecations.</notes>
+   <notes>* [CHANGE] Checkout header.</notes>
    <authors>
       <name>
          <name>Aplazame</name>
@@ -40,7 +40,7 @@
             <max/>
          </max>
          <files>
-            <files>                 </files>
+            <files>                  </files>
          </files>
       </package>
       <extension>
