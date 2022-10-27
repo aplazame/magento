@@ -145,6 +145,7 @@ class Aplazame_Sdk_Api_Client
      * @param string $method The HTTP method of the request.
      * @param string $path The path of the request.
      * @param array|null $data The data of the request.
+     * @param int $apiVersion The API version of the request.
      *
      * @return array The data of the response.
      *
