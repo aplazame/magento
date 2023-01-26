@@ -1,5 +1,9 @@
 ## Change Log
 
+#### [v3.6.3](https://github.com/aplazame/magento/tree/v3.6.3) (2023-01-26)
+
+* [FIX] API key config.
+
 #### [v3.6.2](https://github.com/aplazame/magento/tree/v3.6.2) (2022-10-25)
 
 * [CHANGE] Checkout header.
