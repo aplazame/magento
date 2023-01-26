@@ -10,14 +10,7 @@ class Aplazame_Aplazame_Model_Config_Privatekey extends Mage_Adminhtml_Model_Sys
             $privateKey
         );
 
-        $response = $client->patch(
-            '/me',
-            array(
-                'confirmation_url' => '',
-            )
-        );
-
-        return $response;
+        return $client->get('/me');
     }
 
     /**
@@ -39,14 +32,16 @@ class Aplazame_Aplazame_Model_Config_Privatekey extends Mage_Adminhtml_Model_Sys
 
     public function _beforeSave()
     {
-        try {
-            $response = self::setAplazameMerchantParams($this->getValue());
-        } catch (Aplazame_Sdk_Api_ApiClientException $apiClientException) {
-            $label = $this->getData('field_config/label');
-            Mage::throwException($this->__($label . ' ' . $apiClientException->getMessage()));
-        }
+        if ($this->getValue() != Mage::getStoreConfig('payment/aplazame/secret_api_key')) {
+            try {
+                $response = self::setAplazameMerchantParams($this->getValue());
+            } catch (Aplazame_Sdk_Api_ApiClientException $apiClientException) {
+                $label = $this->getData('field_config/label');
+                Mage::throwException($this->__($label . ' ' . $apiClientException->getMessage()));
+            }
 
-        $this->_publicApiKey = $response['public_api_key'];
+            $this->_publicApiKey = $response['public_api_key'];
+        }
 
         return parent::_beforeSave();
     }
