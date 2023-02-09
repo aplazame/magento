@@ -48,13 +48,14 @@ class Aplazame_Aplazame_Model_Config_Privatekey extends Mage_Adminhtml_Model_Sys
 
     public function _afterSave()
     {
-        $path = 'payment/aplazame/public_api_key';
-        $this->_configData
-            ->load($path, 'path')
-            ->setValue($this->_publicApiKey)
-            ->setPath($path)
-            ->save();
-
+        if ($this->_publicApiKey) {
+            $path = 'payment/aplazame/public_api_key';
+            $this->_configData
+                ->load($path, 'path')
+                ->setValue($this->_publicApiKey)
+                ->setPath($path)
+                ->save();
+        }
         return parent::_afterSave();
     }
 }
