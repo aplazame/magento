@@ -55,6 +55,11 @@ class Aplazame_Aplazame_Block_Checkout_Cart_Widget extends Mage_Core_Block_Templ
         return $this->getAplazameHelper()->getWidgetOutOfLimits();
     }
 
+    public function getShowDownpaymentInfo()
+    {
+        return $this->getAplazameHelper()->isCartWidgetDownpaymentInfoEnabled() ? 'true' : 'false';
+    }
+
     public function getShowLegalAdvice()
     {
         return $this->getAplazameHelper()->isCartWidgetLegalAdviceEnabled() ? 'true' : 'false';
