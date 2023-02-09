@@ -55,6 +55,11 @@ class Aplazame_Aplazame_Block_Product_Widget extends Mage_Core_Block_Template
         return $this->getAplazameHelper()->getWidgetOutOfLimits();
     }
 
+    public function getShowDownpaymentInfo()
+    {
+        return $this->getAplazameHelper()->isProductWidgetDownpaymentInfoEnabled() ? 'true' : 'false';
+    }
+
     public function getShowLegalAdvice()
     {
         return $this->getAplazameHelper()->isProductWidgetLegalAdviceEnabled() ? 'true' : 'false';
