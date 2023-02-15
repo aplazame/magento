@@ -1,5 +1,10 @@
 ## Change Log
 
+#### [v3.7.0](https://github.com/aplazame/magento/tree/v3.7.0) (2023-02-15)
+
+* [ADD] Downpayment info option for widgets.
+* [FIX] Bug at API configuration and various tweaks.
+
 #### [v3.6.3](https://github.com/aplazame/magento/tree/v3.6.3) (2023-01-26)
 
 * [FIX] API key config.
