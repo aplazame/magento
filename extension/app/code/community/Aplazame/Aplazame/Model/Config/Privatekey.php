@@ -10,7 +10,7 @@ class Aplazame_Aplazame_Model_Config_Privatekey extends Mage_Adminhtml_Model_Sys
             $privateKey
         );
 
-        return $client->get('/me');
+        return $client->get('/merchants/api-keys');
     }
 
     /**
