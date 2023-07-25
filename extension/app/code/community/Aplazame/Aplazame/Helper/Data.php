@@ -44,6 +44,11 @@ class Aplazame_Aplazame_Helper_Data extends Mage_Core_Helper_Abstract
         return (bool) Mage::getStoreConfig('payment/aplazame/product_widget_border');
     }
 
+    public function isProductWidgetMaxDesiredEnabled()
+    {
+        return (bool) Mage::getStoreConfig('payment/aplazame/product_widget_max_desired');
+    }
+
     public function getProductDefaultInstalments()
     {
         return (int) Mage::getStoreConfig('payment/aplazame/product_default_instalments');
@@ -89,6 +94,11 @@ class Aplazame_Aplazame_Helper_Data extends Mage_Core_Helper_Abstract
     public function getCartDefaultInstalments()
     {
         return (int) Mage::getStoreConfig('payment/aplazame/cart_default_instalments');
+    }
+
+    public function isCartWidgetMaxDesiredEnabled()
+    {
+        return (bool) Mage::getStoreConfig('payment/aplazame/cart_widget_max_desired');
     }
 
     public function getCartPrimaryColor()

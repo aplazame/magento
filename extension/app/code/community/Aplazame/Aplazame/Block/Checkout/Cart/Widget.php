@@ -75,6 +75,11 @@ class Aplazame_Aplazame_Block_Checkout_Cart_Widget extends Mage_Core_Block_Templ
         return $this->getAplazameHelper()->getCartDefaultInstalments();
     }
 
+    public function getShowMaxDesired()
+    {
+        return $this->getAplazameHelper()->isCartWidgetMaxDesiredEnabled() ? 'true' : 'false';
+    }
+
     public function getPrimaryColor()
     {
         return '#' . $this->getAplazameHelper()->getCartPrimaryColor();
