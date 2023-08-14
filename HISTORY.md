@@ -1,5 +1,9 @@
 ## Change Log
 
+#### [v3.8.1](https://github.com/aplazame/magento/tree/v3.8.1) (2023-08-14)
+
+* API improvements.
+
 #### [v3.8.0](https://github.com/aplazame/magento/tree/v3.8.0) (2023-07-25)
 
 * [ADD] Maximum instalment desired option for widgets.
