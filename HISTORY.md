@@ -1,5 +1,9 @@
 ## Change Log
 
+#### [v4.0.0](https://github.com/aplazame/magento/tree/v3.8.1) (2024-02-26)
+
+* [ADD] Checkout v4.
+
 #### [v3.8.1](https://github.com/aplazame/magento/tree/v3.8.1) (2023-08-14)
 
 * API improvements.
