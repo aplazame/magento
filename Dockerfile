@@ -1,4 +1,4 @@
-FROM php:5.6-apache
+FROM php:8.2-apache
 
 ENV XDEBUG_CONFIG="remote_enable=on remote_connect_back=on"
 
