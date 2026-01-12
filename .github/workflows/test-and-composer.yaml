@@ -59,3 +59,5 @@ jobs:
         MATCHES=$(aws s3 ls ${s3Path} | wc -l)
         [ "$MATCHES" = "0" ] && [ ! -f cache.tar.gz ] && tar -czf cache.tar.gz ${foldersStr} && aws s3 cp --quiet cache.tar.gz ${s3Path}
         exit 0
+
+        
