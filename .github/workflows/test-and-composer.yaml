@@ -84,9 +84,9 @@ jobs:
         foldersStr: '.'
         s3Path: s3://aplazameshared-jenkins-cache/Aplazame-Public/magento/v1-dependencies-${{ github.sha }}.tar.gz
       run: |
-        set -e
-        MATCHES=$(aws s3 ls ${s3Path} | wc -l)
-        [ "$MATCHES" = "0" ] && [ ! -f cache.tar.gz ] && tar -czf cache.tar.gz ${foldersStr} && aws s3 cp --quiet cache.tar.gz ${s3Path}
-        exit 0
+          set -e
+          aws s3 cp --quiet ${s3Path} cache.tar.gz --profile AplazameSharedServices || exit 0
+          [ -f cache.tar.gz ] && tar -xf cache.tar.gz
+          aws s3 cp --quiet ${s3Path} cache.tar.gz --profile AplazameSharedServices
 
         
