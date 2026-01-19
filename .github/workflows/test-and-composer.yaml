@@ -53,7 +53,7 @@ jobs:
     - name: Configure aws credentials
       uses: aws-actions/configure-aws-credentials@61815dcd50bd041e203e49132bacad1fd04d2708  #v5.1.1
       with:
-        role-to-assume: ${{ env.ROLE_OIDC }}
+        role-to-assume: ${{ vars.AWS_OIDC_ROLE_TF_PRO }}
         role-session-name: ${{ github.run_id }}
         aws-region: ${{ vars.WZ_OIDC_AWS_REGION }}
  
@@ -84,9 +84,9 @@ jobs:
         foldersStr: '.'
         s3Path: s3://aplazameshared-jenkins-cache/Aplazame-Public/magento/v1-dependencies-${{ github.sha }}.tar.gz
       run: |
-          set -e
-          aws s3 cp --quiet ${s3Path} cache.tar.gz --profile AplazameSharedServices || exit 0
-          [ -f cache.tar.gz ] && tar -xf cache.tar.gz
-          aws s3 cp --quiet ${s3Path} cache.tar.gz --profile AplazameSharedServices
+        set -e
+        MATCHES=$(aws s3 ls ${s3Path} | wc -l)
+        [ "$MATCHES" = "0" ] && [ ! -f cache.tar.gz ] && tar -czf cache.tar.gz ${foldersStr} && aws s3 cp --quiet cache.tar.gz ${s3Path}
+        exit 0
 
         
