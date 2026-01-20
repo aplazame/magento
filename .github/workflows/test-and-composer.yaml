@@ -66,10 +66,7 @@ jobs:
       - name: Composer Install
         run: composer install --prefer-dist
 
-      - name: Make Styleci happy
-        run: make style
-
-      - name: Cache Composer dependencies
+      - name: Upload Cache
         env:
           s3Path: s3://aplazameshared-jenkins-cache/Aplazame-Public/magento/v1-dependencies-${{ github.sha }}.tar.gz
         run: |
@@ -78,4 +75,5 @@ jobs:
             [ "$MATCHES" = "0" ] && [ ! -f cache.tar.gz ] && tar -czf cache.tar.gz ${foldersCache} && aws s3 cp --quiet cache.tar.gz ${s3Path} --profile AplazameSharedServices
             exit 0
 
-          
+      - name: Make Styleci happy
+        run: make style
